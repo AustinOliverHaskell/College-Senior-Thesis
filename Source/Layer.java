@@ -15,6 +15,11 @@ public class Layer
 	private final int highlight  = 0xFF00FF00;
 	private final int remove     = 0xFFFF0000;
 
+	private enum Directions 
+	{
+		UP, DOWN, LEFT, RIGHT, VERTICAL, HORIZONTAL
+	}
+
 	private int numLines = 20;
 
 	private BufferedImage img;
@@ -75,15 +80,20 @@ public class Layer
 
 	public void findUsableArea()
 	{
-		int xCenter = xSize/2;
-		int yCenter = ySize/2;
-
-		floodFill(xCenter, yCenter, highlight);
-
 		int usableArea = 0;
-		boolean hasGreen = false;
-		boolean hasBlue  = false;
 
+		// Remove perimiter
+		for (int x = 0; x < xSize; x++)
+		{
+			floodFill(x, 0, remove);
+			floodFill(x, ySize-1, remove);
+		}
+		
+		for (int y = 0; y < ySize; y++)
+		{
+			floodFill(xSize-1, 0, remove);
+			floodFill(xSize-1, ySize-1, remove);
+		}
 
 		// TODO: This is really inefficiant
 		for (int x = 0; x < xSize; x++)
@@ -92,40 +102,34 @@ public class Layer
 			{
 				int color = img.getRGB(x, y);
 
-				if (color == background)
+				if (img.getRGB(x, y) == background)
 				{
-					hasBlue = true;
-				}
-				else if (color == highlight)
-				{
-					hasGreen = true;
 					usableArea++;
 				}
 			}
 		}
 
-		if (hasGreen && hasBlue)
-		{
-			area = usableArea;
-		}
-
-		// Remove perimiter
-		for (int i = 0; i < xSize; i++)
-		{
-			floodFill(i, 0, remove);
-			floodFill(i, ySize-1, remove);
-		}
-
-		for (int i = 0; i < ySize; i++)
-		{
-			floodFill(0, i, remove);
-			floodFill(xSize-1, i, remove);
-		}
+		area = usableArea;
 	}
 
 	public int getArea()
 	{
 		return this.area;
+	}
+
+	private void fill(int x, int y, Directions direction, int color)
+	{
+		if (direction == Directions.VERTICAL)
+		{
+			while ((img.getRGB(x, y) != white) && (img.getRGB(x, y) != color))
+			{
+				img.setRGB(x,y, color);
+			}
+		}
+		else
+		{
+
+		}
 	}
 
 	private void floodFill(int x, int y, int color)
@@ -134,13 +138,9 @@ public class Layer
 		if ((x < img.getWidth() && x >= 0) && (y < img.getHeight() && y >= 0))
 		{
 			// Recursive flood
-			if (img.getRGB(x, y) != white)
+			if ((img.getRGB(x, y) != white) && (img.getRGB(x,y) != color))
 			{
-				img.setRGB(x, y, color);
-				floodFill(x+1, y-1, color);
-				floodFill(x+1, y+1, color);
-				floodFill(x-1, y-1, color);
-				floodFill(x-1, y+1, color);
+				img.setRGB(x, y, color); 
 				floodFill(x,   y-1, color);
 				floodFill(x,   y+1, color);
 				floodFill(x+1, y, color);

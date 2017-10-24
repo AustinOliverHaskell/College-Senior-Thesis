@@ -7,8 +7,8 @@ public class Dna
 	private int size;
 
 	// Size of the individual slices
-	private final int xDimention = 20;
-	private final int yDimention = 20;
+	private final int xDimention = 50;
+	private final int yDimention = 50;
 
 	Dna(float rate, int size)
 	{
@@ -18,6 +18,18 @@ public class Dna
 
 		initDNA();
 
+	}
+
+	public void purge(int number)
+	{
+		for (int i = 0; i < genes.size(); i++)
+		{
+			if (genes.get(i).getArea() < number)
+			{
+				genes.remove(i);
+				i--;
+			}
+		}
 	}
 
 	private void mutate()
