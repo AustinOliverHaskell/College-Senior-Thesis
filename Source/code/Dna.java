@@ -1,3 +1,5 @@
+package austin.structures;
+
 import java.util.*;	
 
 public class Dna
@@ -7,8 +9,8 @@ public class Dna
 	private int size;
 
 	// Size of the individual slices
-	private final int xDimention = 50;
-	private final int yDimention = 50;
+	private final int xDimention = 200;
+	private final int yDimention = 200;
 
 	Dna(float rate, int size)
 	{
@@ -56,7 +58,17 @@ public class Dna
 		for (int i = 0; i < genes.size(); i++)
 		{
 			genes.get(i).save(filePath + "/" + i + ".png");
-			System.out.println("Area of img #" + i + " is " + genes.get(i).getArea());
+
+			Debug.logf("Area of img #" + i + " is " + genes.get(i).getArea());
+		}
+	}
+
+	public void printLayers()
+	{
+		for (int i = 0; i < genes.size(); i++)
+		{
+			Debug.logf("Layer: " + (i+1));
+			Debug.logf(genes.get(i).toString());
 		}
 	}
 

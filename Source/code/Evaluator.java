@@ -1,3 +1,5 @@
+package austin.structures;
+
 import java.util.*;	
 
 public class Evaluator
