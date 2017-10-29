@@ -1,3 +1,5 @@
+package austin.structures;
+
 public class Structure
 {
 
