@@ -1,5 +1,5 @@
 #!/bin/sh
-
+clear
 echo " - Compilation, Execution, and Documentation script - "
 
 echo "Compile Program? [y/n]"

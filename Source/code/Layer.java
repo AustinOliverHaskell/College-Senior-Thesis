@@ -298,7 +298,7 @@ public class Layer
 	*
 	*   @return A COPY of the array of points
 	*/
-	public ArrayList<Vec> getPoints()
+	private ArrayList<Vec> getPoints()
 	{
 		return new ArrayList<Vec>(points);
 	}

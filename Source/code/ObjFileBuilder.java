@@ -26,7 +26,7 @@ public class ObjFileBuilder
 		StringBuilder retVal = new StringBuilder();
 
 		retVal.append("# Created by Austin Haskell - Evolutionary Structure Simulation - \n");
-		retVal.append("mtllib ./vp.mtl\n");
+		retVal.append("mtllib ./vp.mtl\n\n");
 		retVal.append("g\n");
 
 		return retVal.toString();
@@ -38,7 +38,7 @@ public class ObjFileBuilder
 
 		for (Layer layer : sections)
 		{
-			ArrayList <Vec> points = layer.getPoints(); 
+			List <Vec> points = layer.getSafePoints(); 
 
 			for (Vec item : points)
 			{
@@ -52,7 +52,9 @@ public class ObjFileBuilder
 			}
 		}
 
+		retVal.append("\n");
 		retVal.append("# " + "?" + " verticies\n");
+		retVal.append("\n");
 
 		return retVal.toString();
 	}
@@ -75,6 +77,12 @@ public class ObjFileBuilder
 				offset++;
 			}
 			retVal.append("\n");
+		}
+
+		for (int i = 0; i < sections.size()-1; i++)
+		{
+			List<Vec> points = sections.get(i).getSafePoints();
+
 		}
 
 		return retVal.toString();
