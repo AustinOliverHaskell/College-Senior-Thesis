@@ -44,10 +44,12 @@ public class Dna
 
 	private void initDNA()
 	{
+		Layer temp = new Layer(xDimention, yDimention, 0);
+
 		for (int i = 0; i < size; i++)
 		{
-			Layer temp = new Layer(xDimention, yDimention);
-			genes.add(temp);
+			Layer clone = temp.clone();
+			genes.add(clone);
 		}
 
 		System.out.println("Init DNA for size "+ size +" Complete");

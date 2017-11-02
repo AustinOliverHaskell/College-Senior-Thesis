@@ -1,0 +1,18 @@
+# Created by Austin Haskell - Evolutionary Structure Simulation - 
+mtllib ./vp.mtl
+g
+v 90 193 0
+v 101 61 0
+v 2 74 0
+v 74 41 0
+v 199 179 0
+v 90 193 0
+v 34 162 20
+v 63 20 20
+v 12 120 20
+v 82 175 20
+v 22 171 20
+v 34 162 20
+# ? verticies
+f 1 2 3 4 5 6 
+f 7 8 9 10 11 12 

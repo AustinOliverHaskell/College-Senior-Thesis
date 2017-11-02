@@ -23,10 +23,12 @@ public class Driver
 
 		Dna dna = new Dna((float)0.02, populationSize);
 
-		dna.save("./img");
+		dna.save("../compiled/img");
 
 		TestingSuite.runAllTests();
 
-		Debug.save(null);
+		Debug.save("../compiled/");
+
+
 	}
 }

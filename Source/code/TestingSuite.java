@@ -6,6 +6,7 @@ public class TestingSuite
 	{
 		testVec();
 		testLayer();
+		testObjFileBuilder();
 	}
 
 	public static void testVec()
@@ -33,5 +34,17 @@ public class TestingSuite
 	public static void testLayer()
 	{
 
+	}
+
+	public static void testObjFileBuilder()
+	{
+		ObjFileBuilder test = new ObjFileBuilder();
+		Layer layer  = new Layer(200, 200, 0);
+		Layer layer2 = new Layer(200, 200, 20);
+
+		test.add(layer);
+		test.add(layer2);
+
+		test.save("../compiled/obj/", "test.obj");
 	}
 }
