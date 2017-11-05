@@ -1,16 +1,54 @@
 Drawing line from 0 0 0 to point 10 0 0
 Drawing line from 0 10 0 to point 10 0 0
 Drawing line from 0 10 0 to point 10 10 0
+Drawing line from 0 0 0 to point 10 10 0
  -------------------- 
 Drawing line from 0 0 10 to point 10 0 10
 Drawing line from 0 10 10 to point 10 0 10
 Drawing line from 0 10 10 to point 10 10 10
+Drawing line from 0 0 10 to point 10 10 10
  -------------------- 
-Drawing line from 0 0 0 to point 10 0 0
-Drawing line from 0 10 0 to point 10 0 0
-Drawing line from 0 10 0 to point 10 10 0
+Drawing line from 2 10 10 to point 14 11 10
+Drawing line from 10 18 10 to point 14 11 10
+Drawing line from 4 10 10 to point 10 18 10
+Drawing line from 4 10 10 to point 15 2 10
+Drawing line from 14 2 10 to point 15 2 10
+Drawing line from 12 15 10 to point 14 2 10
+Drawing line from 0 18 10 to point 12 15 10
+Drawing line from 0 18 10 to point 19 5 10
+Drawing line from 15 11 10 to point 19 5 10
+Drawing line from 2 10 10 to point 15 11 10
  -------------------- 
-Drawing line from 0 0 10 to point 10 0 10
-Drawing line from 0 10 10 to point 10 0 10
-Drawing line from 0 10 10 to point 10 10 10
+Drawing line from 2 10 10 to point 14 11 10
+Drawing line from 10 18 10 to point 14 11 10
+Drawing line from 4 10 10 to point 10 18 10
+Drawing line from 4 10 10 to point 15 2 10
+Drawing line from 14 2 10 to point 15 2 10
+Drawing line from 12 15 10 to point 14 2 10
+Drawing line from 0 18 10 to point 12 15 10
+Drawing line from 0 18 10 to point 19 5 10
+Drawing line from 15 11 10 to point 19 5 10
+Drawing line from 2 10 10 to point 15 11 10
+ -------------------- 
+Drawing line from 2 17 0 to point 13 13 0
+Drawing line from 1 6 0 to point 13 13 0
+Drawing line from 1 6 0 to point 3 12 0
+Drawing line from 3 12 0 to point 10 6 0
+Drawing line from 3 4 0 to point 10 6 0
+Drawing line from 3 4 0 to point 8 1 0
+Drawing line from 0 11 0 to point 8 1 0
+Drawing line from 0 11 0 to point 13 19 0
+Drawing line from 13 19 0 to point 19 8 0
+Drawing line from 2 17 0 to point 19 8 0
+ -------------------- 
+Drawing line from 2 17 0 to point 13 13 0
+Drawing line from 1 6 0 to point 13 13 0
+Drawing line from 1 6 0 to point 3 12 0
+Drawing line from 3 12 0 to point 10 6 0
+Drawing line from 3 4 0 to point 10 6 0
+Drawing line from 3 4 0 to point 8 1 0
+Drawing line from 0 11 0 to point 8 1 0
+Drawing line from 0 11 0 to point 13 19 0
+Drawing line from 13 19 0 to point 19 8 0
+Drawing line from 2 17 0 to point 19 8 0
  -------------------- 

@@ -10,14 +10,30 @@ import java.io.*;
 public class ObjFileBuilder
 {
 	private ArrayList<Layer> sections;
-	private ArrayList<Vec>   points;
+	private ArrayList<ExtendedVec> points;
 
 	ObjFileBuilder()
 	{
-		sections = new ArrayList<Layer>();
-		points = new ArrayList<Vec>();
+		this.sections = new ArrayList<Layer>();
+		this.points = new ArrayList<ExtendedVec>();
 	}
 
+	/**
+	*   This constructor takes an already filled list
+	*
+	*   @param sections Pre-filled list of layers
+	*/
+	ObjFileBuilder(ArrayList <Layer> sections)
+	{
+		this.sections = sections;
+		this.points = new ArrayList<ExtendedVec>();
+	}
+
+	/**
+	*   Adds a new layer to the internal list of layers
+	*
+	*   @param layer New layer to append to the list
+	*/
 	public void add(Layer layer)
 	{
 		sections.add(layer.clone());
@@ -37,6 +53,7 @@ public class ObjFileBuilder
 	private String constructPoints()
 	{
 		StringBuilder retVal = new StringBuilder();
+		int vectorNumber = 1;
 
 		for (Layer layer : sections)
 		{
@@ -48,12 +65,14 @@ public class ObjFileBuilder
 				retVal.append(item.toString());
 				retVal.append("\n");
 
-				points.add(new Vec(item));
+				points.add(new ExtendedVec(new Vec(item), vectorNumber));
+
+				vectorNumber++;
 			}
 		}
 
 		retVal.append("\n");
-		retVal.append("# " + "?" + " verticies\n");
+		retVal.append("# " + Integer.toString(vectorNumber-1) + " verticies\n");
 		retVal.append("\n");
 
 		return retVal.toString();
@@ -62,29 +81,20 @@ public class ObjFileBuilder
 	private String constructBody()
 	{
 		StringBuilder retVal = new StringBuilder();
-		int offset = 1;
-
 
 		for (int i = 0; i < sections.size(); i++)
 		{
 			retVal.append(constructLayer(i));
+		}
 
-			int size = sections.get(i).getSafePoints().size();
+		// Get the length of the layer, theyre all the same length
+		int layerLength = sections.get(0).getSafePoints().size();
 
-			for (int q = 0; q < size; q++)
-			{
-				retVal.append("f ");
-				retVal.append(q +   (size * i+1));
-				retVal.append(" ");
-				retVal.append(q+1 + (size * (i+1)));
-				retVal.append(" ");
-				retVal.append(q +   (size * (i)));
-				retVal.append(" ");
-				retVal.append(q+1 + (size * (i)));
-				retVal.append(" ");
-				
-				retVal.append("\n");
-			}
+		for (int i = 0; i < points.size(); i++)
+		{
+			retVal.append("f ");
+			retVal.append(points.get(i).getPosition());
+			retVal.append("\n");
 		}
 
 		return retVal.toString();
@@ -109,6 +119,14 @@ public class ObjFileBuilder
 		return retVal.toString();
 	}
 
+	/**
+	*    @param filepath the path to save the file, if null then assumes current directory "./"
+	*	 @param filename the name of the file without the ".obj" ending, if null assumes "Object"
+	*
+	*    save() will create and save this file as a .obj file 
+	*    <br />
+	*	 NOTE: This operation is destructive - It will overwrite a file sharing the same name
+	*/
 	public void save(String filepath, String filename)
 	{
 		if (filepath == null)
@@ -117,9 +135,14 @@ public class ObjFileBuilder
 			filepath = "./";
 		}
 
+		if (filename == null)
+		{
+			filename = "Object";
+		}
+
 		try 
 		{
-			FileWriter fileWriter = new FileWriter(filepath + filename);
+			FileWriter fileWriter = new FileWriter(filepath + filename + ".obj");
 
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 

@@ -28,7 +28,7 @@ public class Layer
 	private final int remove     = 0xFFFF0000;
 
 	// How many points are in each layer
-	private final int pointCount = 5;
+	private final int pointCount = 10;
 
 	// Directions, this will eventually be removed
 	// upon the creation of a better fill algorithm
@@ -77,9 +77,6 @@ public class Layer
 
 			points.add(startPoint);
 		}
-
-		points.add(start);
-
 
 		// Create the 2d representation (in pixels)
 		//  of this layer, this is not needed for 
@@ -196,7 +193,12 @@ public class Layer
 
 	}
 
-	private void rasterize()
+
+	/**
+	*   This function will turn the list of 2D points stored internally
+	*    into a 2d representation of the layer
+	*/
+	public void rasterize()
 	{
 		for (int i = 0; i < points.size()-1; i++)
 		{
@@ -204,6 +206,10 @@ public class Layer
 			plot(points.get(i), points.get(i+1));
 			//Debug.logf("Drawing line from " + points.get(i).toString() + " to point " + points.get(i+1).toString());
 		}
+
+		// Connect the last point with the first one
+		plot(points.get(0), points.get(points.size()-1));
+
 		Debug.logf(" -------------------- ");
 	}
 

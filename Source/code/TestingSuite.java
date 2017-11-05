@@ -59,9 +59,9 @@ public class TestingSuite
 		Layer layer  = new Layer(20, 20, top);
 		Layer layer2 = new Layer(20, 20, btm);
 
-		test.add(layer);
-		test.add(layer2);
+		test.add(new Layer(20, 20, 10));
+		test.add(new Layer(20, 20, 0));
 
-		test.save("../compiled/obj/", "test.obj");
+		test.save("../compiled/obj/", "test");
 	}
 }
