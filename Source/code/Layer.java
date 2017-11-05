@@ -94,7 +94,7 @@ public class Layer
 	/**
 	*   Copy constructor
 	*/
-	private Layer(int xSize, int ySize, ArrayList<Vec> points)
+	public Layer(int xSize, int ySize, ArrayList<Vec> points)
 	{
 		this.points = points;
 		this.xSize = xSize;

@@ -10,10 +10,12 @@ import java.io.*;
 public class ObjFileBuilder
 {
 	private ArrayList<Layer> sections;
+	private ArrayList<Vec>   points;
 
 	ObjFileBuilder()
 	{
 		sections = new ArrayList<Layer>();
+		points = new ArrayList<Vec>();
 	}
 
 	public void add(Layer layer)
@@ -38,17 +40,15 @@ public class ObjFileBuilder
 
 		for (Layer layer : sections)
 		{
-			List <Vec> points = layer.getSafePoints(); 
+			List <Vec> tempPoints = layer.getSafePoints(); 
 
-			for (Vec item : points)
+			for (Vec item : tempPoints)
 			{
 				retVal.append("v ");
-				retVal.append(Integer.toString(item.x));
-				retVal.append(" ");
-				retVal.append(Integer.toString(item.y));
-				retVal.append(" ");
-				retVal.append(Integer.toString(item.z));
+				retVal.append(item.toString());
 				retVal.append("\n");
+
+				points.add(new Vec(item));
 			}
 		}
 
@@ -64,26 +64,47 @@ public class ObjFileBuilder
 		StringBuilder retVal = new StringBuilder();
 		int offset = 1;
 
-		for (Layer layer : sections)
-		{
-			retVal.append("f ");
-			List<Vec> points = layer.getSafePoints();
 
-			for (Vec vec : points)
+		for (int i = 0; i < sections.size(); i++)
+		{
+			retVal.append(constructLayer(i));
+
+			int size = sections.get(i).getSafePoints().size();
+
+			for (int q = 0; q < size; q++)
 			{
-				retVal.append(offset);
+				retVal.append("f ");
+				retVal.append(q +   (size * i+1));
 				retVal.append(" ");
-
-				offset++;
+				retVal.append(q+1 + (size * (i+1)));
+				retVal.append(" ");
+				retVal.append(q +   (size * (i)));
+				retVal.append(" ");
+				retVal.append(q+1 + (size * (i)));
+				retVal.append(" ");
+				
+				retVal.append("\n");
 			}
-			retVal.append("\n");
 		}
 
-		for (int i = 0; i < sections.size()-1; i++)
+		return retVal.toString();
+	}
+
+	private String constructLayer(int layerNumber)
+	{
+		int size = sections.get(0).getSafePoints().size();
+
+		StringBuilder retVal = new StringBuilder();
+
+		retVal.append("f ");
+
+		for (int i = 1; i <= size; i++)
 		{
-			List<Vec> points = sections.get(i).getSafePoints();
-
+			retVal.append(Integer.toString(i+(size*layerNumber)));
+			retVal.append(" ");
 		}
+
+		retVal.append("\n");
 
 		return retVal.toString();
 	}

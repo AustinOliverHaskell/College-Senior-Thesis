@@ -13,6 +13,13 @@ public class Vec
 		z = 0;
 	}
 
+	Vec(Vec vec)
+	{
+		this.x = vec.x;
+		this.y = vec.y;
+		this.z = vec.z;
+	}
+
 	Vec(int x, int y, int z)
 	{
 		this.x = x;
@@ -23,7 +30,7 @@ public class Vec
 	@Override
 	public String toString()
 	{
-		return "\""+x+","+y+","+z+"\"";
+		return ""+x+" "+y+" "+z;
 	}
 
 }

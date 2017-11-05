@@ -1,5 +1,7 @@
 package austin.structures;
 
+import java.util.*;
+
 public class TestingSuite
 {
 	public static void runAllTests()
@@ -19,7 +21,7 @@ public class TestingSuite
 		assert (test.z == 0);
 
 		// Test toString
-		assert (test.toString().equals("\"0,0,0\""));
+		assert (test.toString().equals("0 0 0"));
 
 		// Test setting variables
 		test.x = 12;
@@ -39,8 +41,23 @@ public class TestingSuite
 	public static void testObjFileBuilder()
 	{
 		ObjFileBuilder test = new ObjFileBuilder();
-		Layer layer  = new Layer(200, 200, 0);
-		Layer layer2 = new Layer(200, 200, 20);
+
+		ArrayList<Vec> top = new ArrayList<Vec>();
+		ArrayList<Vec> btm = new ArrayList<Vec>();
+
+		top.add(new Vec(0, 0, 0));
+		top.add(new Vec(10, 0, 0));
+		top.add(new Vec(0, 10, 0));
+		top.add(new Vec(10, 10, 0));
+
+		btm.add(new Vec(0, 0, 10));
+		btm.add(new Vec(10, 0, 10));
+		btm.add(new Vec(0, 10, 10));
+		btm.add(new Vec(10, 10, 10));
+
+
+		Layer layer  = new Layer(20, 20, top);
+		Layer layer2 = new Layer(20, 20, btm);
 
 		test.add(layer);
 		test.add(layer2);
