@@ -17,6 +17,7 @@ public class Layer
 	// points when they are rasterized
 	private final int xSize;
 	private final int ySize;
+	private int zIndex;
 
 	// Area (In pixels) of closed areas
 	private int area = 0;
@@ -28,7 +29,7 @@ public class Layer
 	private final int remove     = 0xFFFF0000;
 
 	// How many points are in each layer
-	private final int pointCount = 5;
+	private final int pointCount = 10;
 
 	// Directions, this will eventually be removed
 	// upon the creation of a better fill algorithm
@@ -48,6 +49,7 @@ public class Layer
 	{
 		this.xSize = xSize;
 		this.ySize = ySize;
+		this.zIndex = zIndex;
 
 		img = new BufferedImage(this.xSize, this.ySize, BufferedImage.TYPE_INT_ARGB);
 		points = new ArrayList<Vec>();
@@ -64,7 +66,7 @@ public class Layer
 
 		int x = rand.nextInt(xSize);
 		int y = rand.nextInt(ySize);
-		int z = zIndex;
+		int z = this.zIndex;
 
 		Vec start = new Vec(x, y, z);
 
@@ -77,9 +79,6 @@ public class Layer
 
 			points.add(startPoint);
 		}
-
-		points.add(start);
-
 
 		// Create the 2d representation (in pixels)
 		//  of this layer, this is not needed for 
@@ -94,11 +93,12 @@ public class Layer
 	/**
 	*   Copy constructor
 	*/
-	private Layer(int xSize, int ySize, ArrayList<Vec> points)
+	public Layer(int xSize, int ySize, int zIndex, ArrayList<Vec> points)
 	{
 		this.points = points;
-		this.xSize = xSize;
-		this.ySize = ySize;
+		this.xSize  = xSize;
+		this.ySize  = ySize;
+		this.zIndex = zIndex;
 
 		img = new BufferedImage(this.xSize, this.ySize, BufferedImage.TYPE_INT_ARGB);
 
@@ -128,7 +128,7 @@ public class Layer
 	*/
 	public Layer clone()
 	{
-		Layer retVal = new Layer(xSize, ySize, getPoints());
+		Layer retVal = new Layer(xSize, ySize, zIndex, getPoints());
 		return retVal;
 	}
 
@@ -196,7 +196,12 @@ public class Layer
 
 	}
 
-	private void rasterize()
+
+	/**
+	*   This function will turn the list of 2D points stored internally
+	*    into a 2d representation of the layer
+	*/
+	public void rasterize()
 	{
 		for (int i = 0; i < points.size()-1; i++)
 		{
@@ -204,6 +209,10 @@ public class Layer
 			plot(points.get(i), points.get(i+1));
 			//Debug.logf("Drawing line from " + points.get(i).toString() + " to point " + points.get(i+1).toString());
 		}
+
+		// Connect the last point with the first one
+		plot(points.get(0), points.get(points.size()-1));
+
 		Debug.logf(" -------------------- ");
 	}
 
@@ -300,7 +309,14 @@ public class Layer
 	*/
 	private ArrayList<Vec> getPoints()
 	{
-		return new ArrayList<Vec>(points);
+		ArrayList<Vec> retVal = new ArrayList<Vec>();
+
+		for (Vec vec : points)
+		{
+			retVal.add(new Vec(vec));
+		}
+
+		return retVal;
 	}
 
 	/**
@@ -329,6 +345,35 @@ public class Layer
 		catch (Exception error)
 		{
 			error.printStackTrace();
+		}
+	}
+
+	/**
+	*	Getter for zIndex
+	*
+	*	@return the z value of the entire layer
+	*/
+	public int getZIndex()
+	{
+		return zIndex;
+	}
+
+	/**
+	*   Setter for the z value, this operation has a cost as it has
+	*	 to go through the underlying data structure and change the
+	*	 values in the 3D vec objects - O(n)
+	*
+	*	@param newIndex - The new z value for the layer
+	*/
+	public void setZIndex(int newIndex)
+	{
+		this.zIndex = newIndex;
+
+		for (Vec vec : points)
+		{
+			Debug.logf("Before: " + vec.toString());
+			vec.z = this.zIndex;
+			Debug.logf("After: " + vec.toString());
 		}
 	}
 

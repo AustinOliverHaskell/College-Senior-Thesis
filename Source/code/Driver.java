@@ -21,9 +21,9 @@ public class Driver
 
 		System.out.println(" - Thesis - ");
 
-		Dna dna = new Dna((float)0.02, populationSize);
+		//Dna dna = new Dna((float)0.02, populationSize);
 
-		dna.save("../compiled/img");
+		//dna.save("../compiled/img");
 
 		TestingSuite.runAllTests();
 
