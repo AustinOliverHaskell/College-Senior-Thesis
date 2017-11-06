@@ -40,6 +40,7 @@ public class TestingSuite
 
 	public static void testObjFileBuilder()
 	{
+		// ---------- Test 01 - Cube ----------
 		ObjFileBuilder test = new ObjFileBuilder();
 
 		ArrayList<Vec> top = new ArrayList<Vec>();
@@ -47,21 +48,53 @@ public class TestingSuite
 
 		top.add(new Vec(0, 0, 0));
 		top.add(new Vec(10, 0, 0));
-		top.add(new Vec(0, 10, 0));
 		top.add(new Vec(10, 10, 0));
+		top.add(new Vec(0, 10, 0));
 
 		btm.add(new Vec(0, 0, 10));
 		btm.add(new Vec(10, 0, 10));
-		btm.add(new Vec(0, 10, 10));
 		btm.add(new Vec(10, 10, 10));
+		btm.add(new Vec(0, 10, 10));
+
+		Layer layer  = new Layer(20, 20, 0, top);
+		Layer layer2 = new Layer(20, 20, 10, btm);
+
+		test.add(layer);
+		test.add(layer2);
+
+		test.save("../compiled/obj/", "cube_test");
+		// --------------------------------------
 
 
-		Layer layer  = new Layer(20, 20, top);
-		Layer layer2 = new Layer(20, 20, btm);
+		// ---------- Test 02 - Random ----------
+		ObjFileBuilder test2 = new ObjFileBuilder();
 
-		test.add(new Layer(20, 20, 10));
-		test.add(new Layer(20, 20, 0));
+		Layer layer3 = new Layer(20, 20, 0);
+		Layer layer4 = layer3.clone();
 
-		test.save("../compiled/obj/", "test");
+		layer4.setZIndex(10);
+
+		test2.add(layer3);
+		test2.add(layer4);
+
+		test2.save("../compiled/obj/", "random_test");
+		// -------------------------------------------------
+
+		// ---------- Test 03 - Random - 3 Layers ----------
+		ObjFileBuilder test3 = new ObjFileBuilder();
+
+		Layer layer5 = new Layer(20, 20, 0);
+		Layer layer6 = layer5.clone();
+		Layer layer7 = layer5.clone();
+
+		layer6.setZIndex(10);
+		layer7.setZIndex(20);
+
+		test3.add(layer5);
+		test3.add(layer6);
+		test3.add(layer7);
+
+		test3.save("../compiled/obj/", "random_multi_layer_test");
+		// --------------------------------------
 	}
 }

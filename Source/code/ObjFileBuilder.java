@@ -82,18 +82,38 @@ public class ObjFileBuilder
 	{
 		StringBuilder retVal = new StringBuilder();
 
-		for (int i = 0; i < sections.size(); i++)
-		{
-			retVal.append(constructLayer(i));
-		}
+		retVal.append(constructLayer(0));
+		retVal.append(constructLayer(sections.size()-1));
 
 		// Get the length of the layer, theyre all the same length
 		int layerLength = sections.get(0).getSafePoints().size();
 
-		for (int i = 0; i < points.size(); i++)
+		for (int i = 0; i < points.size()-1; i++)
 		{
+			if ((i + 1 + layerLength) >= points.size())
+			{				
+				retVal.append("f ");
+				retVal.append(points.get(layerLength-1).getPosition());
+				retVal.append(" ");
+				retVal.append(points.get(0).getPosition());
+				retVal.append(" ");
+				retVal.append(points.get(layerLength).getPosition());
+				retVal.append(" ");
+				retVal.append(points.get(points.size()-1).getPosition());
+				retVal.append("\n");
+
+				break;
+			}
+
 			retVal.append("f ");
+			retVal.append(points.get(i+1).getPosition());
+			retVal.append(" ");
 			retVal.append(points.get(i).getPosition());
+			retVal.append(" ");
+			retVal.append(points.get(i+layerLength).getPosition());
+			retVal.append(" ");
+			retVal.append(points.get(i+1+layerLength).getPosition());
+			retVal.append(" ");
 			retVal.append("\n");
 		}
 
