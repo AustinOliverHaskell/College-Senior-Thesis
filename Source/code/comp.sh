@@ -9,9 +9,15 @@ echo ""
 if [ $answer = "y" ]
 	then
 
-	echo "Compiling..."
+	echo "Compiling Java..."
 	javac -g -d ../compiled/ -Xlint -deprecation *.java
 	echo "Ran command: javac -g -d ../compiled/ -Xlint -deprecation *.java"
+	echo ""
+	echo "Compiling C++..."
+	make -f ./PhysicsEngine/makefile.make
+	echo "Moving files to correct location"
+	mv physics ../compiled/Simulation/
+	echo ""
 	echo "---> Compilation complete"
 	echo ""
 
@@ -33,14 +39,24 @@ if [ $answer = "y" ]
 	echo "-> Removing old log file"
 	rm ../compiled/*.txt
 
+	echo ""
+	echo "Run C program only? [y/n]"
+	read answer
 
-	echo "-> Starting Program..."
-	echo " -------------------- "
-	echo ""
-	java -ea -cp ../compiled/ austin.structures.Driver 100 1
-	echo ""
-	echo " -------------------- "
-	echo "---> Program run complete..."
+	if [ $answer = "y" ]
+		then
+		./../compiled/Simulation/physics
+	else
+		echo "-> Starting Program..."
+		echo " -------------------- "
+		echo ""
+		java -ea -cp ../compiled/ austin.structures.Driver 100 1
+		echo ""
+		echo " -------------------- "
+		echo "---> Program run complete..."
+	fi
+
+	
 
 fi
 
