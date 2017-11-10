@@ -15,8 +15,7 @@ if [ $answer = "y" ]
 	echo ""
 	echo "Compiling C++..."
 	make -f ./PhysicsEngine/makefile.make
-	echo "Moving files to correct location"
-	mv physics ../compiled/Simulation/
+	mv physics ./PhysicsEngine/o
 	echo ""
 	echo "---> Compilation complete"
 	echo ""
@@ -45,7 +44,7 @@ if [ $answer = "y" ]
 
 	if [ $answer = "y" ]
 		then
-		./../compiled/Simulation/physics
+		./PhysicsEngine/o/physics
 	else
 		echo "-> Starting Program..."
 		echo " -------------------- "
