@@ -1,6 +1,8 @@
+// Basic Example
 #include "BasicExample.h"
 
 #include "btBulletDynamicsCommon.h"
+
 #define ARRAY_SIZE_Y 5
 #define ARRAY_SIZE_X 5
 #define ARRAY_SIZE_Z 5
@@ -115,7 +117,6 @@ void BasicExample::renderScene()
 	CommonRigidBodyBase::renderScene();
 	
 }
-
 
 
 CommonExampleInterface*    BasicExampleCreateFunc(CommonExampleOptions& options)
