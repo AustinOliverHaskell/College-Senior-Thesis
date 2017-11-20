@@ -13,7 +13,6 @@ public class Structure
 		dna = new Dna(mutationRate, dnaSize);
 	}
 
-
 	// ---------- Getters and Setters ----------
 	public int getFitness()
 	{

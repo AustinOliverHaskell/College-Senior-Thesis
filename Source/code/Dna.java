@@ -22,18 +22,6 @@ public class Dna
 
 	}
 
-	public void purge(int number)
-	{
-		for (int i = 0; i < genes.size(); i++)
-		{
-			if (genes.get(i).getArea() < number)
-			{
-				genes.remove(i);
-				i--;
-			}
-		}
-	}
-
 	private void mutate()
 	{
 		for (int i = 0; i < genes.size(); i++)

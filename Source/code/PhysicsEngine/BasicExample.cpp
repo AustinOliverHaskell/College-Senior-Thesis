@@ -1,16 +1,9 @@
 // Basic Example
-#include "BasicExample.h"
-
-#include "btBulletDynamicsCommon.h"
+#include "./h/headers.h"
 
 #define ARRAY_SIZE_Y 5
 #define ARRAY_SIZE_X 5
 #define ARRAY_SIZE_Z 5
-
-#include "LinearMath/btVector3.h"
-#include "LinearMath/btAlignedObjectArray.h"
-
-#include "../CommonInterfaces/CommonRigidBodyBase.h"
 
 
 struct BasicExample : public CommonRigidBodyBase

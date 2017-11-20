@@ -1,5 +1,7 @@
 package austin.structures;
 
+import java.util.*;
+
 public class Vec
 {
 	public int x;
@@ -25,6 +27,21 @@ public class Vec
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	public void mutate(float rate)
+	{
+		Random random = new Random();
+
+		if (random.nextFloat() > rate)
+		{
+			if (random.nextInt(2) > 1)
+			{
+				this.x--;
+			}
+			this.x++;
+		}
+
 	}
 
 	@Override

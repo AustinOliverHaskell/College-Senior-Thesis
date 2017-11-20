@@ -9,6 +9,9 @@ public class TestingSuite
 		testVec();
 		testLayer();
 		testObjFileBuilder();
+		testDna();
+		testStructure();
+		testEvaluator();
 	}
 
 	public static void testVec()
@@ -35,7 +38,21 @@ public class TestingSuite
 
 	public static void testLayer()
 	{
+		// ---------- Test 01 - copy ----------
+		Layer layer = new Layer(100, 100, 0);
+		Layer layer2 = layer.clone();
 
+		assert( layer.equals(layer)  );
+		assert( layer.equals(layer2) );
+		// ------------------------------------
+
+
+		// ---------- Test 02 - mutate ----------
+		layer.mutate(0.2f);
+
+		assert( !layer.equals(layer2) );
+		assert(  layer.equals(layer)  );
+		// --------------------------------------
 	}
 
 	public static void testObjFileBuilder()
@@ -96,5 +113,24 @@ public class TestingSuite
 
 		test3.save("../compiled/obj/", "random_multi_layer_test");
 		// --------------------------------------
+	}
+
+	public static void testDna()
+	{
+
+	}
+
+	public static void testStructure()
+	{
+
+	}
+
+	public static void testEvaluator()
+	{
+		Structure structure = new Structure();
+
+		Evaluator evaluator = new Evaluator(structure);
+
+		evaluator.evaluate();
 	}
 }
