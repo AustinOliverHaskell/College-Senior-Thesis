@@ -1,84 +1,60 @@
-Area: 0
-97 0 0
-92 96 0
-38 65 0
-94 56 0
-70 25 0
-33 75 0
-35 3 0
-7 28 0
-88 61 0
-35 29 0
-
-Area: 0
-97 0 0
-92 96 0
-38 65 0
-94 56 0
-70 25 0
-33 75 0
-35 3 0
-7 28 0
-88 61 0
-35 29 0
-
-Before: 3 10 0
-After: 3 10 10
-Before: 11 1 0
-After: 11 1 10
-Before: 12 18 0
-After: 12 18 10
-Before: 18 6 0
-After: 18 6 10
-Before: 6 18 0
-After: 6 18 10
-Before: 6 17 0
-After: 6 17 10
-Before: 8 14 0
-After: 8 14 10
-Before: 14 10 0
-After: 14 10 10
-Before: 14 3 0
-After: 14 3 10
-Before: 6 2 0
-After: 6 2 10
+Before: 13 11 0
+After: 13 11 10
+Before: 2 4 0
+After: 2 4 10
 Before: 9 14 0
 After: 9 14 10
-Before: 17 16 0
-After: 17 16 10
-Before: 11 9 0
-After: 11 9 10
-Before: 15 15 0
-After: 15 15 10
-Before: 1 7 0
-After: 1 7 10
-Before: 17 7 0
-After: 17 7 10
-Before: 12 15 0
-After: 12 15 10
-Before: 3 15 0
-After: 3 15 10
-Before: 3 8 0
-After: 3 8 10
-Before: 3 13 0
-After: 3 13 10
-Before: 9 14 0
-After: 9 14 20
-Before: 17 16 0
-After: 17 16 20
-Before: 11 9 0
-After: 11 9 20
-Before: 15 15 0
-After: 15 15 20
-Before: 1 7 0
-After: 1 7 20
-Before: 17 7 0
-After: 17 7 20
-Before: 12 15 0
-After: 12 15 20
-Before: 3 15 0
-After: 3 15 20
-Before: 3 8 0
-After: 3 8 20
-Before: 3 13 0
-After: 3 13 20
+Before: 13 18 0
+After: 13 18 10
+Before: 9 4 0
+After: 9 4 10
+Before: 18 2 0
+After: 18 2 10
+Before: 18 19 0
+After: 18 19 10
+Before: 12 14 0
+After: 12 14 10
+Before: 12 18 0
+After: 12 18 10
+Before: 0 0 0
+After: 0 0 10
+Before: 5 9 0
+After: 5 9 10
+Before: 9 3 0
+After: 9 3 10
+Before: 9 8 0
+After: 9 8 10
+Before: 8 10 0
+After: 8 10 10
+Before: 13 1 0
+After: 13 1 10
+Before: 12 4 0
+After: 12 4 10
+Before: 3 16 0
+After: 3 16 10
+Before: 2 4 0
+After: 2 4 10
+Before: 16 16 0
+After: 16 16 10
+Before: 2 13 0
+After: 2 13 10
+Before: 5 9 0
+After: 5 9 20
+Before: 9 3 0
+After: 9 3 20
+Before: 9 8 0
+After: 9 8 20
+Before: 8 10 0
+After: 8 10 20
+Before: 13 1 0
+After: 13 1 20
+Before: 12 4 0
+After: 12 4 20
+Before: 3 16 0
+After: 3 16 20
+Before: 2 4 0
+After: 2 4 20
+Before: 16 16 0
+After: 16 16 20
+Before: 2 13 0
+After: 2 13 20

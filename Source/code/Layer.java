@@ -418,4 +418,11 @@ public class Layer
 
 		return retVal;
 	}
+
+	// To get rid of the warning
+	@Override 
+	public int hashCode()
+	{
+		return super.hashCode();
+	}
 }

@@ -25,6 +25,11 @@ public class Debug
 		debuggingEnabled = false;
 	}
 
+	public static boolean isEnabled()
+	{
+		return debuggingEnabled;
+	}
+
 	public static void logf(String logText)
 	{
 		if (debuggingEnabled)

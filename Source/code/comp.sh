@@ -11,7 +11,7 @@ if [ $answer = "y" ]
 
 	echo "Compiling Java..."
 	javac -g -d ../compiled/ -Xlint -deprecation *.java
-	echo "Ran command: javac -g -d ../compiled/ -Xlint -deprecation *.java"
+	echo "javac -g -d ../compiled/ -Xlint -deprecation *.java"
 	echo ""
 	echo "Compiling C++..."
 	make -f ./PhysicsEngine/makefile.make
@@ -44,14 +44,14 @@ if [ $answer = "y" ]
 
 	if [ $answer = "y" ]
 		then
-		./PhysicsEngine/o/physics
+		./PhysicsEngine/o/physics FILENAME
 	else
 		echo "-> Starting Program..."
-		echo " -------------------- "
+		echo " vvvvvvvvvvvvvvvvvvvv "
 		echo ""
-		java -ea -cp ../compiled/ austin.structures.Driver 100 1
+		java -ea -cp ../compiled/ austin.structures.Driver 20 1
 		echo ""
-		echo " -------------------- "
+		echo " ^^^^^^^^^^^^^^^^^^^^ "
 		echo "---> Program run complete..."
 	fi
 

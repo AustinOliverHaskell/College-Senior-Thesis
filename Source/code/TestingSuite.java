@@ -31,7 +31,7 @@ public class TestingSuite
 		test.y = 13;
 		test.z = 14;
 
-		assert (test.x == 12);
+		assert (test.x == 12);	
 		assert (test.y == 13);
 		assert (test.z == 14);
 	}
@@ -97,6 +97,7 @@ public class TestingSuite
 		test2.save("../compiled/obj/", "random_test");
 		// -------------------------------------------------
 
+
 		// ---------- Test 03 - Random - 3 Layers ----------
 		ObjFileBuilder test3 = new ObjFileBuilder();
 
@@ -113,6 +114,39 @@ public class TestingSuite
 
 		test3.save("../compiled/obj/", "random_multi_layer_test");
 		// --------------------------------------
+
+
+		// ---------- Test 04 - Cube - Structure Constructor ----------
+		ObjFileBuilder test4 = new ObjFileBuilder();
+
+		ArrayList<Vec> top2 = new ArrayList<Vec>();
+		ArrayList<Vec> btm2 = new ArrayList<Vec>();
+
+		top2.add(new Vec(0, 0, 0));
+		top2.add(new Vec(10, 0, 0));
+		top2.add(new Vec(10, 10, 0));
+		top2.add(new Vec(0, 10, 0));
+
+		btm2.add(new Vec(0, 0, 10));
+		btm2.add(new Vec(10, 0, 10));
+		btm2.add(new Vec(10, 10, 10));
+		btm2.add(new Vec(0, 10, 10));
+
+		Layer layer8  = new Layer(20, 20, 0, top2);
+		Layer layer9 = new Layer(20, 20, 10, btm2);
+
+		test4.add(layer);
+		test4.add(layer2);
+
+		test4.save("../compiled/obj/", "cube_test_extended");
+		// ------------------------------------------------------------
+
+		
+		// ---------- Test 05 - Random - 5 Layers - Full Structure ----------
+		Structure structure = new Structure();
+
+		structure.save("../compiled/obj/");
+		// ------------------------------------------------------------------
 	}
 
 	public static void testDna()

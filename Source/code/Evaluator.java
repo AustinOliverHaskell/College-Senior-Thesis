@@ -12,6 +12,23 @@ public class Evaluator
 		this.structure = structure;
 	}
 
+	public Evaluator()
+	{
+		this.structure = null;
+	}
+
+	// ----- Getters and Setters -----
+	public Structure getStructure()
+	{
+		return this.structure;
+	}
+
+	public void setStructure(Structure structure)
+	{
+		this.structure = structure;
+	}
+	// -------------------------------
+
 	/**
 	*   This function creates and launches the c++ component of this program
 	*    it also passes the path of the obj file to be evaluated to the process
@@ -22,18 +39,27 @@ public class Evaluator
 
 		try 
 		{
-			ProcessBuilder builder = new ProcessBuilder("./PhysicsEngine/o/physics", "Howdy");
+			ProcessBuilder builder = new ProcessBuilder("./PhysicsEngine/o/physics", "../compiled/obj/" + structure.getId() + ".obj");
 			builder.inheritIO();
 
 			Process proc = builder.start();
+
+			proc.waitFor();
+
+			structure.setFitness(proc.exitValue());
+
 		}
 		catch (IOException error)
 		{
-			Debug.logs("Could not launch external C process");
+			Debug.loga("Could not launch external C process for structure " + structure.getId());
+		}
+		catch (InterruptedException error)
+		{
+			Debug.loga("Process Interrupted");
 		}
 		catch (Exception error)
 		{
-			Debug.logs("Unexpected Error");
+			Debug.loga("Unexpected Error");
 			error.printStackTrace();
 		}
 

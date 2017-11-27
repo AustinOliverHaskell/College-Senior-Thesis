@@ -2,6 +2,7 @@
 
 int main(int argc, char* argv[])
 {
+	// Check arguments, we should always have atleast one
 	if (argc < 2)
 	{
 		std::cout << "Incorrect number of arguments - Fatal Error - " << std::endl; 
@@ -10,25 +11,17 @@ int main(int argc, char* argv[])
 	}
 
 	Debug::open();
+	//std::cout << "-> Simulation for file: " + std::string(argv[1]) << std::endl;
 
-/*	DummyGUIHelper noGfx;
 
-	CommonExampleOptions options(&noGfx);
-	CommonExampleInterface* example = BasicExampleCreateFunc(options);
-	
-	example->initPhysics();
-	example->stepSimulation(1.f/60.f);
-	example->exitPhysics();
+	Simulation* simulation = new Simulation(std::string(argv[1]));
 
-	delete example;*/
+	simulation->openWindow();
 
-	Debug::logs(" - C Program - ");
-	Debug::logs(argv[1]);
 
+	//std::cout << "-> Finished simulation for file: " + std::string(argv[1]) << std::endl;
 	Debug::save();
 	Debug::close();
-
-
 
 	return 0;
 }

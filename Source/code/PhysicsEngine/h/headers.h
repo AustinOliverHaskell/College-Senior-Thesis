@@ -21,3 +21,5 @@
 #include "LinearMath/btHashMap.h"
 #include "LinearMath/btVector3.h"
 #include "LinearMath/btAlignedObjectArray.h"
+
+#include "Simulation.h"
