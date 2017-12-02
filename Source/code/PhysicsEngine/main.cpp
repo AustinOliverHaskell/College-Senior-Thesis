@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	}
 
 	Debug::open();
-	//std::cout << "-> Simulation for file: " + std::string(argv[1]) << std::endl;
+	Debug::logf("-> Simulation for file: " + std::string(argv[1]));
 
 
 	Simulation* simulation = new Simulation(std::string(argv[1]));
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 	simulation->openWindow();
 
 
-	//std::cout << "-> Finished simulation for file: " + std::string(argv[1]) << std::endl;
+	Debug::logf("-> Finished simulation for file: " + std::string(argv[1]));
 	Debug::save();
 	Debug::close();
 

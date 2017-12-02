@@ -49,16 +49,16 @@ public class Driver
 		// Run full simulation for population
 		for (int i = 0; i < populationSize; i++)
 		{
-			System.out.print("\r" + blankBar(120) + "\r");
-
 			Structure structure = new Structure();
 
 			evaluator.setStructure(structure);
 
+			System.out.print("\r" + blankBar(120)+"\r");
 			System.out.println("Processing " + structure.getId());
 			System.out.print(createBar(i+1, populationSize, 100));
 
 			evaluator.evaluate();
+
 
 			structure.save("../compiled/obj/");
 
@@ -116,5 +116,10 @@ public class Driver
 		}
 
 		return retVal.toString();
+	}
+
+	private static float percentage(int current, int total)
+	{
+		return ((float)current / (float)total)*100f;
 	}
 }

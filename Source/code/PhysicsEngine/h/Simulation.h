@@ -16,9 +16,13 @@ class Simulation
 
 		// --- OpenGL ---
 		void openWindow();
+		void render();
 
+		
 		// --- Other ---
 
 	private:
 		std::string objFilePath;
+		int fitnessValue;
+		GLFWwindow* window;
 };

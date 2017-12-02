@@ -1,0 +1,5 @@
+-> Simulation for file: FILENAME
+Compiling shader : ./PhysicsEngine/shaders/SimpleTransform.vertexshader
+Compiling shader : ./PhysicsEngine/shaders/SimpleFragmentShader.fragmentshader
+Linking program
+-> Finished simulation for file: FILENAME
