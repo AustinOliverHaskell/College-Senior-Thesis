@@ -1,9 +1,8 @@
-#define WINDOW_WIDTH  640
-#define WINDOW_HEIGHT 480 
 #define SIM_LENGTH 4
 
 #include "./h/headers.h"
 #include "./h/glHeaders.h"
+#include "./h/defs.h"
 
 #include <unistd.h>
 #include <time.h>

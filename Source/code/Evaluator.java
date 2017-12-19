@@ -39,7 +39,7 @@ public class Evaluator
 
 		try 
 		{
-			ProcessBuilder builder = new ProcessBuilder("./PhysicsEngine/o/physics", "../compiled/obj/" + structure.getId() + ".obj");
+			ProcessBuilder builder = new ProcessBuilder("./PhysicsEngine/o/Driver", "../compiled/obj/" + structure.getId() + ".obj");
 			builder.inheritIO();
 
 			Process proc = builder.start();
