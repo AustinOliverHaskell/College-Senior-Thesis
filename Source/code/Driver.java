@@ -24,6 +24,10 @@ public class Driver
 			}
 		}
 
+		GUI gui = new GUI(numberOfCycles * populationSize);
+
+		gui.showGUI();
+
 		System.out.println(" - Thesis - ");
 		System.out.println("");
 		System.out.println("-> Population Size: " + Integer.toString(populationSize));
@@ -53,9 +57,7 @@ public class Driver
 
 			evaluator.setStructure(structure);
 
-			System.out.print("\r" + blankBar(120)+"\r");
-			System.out.println("Processing " + structure.getId());
-			System.out.print(createBar(i+1, populationSize, 100));
+			gui.increment();
 
 			evaluator.evaluate();
 
@@ -64,62 +66,8 @@ public class Driver
 
 		}
 
-		System.out.print("\r" + createBar(populationSize, populationSize, 100));
-
-
-
 		Debug.save("../compiled/");
 
 
-	}
-
-
-	private static String createBar(int current, int total, int barLength)
-	{
-		StringBuilder str = new StringBuilder();
-
-		float percent = ((float)current/(float)total);
-
-		int numBars = (int)((float)barLength*percent);
-
-		str.append("[");
-		for (int i = 0; i < numBars; i++)
-		{
-			str.append("#");
-		}
-
-		for (int i = numBars; i < barLength; i++)
-		{
-			str.append("-");
-		}
-
-		str.append("] -> ");
-
-		str.append((int)(percent*100f));
-		str.append("%");
-
-		str.append(" ");
-		str.append(current);
-		str.append("/");
-		str.append(total);
-
-		return str.toString();
-	}
-
-	private static String blankBar(int size)
-	{
-		StringBuilder retVal = new StringBuilder();
-
-		for (int i = 0; i < size; i++)
-		{
-			retVal.append(" ");
-		}
-
-		return retVal.toString();
-	}
-
-	private static float percentage(int current, int total)
-	{
-		return ((float)current / (float)total)*100f;
 	}
 }
