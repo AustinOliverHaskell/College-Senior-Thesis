@@ -201,4 +201,6 @@ public class ObjFileBuilder
 			error.printStackTrace();
 		}
 	}
+
+	public void calculateNormal()
 }

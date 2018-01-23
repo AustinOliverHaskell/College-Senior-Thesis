@@ -11,7 +11,7 @@ public class TestingSuite
 		testObjFileBuilder();
 		testDna();
 		testStructure();
-		testEvaluator();
+		//testEvaluator();
 	}
 
 	public static void testVec()

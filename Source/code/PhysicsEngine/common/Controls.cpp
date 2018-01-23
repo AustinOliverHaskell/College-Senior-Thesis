@@ -1,6 +1,6 @@
 #include "Controls.h"
 #include "../h/glHeaders.h"
-#include "defs.h"
+#include "../h/defs.h"
 
 using namespace glm;
 

@@ -55,11 +55,11 @@ public class Driver
 		{
 			Structure structure = new Structure();
 
-			evaluator.setStructure(structure);
+			//evaluator.setStructure(structure);
 
 			gui.increment();
 
-			evaluator.evaluate();
+			//evaluator.evaluate();
 
 
 			structure.save("../compiled/obj/");
