@@ -129,6 +129,8 @@ public class Driver extends Thread
 		}
 		while(threadsAlive);
 
+		//TODO: Run next generation
+
 		Debug.save("../compiled/");
 
 		System.exit(0);
