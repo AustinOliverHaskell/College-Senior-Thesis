@@ -2,7 +2,7 @@ package austin.structures;
 
 import java.util.*;	
 
-public class Dna
+public class Dna implements Member
 {
 	private ArrayList<Layer> genes;
 	private final float mutationRate;
@@ -22,19 +22,7 @@ public class Dna
 
 	}
 
-	public void purge(int number)
-	{
-		for (int i = 0; i < genes.size(); i++)
-		{
-			if (genes.get(i).getArea() < number)
-			{
-				genes.remove(i);
-				i--;
-			}
-		}
-	}
-
-	private void mutate()
+	public void mutate()
 	{
 		for (int i = 0; i < genes.size(); i++)
 		{
@@ -52,7 +40,6 @@ public class Dna
 			genes.add(clone);
 		}
 
-		System.out.println("Init DNA for size "+ size +" Complete");
 	}
 
 	public void save(String filePath)
@@ -72,6 +59,11 @@ public class Dna
 			Debug.logf("Layer: " + (i+1));
 			Debug.logf(genes.get(i).toString());
 		}
+	}
+
+	public ArrayList <Layer> getLayers()
+	{
+		return this.genes;
 	}
 
 	@Override

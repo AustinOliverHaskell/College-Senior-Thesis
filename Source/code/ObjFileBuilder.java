@@ -11,9 +11,18 @@ public class ObjFileBuilder
 {
 	private ArrayList<Layer> sections;
 	private ArrayList<ExtendedVec> points;
+	private Structure structure;
 
 	ObjFileBuilder()
 	{
+		this.structure = null;
+		this.sections = new ArrayList<Layer>();
+		this.points = new ArrayList<ExtendedVec>();
+	}
+
+	ObjFileBuilder(Structure structure)
+	{
+		this.structure = structure;
 		this.sections = new ArrayList<Layer>();
 		this.points = new ArrayList<ExtendedVec>();
 	}
@@ -27,6 +36,7 @@ public class ObjFileBuilder
 	{
 		this.sections = sections;
 		this.points = new ArrayList<ExtendedVec>();
+		this.structure = null;
 	}
 
 	/**
@@ -44,6 +54,20 @@ public class ObjFileBuilder
 		StringBuilder retVal = new StringBuilder();
 
 		retVal.append("# Created by Austin Haskell - Evolutionary Structure Simulation - \n");
+
+		if (this.structure == null)
+		{
+			// No structure loaded
+			retVal.append("# No structure information available...\n");
+		}
+		else
+		{
+			// Append the correct information
+			retVal.append("# Fitness value: " + Integer.toString(this.structure.getFitness()) + "\n");
+			retVal.append("# Structure  ID: " + this.structure.getId() + "\n");
+		}
+
+
 		retVal.append("mtllib ./vp.mtl\n\n");
 		retVal.append("g\n");
 

@@ -9,9 +9,15 @@ echo ""
 if [ $answer = "y" ]
 	then
 
-	echo "Compiling..."
+	echo "Compiling Java..."
 	javac -g -d ../compiled/ -Xlint -deprecation *.java
-	echo "Ran command: javac -g -d ../compiled/ -Xlint -deprecation *.java"
+	echo "javac -g -d ../compiled/ -Xlint -deprecation *.java"
+	echo ""
+	echo "Compiling C++..."
+	echo "C++ COMPILATION IS COMMENTED OUT"
+	#make -f ./PhysicsEngine/makefile.make
+	#mv physics ./PhysicsEngine/o
+	echo ""
 	echo "---> Compilation complete"
 	echo ""
 
@@ -33,14 +39,24 @@ if [ $answer = "y" ]
 	echo "-> Removing old log file"
 	rm ../compiled/*.txt
 
+	echo ""
+	echo "Run C program only? [y/n]"
+	read answer
 
-	echo "-> Starting Program..."
-	echo " -------------------- "
-	echo ""
-	java -ea -cp ../compiled/ austin.structures.Driver 100 1
-	echo ""
-	echo " -------------------- "
-	echo "---> Program run complete..."
+	if [ $answer = "y" ]
+		then
+		./PhysicsEngine/o/physics FILENAME
+	else
+		echo "-> Starting Program..."
+		echo " vvvvvvvvvvvvvvvvvvvv "
+		echo ""
+		java -ea -cp ../compiled/ austin.structures.Driver 100 1
+		echo ""
+		echo " ^^^^^^^^^^^^^^^^^^^^ "
+		echo "---> Program run complete..."
+	fi
+
+	
 
 fi
 
@@ -51,6 +67,8 @@ echo ""
 
 if [ $answer = "y" ]
 	then
+	
+	# A bored computer scientist is a bad thing...
 
 	echo "    ______ _______     "
 	echo "   |      |      ||    "

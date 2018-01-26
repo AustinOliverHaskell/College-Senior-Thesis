@@ -1,5 +1,6 @@
-public abstract class Member
+package austin.structures;
+
+public interface Member
 {
-	public abstract void mutate();
-	public abstract Member reproduce();
+	public void mutate();
 }

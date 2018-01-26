@@ -1,0 +1,5 @@
+-> Simulation for file: ../compiled/obj/JD6DN1U9B221YBD4Q_QKN3OES.obj
+Compiling shader : ./PhysicsEngine/shaders/SimpleTransform.vertexshader
+Compiling shader : ./PhysicsEngine/shaders/SimpleFragmentShader.fragmentshader
+Linking program
+-> Finished simulation for file: ../compiled/obj/JD6DN1U9B221YBD4Q_QKN3OES.obj

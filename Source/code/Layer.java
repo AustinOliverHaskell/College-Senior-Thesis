@@ -50,6 +50,7 @@ public class Layer
 		this.xSize = xSize;
 		this.ySize = ySize;
 		this.zIndex = zIndex;
+		this.area = 0;
 
 		img = new BufferedImage(this.xSize, this.ySize, BufferedImage.TYPE_INT_ARGB);
 		points = new ArrayList<Vec>();
@@ -83,11 +84,11 @@ public class Layer
 		// Create the 2d representation (in pixels)
 		//  of this layer, this is not needed for 
 		//  rendering (in 3d)
-		rasterize();
+		// rasterize();
 
 		// Calculate the area (in pixels)
 		//  of all the closed in shapes
-		findUsableArea();
+		// findUsableArea();
 	}
 
 	/**
@@ -110,14 +111,17 @@ public class Layer
 			}
 		}
 
-		rasterize();
-		findUsableArea();
+		//rasterize();
+		//findUsableArea();
 	}
 
 
 	public void mutate(float rate)
 	{
-
+		for (Vec vec : points)
+		{
+			vec.mutate(rate);
+		}
 	}
 
 	/**
@@ -393,5 +397,32 @@ public class Layer
 		}
 
 		return retVal.toString();
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		boolean retVal = false;
+
+		Layer cast = (Layer)o;
+
+		// If it really is the same exact object
+		if (o == this)
+		{
+			retVal = true;
+		}
+		else if (cast.toString().equals(this.toString()))
+		{
+			retVal = true;
+		}
+
+		return retVal;
+	}
+
+	// To get rid of the warning
+	@Override 
+	public int hashCode()
+	{
+		return super.hashCode();
 	}
 }
