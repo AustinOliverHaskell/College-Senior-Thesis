@@ -1,6 +1,6 @@
 #pragma once
 // Controls object
-#include "../h/glHeaders.h"
+#include "glHeader.h"
 
 using namespace glm;
 
@@ -31,4 +31,6 @@ private:
 	float mouseSpeed;
 
 	vec3 position;
+
+	bool wireframeEnabled;
 };

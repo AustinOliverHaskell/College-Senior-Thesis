@@ -1,21 +1,16 @@
-#include <stdio.h>
-#include <string>
+// Shader Loader
+#include "./h/defs.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
-#include <algorithm>
+
 using namespace std;
 
-#include <stdlib.h>
-#include <string.h>
-
-#include "./h/headers.h"
-#include "h/glHeaders.h"
-
-GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path)
+GLuint loadShaders(const char * vertex_file_path,const char * fragment_file_path)
 {
+	using namespace std;
 
-	// Create the shaders
+		// Create the shaders
 	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
@@ -28,7 +23,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 			VertexShaderCode += "\n" + Line;
 		VertexShaderStream.close();
 	}else{
-		Debug::loga("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !");
+		cout << "Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !" << endl;
 		getchar();
 		return 0;
 	}
@@ -48,7 +43,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 
 
 	// Compile Vertex Shader
-	Debug::logf("Compiling shader : " + string(vertex_file_path));
+	cout << "Compiling shader : " + string(vertex_file_path) << endl;
 	char const * VertexSourcePointer = VertexShaderCode.c_str();
 	glShaderSource(VertexShaderID, 1, &VertexSourcePointer , NULL);
 	glCompileShader(VertexShaderID);
@@ -62,10 +57,8 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 		printf("%s\n", &VertexShaderErrorMessage[0]);
 	}
 
-
-
 	// Compile Fragment Shader
-	Debug::logf("Compiling shader : " + string(fragment_file_path));
+	cout << "Compiling shader : " + string(fragment_file_path) << endl;
 	char const * FragmentSourcePointer = FragmentShaderCode.c_str();
 	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer , NULL);
 	glCompileShader(FragmentShaderID);
@@ -82,7 +75,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
 
 
 	// Link the program
-	Debug::logf("Linking program");
+	cout << "Linking program" << endl;
 	GLuint ProgramID = glCreateProgram();
 	glAttachShader(ProgramID, VertexShaderID);
 	glAttachShader(ProgramID, FragmentShaderID);

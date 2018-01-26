@@ -1,27 +1,19 @@
-#include "./h/headers.h"
+#include "./h/glHeader.h"
+#include "./h/Graphics.h"
+
+using namespace std;
 
 int main(int argc, char* argv[])
 {
-	// Check arguments, we should always have atleast one
-	if (argc < 2)
-	{
-		std::cout << "Incorrect number of arguments - Fatal Error - " << std::endl; 
+	Graphics * g = new Graphics("Hello!");
 
-		return 0;
-	}
+	g->openWindow();
 
-	Debug::open();
-	Debug::logf("-> Simulation for file: " + std::string(argv[1]));
+	cout << endl <<"Running Learning" << endl;
 
+	g->setupGL();
 
-	Simulation* simulation = new Simulation(std::string(argv[1]));
-
-	simulation->openWindow();
-
-
-	Debug::logf("-> Finished simulation for file: " + std::string(argv[1]));
-	Debug::save();
-	Debug::close();
+	delete g;
 
 	return 0;
 }
