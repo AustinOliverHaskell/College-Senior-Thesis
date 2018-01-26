@@ -14,8 +14,9 @@ if [ $answer = "y" ]
 	echo "javac -g -d ../compiled/ -Xlint -deprecation *.java"
 	echo ""
 	echo "Compiling C++..."
-	make -f ./PhysicsEngine/makefile.make
-	mv physics ./PhysicsEngine/o
+	echo "C++ COMPILATION IS COMMENTED OUT"
+	#make -f ./PhysicsEngine/makefile.make
+	#mv physics ./PhysicsEngine/o
 	echo ""
 	echo "---> Compilation complete"
 	echo ""
@@ -49,7 +50,7 @@ if [ $answer = "y" ]
 		echo "-> Starting Program..."
 		echo " vvvvvvvvvvvvvvvvvvvv "
 		echo ""
-		java -ea -cp ../compiled/ austin.structures.Driver 20 1
+		java -ea -cp ../compiled/ austin.structures.Driver 100 1
 		echo ""
 		echo " ^^^^^^^^^^^^^^^^^^^^ "
 		echo "---> Program run complete..."
@@ -66,6 +67,8 @@ echo ""
 
 if [ $answer = "y" ]
 	then
+	
+	# A bored computer scientist is a bad thing...
 
 	echo "    ______ _______     "
 	echo "   |      |      ||    "

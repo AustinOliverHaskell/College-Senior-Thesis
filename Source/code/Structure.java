@@ -20,6 +20,17 @@ public class Structure implements Member
 		this.idHash = createHashId();
 	}
 
+	/**
+	*	This constructor creates a structure object from a file rather than
+	*    from thin air. Used to get results from last generation. 
+	*
+	*	@param the name of the file to create this structure from
+	*/
+	Structure(String filename)
+	{
+		// TODO: Finish structure loading from file
+	}
+
 	// ---------- Getters and Setters ----------
 	public int getFitness()
 	{
