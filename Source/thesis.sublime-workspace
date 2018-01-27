@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"physics",
+				"PhysicsEngine"
+			],
+			[
 				"buil",
 				"builderThread"
 			],
@@ -366,11 +370,28 @@
 			}
 		},
 		{
+			"file": "code/PhysicsEngine/makefile.make",
+			"settings":
+			{
+				"buffer_size": 1140,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "code/comp.sh",
 			"settings":
 			{
-				"buffer_size": 1537,
+				"buffer_size": 1529,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "code/PhysicsEngine/o/shaders/SimpleVertexShader.vertexshader",
+			"settings":
+			{
+				"buffer_size": 334,
 				"line_ending": "Unix"
 			}
 		},
@@ -384,7 +405,10 @@
 			}
 		},
 		{
+			"contents": "#include \"Controls.h\"\n#include \"../h/glHeaders.h\"\n#include \"../h/defs.h\"\n\nusing namespace glm;\n\nControls::Controls(GLFWwindow* w)\n{\n\twindow = w;\n\n\t// Set them to identity for right now\n\tprojectionMatrix = mat4(1.0f);\n\tviewMatrix       = mat4(1.0f);\n\n\tFOV = 45;\n\n\thAngle = 0.0f;\n\tvAngle = 0.0f;\n\n\tspeed = 6.0f;\n\tmouseSpeed = 0.005f;\n\n\tposition = glm::vec3( 10, 10, 3 );\n\n}\n\nControls::~Controls()\n{\n\n}\n\nmat4 Controls::getProjectionMatrix()\n{\n\treturn projectionMatrix;\n}\n\nmat4 Controls::getViewMatrix()\n{\n\treturn viewMatrix;\n}\n\nvoid Controls::computeMatrices()\n{\n\t// Get the time when this function is called,\n\t//  this should only be called once due to the \n\t//  static typing\n\tstatic double prevFrameTime = glfwGetTime();\n\tdouble currentTime = glfwGetTime();\n\n\t// Time difference\n\tfloat deltaTime = float(currentTime - prevFrameTime);\n\n\t// Get mouse position\n\tdouble mouseX;\n\tdouble mouseY;\n\tglfwGetCursorPos(window, &mouseX, &mouseY);\n\n\n\t// Set the mouse position back to center so that\n\t//  the cursor doesnt go too far off screen\n\t// TODO: Make this dynamic so the screen can be resized\n\tglfwSetCursorPos(window, WINDOW_WIDTH/2.0f, WINDOW_HEIGHT/2.0f);\n\n\n\t// Compute Orientation\n\n\t// Explanation: This works by taking the amount of distance \n\t//  the user moved the mouse times the speed of the change\n\t//  that we defined above (mouseSpeed). The variable mouseSpeed\n\t//  we defined can be changed to suit the user\n\thAngle += mouseSpeed * (float)(WINDOW_WIDTH/2.0f - mouseX);\n\tvAngle += mouseSpeed * (float)(WINDOW_HEIGHT/2.0f - mouseY);\n\n\t// Compute the direction of the camera\n\t//  Spherical coordinates to Cartesian coordinates conversion\n\tvec3 direction(\n\t\tcos(vAngle) * sin(hAngle),\n\t\tsin(vAngle),\n\t\tcos(vAngle) * cos(hAngle)\n\t\t);\n\n\tvec3 right(\n\t\tsin(hAngle - PI/2.0f),\n\t\t0,\n\t\tcos(hAngle - PI/2.0f)\n\t\t);\n\n\tglm::vec3 up = glm::cross( right, direction );\n\n\t// Move forward\n\tif (glfwGetKey( window, GLFW_KEY_UP ) == GLFW_PRESS){\n\t    position += direction * deltaTime * speed;\n\t}\n\t// Move backward\n\tif (glfwGetKey( window, GLFW_KEY_DOWN ) == GLFW_PRESS){\n\t    position -= direction * deltaTime * speed;\n\t}\n\t// Strafe right\n\tif (glfwGetKey( window, GLFW_KEY_RIGHT ) == GLFW_PRESS){\n\t    position += right * deltaTime * speed;\n\t}\n\t// Strafe left\n\tif (glfwGetKey( window, GLFW_KEY_LEFT ) == GLFW_PRESS){\n\t    position -= right * deltaTime * speed;\n\t}\n\n\t// Zoom, I added this - Austin :P\n\tif (glfwGetKey(window, GLFW_KEY_RIGHT_BRACKET) == GLFW_PRESS)\n\t{\n\t\tif (FOV <= 60)\n\t\t{\n\t\t\tFOV++;\n\t\t}\n\t}\n\n\tif (glfwGetKey(window, GLFW_KEY_LEFT_BRACKET) == GLFW_PRESS)\n\t{\n\t\tif (FOV >= 30)\n\t\t{\n\t\t\tFOV--;\n\t\t}\n\t}\n\n\tprojectionMatrix = glm::perspective(glm::radians(FOV), 4.0f / 3.0f, 0.1f, 100.0f);\n\n\tviewMatrix = glm::lookAt(\n\t\tposition,           // Camera is here\n\t\tposition+direction, // and looks here : at the same position, plus \"direction\"\n\t\tup                  // Head is up (set to 0,-1,0 to look upside-down)\n\t);\n\n\tprevFrameTime = currentTime;\n}",
 			"file": "code/PhysicsEngine/common/Controls.cpp",
+			"file_size": 2938,
+			"file_write_time": 131614798382589434,
 			"settings":
 			{
 				"buffer_size": 2938,
@@ -393,7 +417,10 @@
 			}
 		},
 		{
+			"contents": "#pragma once\n// OpenGL includes\n#include <stdio.h>\n#include <stdlib.h>\n#include <GL/glew.h>\n#include <GLFW/glfw3.h>\n\n#include \"shader.h\"",
 			"file": "code/PhysicsEngine/h/glHeaders.h",
+			"file_size": 136,
+			"file_write_time": 131614798382589434,
 			"settings":
 			{
 				"buffer_size": 136,
@@ -496,8 +523,8 @@
 	[
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/common",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/o",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/o/shaders",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/docs"
 	],
@@ -694,7 +721,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -740,8 +767,8 @@
 						"selection":
 						[
 							[
-								3299,
-								3299
+								3337,
+								3337
 							]
 						],
 						"settings":
@@ -750,27 +777,55 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1485.0,
+						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "code/comp.sh",
+					"file": "code/PhysicsEngine/makefile.make",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1537,
+						"buffer_size": 1140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1002,
-								1002
+								372,
+								378
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "code/comp.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1529,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								742,
+								742
 							]
 						],
 						"settings":
@@ -779,14 +834,42 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
+					"file": "code/PhysicsEngine/o/shaders/SimpleVertexShader.vertexshader",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "code/ObjFileBuilder.java",
 					"semi_transient": false,
 					"settings":
@@ -811,11 +894,11 @@
 						"translation.y": 765.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "code/PhysicsEngine/common/Controls.cpp",
 					"semi_transient": false,
 					"settings":
@@ -840,11 +923,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "code/PhysicsEngine/h/glHeaders.h",
 					"semi_transient": false,
 					"settings":
@@ -868,11 +951,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "code/TestingSuite.java",
 					"semi_transient": false,
 					"settings":
@@ -897,11 +980,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "code/Structure.java",
 					"semi_transient": false,
 					"settings":
@@ -926,11 +1009,11 @@
 						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "code/Evaluator.java",
 					"semi_transient": false,
 					"settings":
@@ -955,7 +1038,7 @@
 						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -1038,7 +1121,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 224.0,
+	"side_bar_width": 445.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

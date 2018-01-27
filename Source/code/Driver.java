@@ -52,7 +52,6 @@ public class Driver extends Thread
 		System.out.println("");
 
 
-
 		if (Debug.isEnabled())
 		{
 			Debug.logs("Running Test Suite...");
@@ -90,7 +89,8 @@ public class Driver extends Thread
 
 		builderThread.start();
 
-		// Give the builderThread 100ms head start
+		// Give the builderThread 100ms head start, creating the structures is
+		//  VERY quick in comparison to the evaluation. 
 		try
 		{
 			// Simulate the simulation
@@ -154,7 +154,7 @@ public class Driver extends Thread
 			count++;
 
 			// TODO: Uncomment this when the openGL stuffs works
-			//eval.evaluate();
+			// eval.evaluate();
 
 			try
 			{
