@@ -14,9 +14,11 @@ if [ $answer = "y" ]
 	echo "javac -g -d ../compiled/ -Xlint -deprecation *.java"
 	echo ""
 	echo "Compiling C++..."
-	echo "C++ COMPILATION IS COMMENTED OUT"
-	#make -f ./PhysicsEngine/makefile.make
-	#mv physics ./PhysicsEngine/o
+	cd PhysicsEngine
+	#echo "C++ COMPILATION IS COMMENTED OUT"
+	make -f makefile.make
+	mv Driver ./o
+	cd ..
 	echo ""
 	echo "---> Compilation complete"
 	echo ""
@@ -45,7 +47,7 @@ if [ $answer = "y" ]
 
 	if [ $answer = "y" ]
 		then
-		./PhysicsEngine/o/physics FILENAME
+		./PhysicsEngine/o/Driver FILENAME
 	else
 		echo "-> Starting Program..."
 		echo " vvvvvvvvvvvvvvvvvvvv "
