@@ -18,7 +18,7 @@ public class Driver extends Thread
 
 	public static ConcurrentLinkedQueue<Structure> workQueue;
 
-	private static int threadCount = 4;
+	private static int threadCount = 2;
 
 	public static void main(String[] args)
 	{
@@ -150,11 +150,11 @@ public class Driver extends Thread
 			Evaluator eval = new Evaluator(s);
 
 			System.out.println("Working on: " + s.getId());
-			//s.save("../compiled/obj/");
+			s.save("../compiled/obj/");
 			count++;
 
 			// TODO: Uncomment this when the openGL stuffs works
-			// eval.evaluate();
+			//eval.evaluate();
 
 			try
 			{

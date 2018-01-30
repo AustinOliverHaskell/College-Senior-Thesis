@@ -1,19 +1,19 @@
-#include "./h/glHeader.h"
-#include "./h/Graphics.h"
+#include <iostream>
+#include <unistd.h>
+#include <string>
+#include "./h/Simulation.h"
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-	Graphics * g = new Graphics("Hello!");
+	// TODO: Get arguments
 
-	g->openWindow();
 
-	cout << endl <<"Running Learning" << endl;
+	Simulation s("Test");
 
-	g->setupGL();
 
-	delete g;
+	s.start();
 
 	return 0;
 }

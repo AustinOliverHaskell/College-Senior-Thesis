@@ -40,6 +40,9 @@ if [ $answer = "y" ]
 
 	echo "-> Removing old log file"
 	rm ../compiled/*.txt
+	echo ""
+
+	pwd
 
 	echo ""
 	echo "Run C program only? [y/n]"
@@ -47,12 +50,14 @@ if [ $answer = "y" ]
 
 	if [ $answer = "y" ]
 		then
-		./PhysicsEngine/o/Driver FILENAME
+		cd PhysicsEngine/o/
+		./Driver FILENAME
+		cd ../..
 	else
 		echo "-> Starting Program..."
 		echo " vvvvvvvvvvvvvvvvvvvv "
 		echo ""
-		java -ea -cp ../compiled/ austin.structures.Driver 100 1
+		java -ea -cp ../compiled/ austin.structures.Driver 1000 1
 		echo ""
 		echo " ^^^^^^^^^^^^^^^^^^^^ "
 		echo "---> Program run complete..."

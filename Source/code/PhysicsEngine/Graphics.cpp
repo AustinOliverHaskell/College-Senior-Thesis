@@ -9,6 +9,12 @@
 #include "./h/GraphicDebugger.h"
 #include "./h/Model.h"
 
+// Testing inlcudes
+#include <unistd.h>
+
+#include <ctime>
+#include <iostream>
+
 using namespace glm;
 
 Graphics::Graphics(std::string name)
@@ -84,10 +90,16 @@ void Graphics::setupGL()
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
 
-	// Compile shaders
-	GLuint shaders = loadShaders("./shaders/lightShader.vertexshader", "./shaders/lightShader.fragmentshader");
-	GLuint solidShader = loadShaders("./shaders/SimpleVertexShader.vertexshader", "./shaders/SimpleFragmentShader.fragmentshader");
 
+	char cwd[1024];
+	getcwd(cwd, 1024);
+
+	std::cout << std::endl << cwd << std::endl;
+
+	// Compile shaders
+	// TODO: Use Enviorment Variables here
+	GLuint shaders = loadShaders("./PhysicsEngine/o/shaders/lightShader.vertexshader", "./PhysicsEngine/o/shaders/lightShader.fragmentshader");
+	GLuint solidShader = loadShaders("./PhysicsEngine/o/shaders/SimpleVertexShader.vertexshader", "./PhysicsEngine/o/shaders/SimpleFragmentShader.fragmentshader");
 
 	// Get a handle for our "MVP" uniform
 	// MVP = Model, View, and Projection
@@ -111,10 +123,11 @@ void Graphics::setupGL()
 	// Our ModelViewProjection : multiplication of our 3 matrices
 
 	// Could wrap this in some kind of "Object Manager", but thats not needed for this assignment
-	Model * model = new Model(shaders, "./obj/cube.obj");
+	// TODO: Use enviorment variables here
+	Model * model = new Model(shaders, "./PhysicsEngine/o/obj/cube.obj");
 	GraphicDebugger * debugger = new GraphicDebugger();
-	Model * sphere = new Model(shaders, "./obj/sphere.obj");
-	Model * custom = new Model(solidShader, "./obj/random_multi_layer_test.obj", true);
+	Model * sphere = new Model(shaders, "./PhysicsEngine/o/obj/sphere.obj");
+	Model * custom = new Model(solidShader, "./PhysicsEngine/o/obj/random_multi_layer_test.obj", true);
 
 	model ->initBuffers();
 	sphere->initBuffers();
@@ -126,6 +139,9 @@ void Graphics::setupGL()
 	// Not changing, no need to put it in the loop like the 
 	//  tutorial does.
 	glm::vec3 lightPos = glm::vec3(3, 3, 3);
+
+
+	long double startTime = time(NULL);
 
 	do {
 
@@ -181,7 +197,7 @@ void Graphics::setupGL()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-	} while(glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 );
+	} while(time(NULL)-startTime < 10);
 
 
 	// Cleanup, each of these objects knows how to clear its own buffers
