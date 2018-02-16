@@ -152,7 +152,7 @@ public class Layer
 					usableArea++;
 				}
 			}
-		}
+		}	
 
 		area = usableArea;
 	}
@@ -205,7 +205,7 @@ public class Layer
 	*   This function will turn the list of 2D points stored internally
 	*    into a 2d representation of the layer
 	*/
-	public void rasterize()
+	/*public void rasterize()
 	{
 		for (int i = 0; i < points.size()-1; i++)
 		{
@@ -220,7 +220,7 @@ public class Layer
 		Debug.logf(" -------------------- ");
 	}
 
-	private void plot(Vec one, Vec two)
+	    private void plot(Vec one, Vec two)
 	{
 		if (one.x > two.x)
 		{
@@ -302,7 +302,7 @@ public class Layer
 			}
 		}
 
-	}
+	}*/
 
 	/**
 	*   This function returns a copy of the underlying array   
