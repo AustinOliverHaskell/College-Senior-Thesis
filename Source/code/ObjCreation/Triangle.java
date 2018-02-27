@@ -126,10 +126,22 @@ public class Triangle
 		return Math.sqrt((a * a)+(b * b));
 	}
 
+	public boolean doesPointExist(Vec3 point)
+	{
+		boolean retVal = false;
+
+		if (a.equals(point) || b.equals(point) || c.equals(point))
+		{
+			retVal = true;
+		}
+
+		return retVal;
+	}
+
 	@Override
 	public String toString()
 	{
-		return a.toString() + b.toString() + c.toString();
+		return "-> "+a.toString() + b.toString() + c.toString() + "<-";
 	}
 
 	@Override
@@ -149,6 +161,12 @@ public class Triangle
 		}
 
 		return retVal;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return (int) a.add(b.add(c)).x;
 	}
 
 	public boolean doesTriangleHaveVertex(Vec3 point)

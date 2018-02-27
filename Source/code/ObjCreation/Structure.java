@@ -16,24 +16,21 @@ public class Structure
 	Structure()
 	{
 		// Deafult Values
-		tetraCount = 5;
+		tetraCount = 2;
 		mutationRate = 0.01f;
 		tetraList = new ArrayList<Tetrahedron>();
 
-		tetraList.add(makeFirstTetra());
+		System.out.println("Tetrahedron Count: " + tetraCount);
 
-		for (int i = 0, q = 0; i < tetraCount - 1; i++, q++)
+		tetraList.add(makeFirstTetra());
+		System.out.println(tetraList.get(0));
+		System.out.println("Compleated tetrahedron seed!");
+
+		for (int i = 0; i < tetraCount - 1; i++)
 		{
+
 			Random rand = new Random();
 			int tetraToBuildOffOf = rand.nextInt(tetraList.size());
-
-			System.out.println(Integer.toString(q));
-
-			if (q > 1000)
-			{
-				System.out.println("Exausted list or Infinite Loop...");
-				break;
-			}
 
 			Tetrahedron t;
 			try
@@ -41,13 +38,15 @@ public class Structure
 				t = new Tetrahedron(tetraList.get(tetraToBuildOffOf), tetraList);
 
 				tetraList.add(t);
+
+				System.out.println(t);
+
 			}
 			catch(NoValidSpaces err)
 			{
 				i--;
 				continue;
-			} 	
-
+			}
 		}
 	}
 

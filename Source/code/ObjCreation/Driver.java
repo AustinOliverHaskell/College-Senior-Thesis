@@ -9,6 +9,8 @@ public class Driver
 		
 		Structure s = new Structure();
 
+		System.out.println("Saved object as ./Object.obj");
+
 		s.save("./Object.obj");
 	}
 }

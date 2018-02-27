@@ -4,7 +4,7 @@ import Jama.*;
 public class Tetrahedron
 {
 	private ArrayList<Triangle> faceList;
-
+	private ArrayList<Vec3> pointList;
 	/**
 	 * 	Create a Tetrahedron with all four required triangles
 	 */
@@ -16,6 +16,8 @@ public class Tetrahedron
 		faceList.add(b);
 		faceList.add(c);
 		faceList.add(d);
+
+		pointList = new ArrayList<Vec3>();
 	}
 
 	/**
@@ -26,6 +28,7 @@ public class Tetrahedron
 	Tetrahedron(Triangle a)
 	{
 		faceList = new ArrayList<Triangle>();
+		pointList = new ArrayList<Vec3>();
 
 		// First figure out how long a single side of the triangle is
 		double distance = Vec3.dist(a.a, a.b);
@@ -46,6 +49,7 @@ public class Tetrahedron
 
 		System.out.println(point);
 
+
 		point.z += 5;
 
 		// Create the other triangles
@@ -53,93 +57,116 @@ public class Tetrahedron
 		Triangle c = new Triangle(a.a, a.c, point);
 		Triangle d = new Triangle(a.b, a.c, point);
 
-		// Mark a as covered
-		a.setCovered(true);
-
 		// Add the triangles to the facelist
 		faceList.add(a);
 		faceList.add(b);
 		faceList.add(c);
 		faceList.add(d);
 		
+		pointList.add(a.a);
+		pointList.add(a.b);
+		pointList.add(a.c);
+		pointList.add(point);
+		//assert(false);
 		// Done!
 	}
 
 	Tetrahedron(Tetrahedron tetrahedron, ArrayList<Tetrahedron> list) throws NoValidSpaces
 	{
 		faceList = new ArrayList<Triangle>();
+		pointList = new ArrayList<Vec3>();
 
 		Vec3 point = new Vec3();
-		Triangle a;
+		Triangle tri = null;
+		NoValidSpaces exception = null;
 
-		int attempts = 0;
+		// I want to pick a random face to build off of, this array is filled
+		//  with the facenumbers that are checked. 
+		ArrayList<Integer> randomFaceOrder = new ArrayList<Integer>();
 
-		do 
+		for (int i = 0; i < 4; i++)
 		{
-			// Its random, so it can pick the same faces over and over again, so this number is high
-			//  to ensure that all faces have been checked
-			// MAGIC NUMBER
-			// TODO: Figure out a way to make this much much more elegant
-			if (attempts > 100)
-			{
-				throw new NoValidSpaces();
-			}
+			randomFaceOrder.add(i);
+		}
 
-			attempts++;
+		Collections.shuffle(randomFaceOrder);
 
-			Random rand = new Random();
-
-			a = tetrahedron.getFace(rand.nextInt(3));
-
-			// First figure out how long a single side of the triangle is
-			double distance = Vec3.dist(a.a, a.b);
-
-			// The missing point to complete the tetrahedron
-			point = new Vec3();
-
-			point = Vec3.pointAlongLine(a.getCentroid(), getFourthPoint(a, tetrahedron) , 1);
+		// Attempt to build off the first face from the array, 
+		//  if this fails too much then an exception is thrown 
+		//  telling the structure class that the tetrahedron picked
+		//  cant be grown off of
+		for (int i = 0; i < randomFaceOrder.size(); i++)
+		{
+			// The face that we are attempting to build off of
+			tri = tetrahedron.getFace(randomFaceOrder.get(i));
 
 			// Make sure that we arnt covering up a face thats already being used
-			if (a.isCovered())
+			if (tri.isCovered())
 			{
 				continue;
 			}
 
-			if (checkCollisionOfLine(a.a, point, list) || checkCollisionOfLine(a.b, point, list) 
-				|| checkCollisionOfLine(a.c, point, list) || checkCollisionOfLine(getFourthPoint(a, tetrahedron), point,  list) 
-				|| checkCollisionOfLine(a.getCentroid(), point, list))
-			{
-				continue;
+			Vec3 oppositePoint = tetrahedron.getFourthPoint(tri);
+			Vec3 centroid      = tri.getCentroid();
+
+			// The missing point to complete the tetrahedron
+			point = Vec3.pointAlongLine(centroid, oppositePoint, 1);
+
+			if (tri.doesPointExist(point))
+			{ 
+				// Was getting some "Flat" tetrahedrons earlier, this is to nip that in the bud
+				System.out.println(tetrahedron);
+				System.out.println(point);
+				assert(false);
 			}
 
-			Vec3 midpont = Vec3.pointAlongLine(a.getCentroid(), getFourthPoint(a, tetrahedron) , 0.5);
-
-			if (isPointContained(midpont, list))
+			// If we get to this point then there isnt a way to build off of this tetrahedron
+			//  so we need to create an exception and then throw it
+			if (i == 3)
 			{
-				continue;
+				exception = new NoValidSpaces();
 			}
 
 
-
-
+			if (!doesPointCollideWithStructure(point, list))
+			{
+				break;
+			}
 		}
-		while(!isPointContained(point, list));
-		// Currently the vertex point needs to be translated x units away perpendicular to 
-		//  the plane of the triangle. Im not sure how this is done. 
+
+		// If we exit the loop and we happened to make an exception then we need to throw it now
+		if (exception != null)
+		{
+			throw exception;
+		}
+
+		System.out.println(tetrahedron);
+		System.out.println(tri);
+		System.out.println(tri.isCovered());
+		System.out.println(tri.getCentroid());
+		System.out.println(tetrahedron.getFourthPoint(tri));
+
+		// If a is null at this point then there is a big problem
+		assert(tri != null);
 
 		// Create the other triangles
-		Triangle b = new Triangle(a.a, a.b, point);
-		Triangle c = new Triangle(a.a, a.c, point);
-		Triangle d = new Triangle(a.b, a.c, point);
+		Triangle b = new Triangle(tri.a, tri.b, point);
+		Triangle c = new Triangle(tri.a, tri.c, point);
+		Triangle d = new Triangle(tri.b, tri.c, point);
 
-		// Mark a as covered
-		a.setCovered(true);
+		// Mark the triangle as covered
+		tri.setCovered(true);
 
 		// Add the triangles to the facelist
-		faceList.add(a);
+		faceList.add(tri);
 		faceList.add(b);
 		faceList.add(c);
 		faceList.add(d);
+
+		pointList.add(tri.a);
+		pointList.add(tri.b);
+		pointList.add(tri.c);
+		pointList.add(point);
 	}
 
 	/**
@@ -148,6 +175,7 @@ public class Tetrahedron
 	Tetrahedron()
 	{
 		faceList = new ArrayList<Triangle>();
+		pointList = new ArrayList<Vec3>();
 
 		// Could be a loop but I dont think thats important
 		faceList.add(new Triangle());
@@ -162,11 +190,31 @@ public class Tetrahedron
 	 *  
 	 *  NOTE: If the point is coplanar it is considered within the bounds
 	 * @param point point to check against this shape
-	 * @return             true if point is on or within this tetrahedron
+	 * @return      true if point is on or within this tetrahedron
 	 */
-	public static boolean isPointContained(Vec3 point, ArrayList<Tetrahedron> list)
+	public static boolean doesPointCollideWithStructure(Vec3 point, ArrayList<Tetrahedron> list)
 	{
 		// TODO: Finish this, check the bookmark on determantants
+		boolean retVal = true;
+
+		for (Tetrahedron t : list)
+		{
+			if (t.pointContained(point))
+			{
+				retVal = true;
+			}
+		}
+
+		return retVal;
+	}
+
+	/**
+	 * Checks if the given point falls withing this tetrahedron
+	 * @param  point point to check
+	 * @return       true if point is contained within this tetrahedron
+	 */
+	public boolean pointContained(Vec3 point)
+	{
 		boolean retVal = true;
 
 		Matrix D0 = new Matrix(4, 4);
@@ -175,71 +223,58 @@ public class Tetrahedron
 		Matrix D3 = new Matrix(4, 4);
 		Matrix D4 = new Matrix(4, 4);
 
-		for (Tetrahedron t : list)
+		// Get all of the points to make this quicker
+		Vec3 a = pointList.get(0);
+		Vec3 b = pointList.get(1);
+		Vec3 c = pointList.get(2);
+		Vec3 d = pointList.get(3);
+
+		// Alot of this is setup
+		D0.set(0, 0, a.x); D0.set(1, 0, a.y); D0.set(2, 0, a.z); D0.set(3, 0, 1.0);
+		D0.set(0, 1, b.x); D0.set(1, 1, b.y); D0.set(2, 1, b.z); D0.set(3, 1, 1.0); 
+		D0.set(0, 2, c.x); D0.set(1, 2, c.y); D0.set(2, 2, c.z); D0.set(3, 2, 1.0); 
+		D0.set(0, 3, d.x); D0.set(1, 3, d.y); D0.set(2, 3, d.z); D0.set(3, 3, 1.0);  
+
+		D1.set(0, 0, point.x); D1.set(1, 0, point.y); D1.set(2, 0, point.z); D1.set(3, 0, 1.0);
+		D1.set(0, 1, b.x); D1.set(1, 1, b.y); D1.set(2, 1, b.z); D1.set(3, 1, 1.0); 
+		D1.set(0, 2, c.x); D1.set(1, 2, c.y); D1.set(2, 2, c.z); D1.set(3, 2, 1.0); 
+		D1.set(0, 3, d.x); D1.set(1, 3, d.y); D1.set(2, 3, d.z); D1.set(3, 3, 1.0);
+
+		D2.set(0, 0, a.x); D2.set(1, 0, a.y); D2.set(2, 0, a.z); D2.set(3, 0, 1.0);
+		D2.set(0, 1, point.x); D2.set(1, 1, point.y); D2.set(2, 1, point.z); D2.set(3, 1, 1.0); 
+		D2.set(0, 2, c.x); D2.set(1, 2, c.y); D2.set(2, 2, c.z); D2.set(3, 2, 1.0); 
+		D2.set(0, 3, d.x); D2.set(1, 3, d.y); D2.set(2, 3, d.z); D2.set(3, 3, 1.0);
+
+		D3.set(0, 0, a.x); D3.set(1, 0, a.y); D3.set(2, 0, a.z); D3.set(3, 0, 1.0);
+		D3.set(0, 1, b.x); D3.set(1, 1, b.y); D3.set(2, 1, b.z); D3.set(3, 1, 1.0); 
+		D3.set(0, 2, point.x); D3.set(1, 2, point.y); D3.set(2, 2, point.z); D3.set(3, 2, 1.0); 
+		D3.set(0, 3, d.x); D3.set(1, 3, d.y); D3.set(2, 3, d.z); D3.set(3, 3, 1.0);
+
+		D4.set(0, 0, a.x); D4.set(1, 0, a.y); D4.set(2, 0, a.z); D4.set(3, 0, 1.0);
+		D4.set(0, 1, b.x); D4.set(1, 1, b.y); D4.set(2, 1, b.z); D4.set(3, 1, 1.0); 
+		D4.set(0, 2, c.x); D4.set(1, 2, c.y); D4.set(2, 2, c.z); D4.set(3, 2, 1.0); 
+		D4.set(0, 3, point.x); D4.set(1, 3, point.y); D4.set(2, 3, point.z); D4.set(3, 3, 1.0);
+
+		double d0 = D0.det();
+		double d1 = D1.det();
+		double d2 = D2.det();
+		double d3 = D3.det();
+		double d4 = D4.det();
+
+		ArrayList<Double> determantants = new ArrayList<Double>();
+
+		determantants.add(d0);
+		determantants.add(d1);
+		determantants.add(d2);
+		determantants.add(d3);
+		determantants.add(d4);
+
+		for (int i = 1; i < determantants.size(); i++)
 		{
-
-			Triangle tri = t.getFace(0);
-
-			boolean inThisTet = true;
-			// Get all of the points to make this quicker
-			Vec3 a = tri.a;
-			Vec3 b = tri.b;
-			Vec3 c = tri.c;
-			Vec3 d = getFourthPoint(tri, t);
-
-			// Alot of this is setup
-			D0.set(0, 0, a.x); D0.set(1, 0, a.y); D0.set(2, 0, a.z); D0.set(3, 0, 1.0);
-			D0.set(0, 1, b.x); D0.set(1, 1, b.y); D0.set(2, 1, b.z); D0.set(3, 1, 1.0); 
-			D0.set(0, 2, c.x); D0.set(1, 2, c.y); D0.set(2, 2, c.z); D0.set(3, 2, 1.0); 
-			D0.set(0, 3, d.x); D0.set(1, 3, d.y); D0.set(2, 3, d.z); D0.set(3, 3, 1.0);  
-
-			D1.set(0, 0, point.x); D1.set(1, 0, point.y); D1.set(2, 0, point.z); D1.set(3, 0, 1.0);
-			D1.set(0, 1, b.x); D1.set(1, 1, b.y); D1.set(2, 1, b.z); D1.set(3, 1, 1.0); 
-			D1.set(0, 2, c.x); D1.set(1, 2, c.y); D1.set(2, 2, c.z); D1.set(3, 2, 1.0); 
-			D1.set(0, 3, d.x); D1.set(1, 3, d.y); D1.set(2, 3, d.z); D1.set(3, 3, 1.0);
-
-			D2.set(0, 0, a.x); D2.set(1, 0, a.y); D2.set(2, 0, a.z); D2.set(3, 0, 1.0);
-			D2.set(0, 1, point.x); D2.set(1, 1, point.y); D2.set(2, 1, point.z); D2.set(3, 1, 1.0); 
-			D2.set(0, 2, c.x); D2.set(1, 2, c.y); D2.set(2, 2, c.z); D2.set(3, 2, 1.0); 
-			D2.set(0, 3, d.x); D2.set(1, 3, d.y); D2.set(2, 3, d.z); D2.set(3, 3, 1.0);
-
-			D3.set(0, 0, a.x); D3.set(1, 0, a.y); D3.set(2, 0, a.z); D3.set(3, 0, 1.0);
-			D3.set(0, 1, b.x); D3.set(1, 1, b.y); D3.set(2, 1, b.z); D3.set(3, 1, 1.0); 
-			D3.set(0, 2, point.x); D3.set(1, 2, point.y); D3.set(2, 2, point.z); D3.set(3, 2, 1.0); 
-			D3.set(0, 3, d.x); D3.set(1, 3, d.y); D3.set(2, 3, d.z); D3.set(3, 3, 1.0);
-
-			D4.set(0, 0, a.x); D4.set(1, 0, a.y); D4.set(2, 0, a.z); D4.set(3, 0, 1.0);
-			D4.set(0, 1, b.x); D4.set(1, 1, b.y); D4.set(2, 1, b.z); D4.set(3, 1, 1.0); 
-			D4.set(0, 2, c.x); D4.set(1, 2, c.y); D4.set(2, 2, c.z); D4.set(3, 2, 1.0); 
-			D4.set(0, 3, point.x); D4.set(1, 3, point.y); D4.set(2, 3, point.z); D4.set(3, 3, 1.0);
-
-			double d0 = D0.det();
-			double d1 = D1.det();
-			double d2 = D2.det();
-			double d3 = D3.det();
-			double d4 = D4.det();
-
-			ArrayList<Double> determantants = new ArrayList<Double>();
-
-			determantants.add(d0);
-			determantants.add(d1);
-			determantants.add(d2);
-			determantants.add(d3);
-			determantants.add(d4);
-
-			for (int i = 1; i < 5; i++)
-			{
-				// If one of them has a differing sign then the point isnt fully in the triangle
-				if (!areSignsSame(determantants.get(0), determantants.get(i)) && determantants.get(i) != 0)
-				{
-					inThisTet = false;
-				}
-			}
-
-			if (inThisTet)
+			// If one of them has a differing sign then the point isnt fully in the triangle
+			if (!areSignsSame(determantants.get(0), determantants.get(i)) && determantants.get(i) != 0)
 			{
 				retVal = false;
-				break;
 			}
 		}
 
@@ -285,34 +320,32 @@ public class Tetrahedron
 	 * @param  t three points used
 	 * @return   4th point
 	 */
-	public static Vec3 getFourthPoint(Triangle t, Tetrahedron tet)
+	public Vec3 getFourthPoint(Triangle t)
 	{
-		for (int i = 0; i < 4; i++)
-		{
-			Triangle tri = tet.getFace(i);
+		Vec3 retVal = null;
 
-			if (t.equals(tri))
+		for (Vec3 p : pointList)
+		{
+			if (!t.doesPointExist(p))
 			{
-				continue;
-			}
-			else
-			{
-				if (!t.doesTriangleHaveVertex(tri.a))
-				{
-					return tri.a;
-				}
-				else if (!t.doesTriangleHaveVertex(tri.b))
-				{
-					return tri.b;
-				}
-				else if (!t.doesTriangleHaveVertex(tri.c))
-				{
-					return tri.c;
-				}
+				retVal = p;
+				break;
 			}
 		}
 
-		return null;
+		if (retVal == null)
+		{
+			System.out.println("");
+			System.out.println(" ----- Breaking on: ----- ");
+			System.out.println(pointList);
+			System.out.println(t);
+			System.out.println(" -------------------- ");
+			System.out.println("");
+
+			assert(false);
+		}
+
+		return retVal;
 	}
 
 	private static boolean areSignsSame(double a, double b)
@@ -334,20 +367,23 @@ public class Tetrahedron
 	private boolean checkCollisionOfLine(Vec3 a, Vec3 b, ArrayList<Tetrahedron> list)
 	{
 		// Check if the resulting tetrahedron isnt conflicting with another
-		for (float ap = 0.0f; ap < 1.0f; ap += 0.5f)
+		
+		boolean retVal = false;
+
+		Vec3 midpoint = Vec3.midpoint(a, b);
+
+		if (doesPointCollideWithStructure(midpoint, list))
 		{
-			Vec3 pointOnLine = Vec3.pointAlongLine(a, b, 1.0f-ap);
-
-			System.out.println("Checking line of : " + a + " " + b);
-			System.out.println(pointOnLine);
-
-			if (isPointContained(pointOnLine, list))
-			{
-				return true;
-			}
+			retVal = true;
+			return retVal;
 		}
 
-		return false;
+		return retVal;
+	}
+
+	private boolean doesPointExist(Vec3 point)
+	{
+		return pointList.contains(point);
 	}
 
 	public static boolean test()
@@ -363,6 +399,18 @@ public class Tetrahedron
 		Vec3 b = new Vec3();
 
 		return true;
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder s = new StringBuilder();
+
+		s.append("Tetrahedron\n");
+
+		s.append(pointList.toString());
+
+		return s.toString();
 	}
 
 }

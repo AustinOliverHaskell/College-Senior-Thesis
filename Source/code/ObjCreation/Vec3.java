@@ -203,4 +203,9 @@ public class Vec3
 		return retVal;
 	}
 
+	@Override
+	public int hashCode()
+	{
+		return (int) (x + y + z);
+	}
 }
