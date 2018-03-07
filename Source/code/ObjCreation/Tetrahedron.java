@@ -5,20 +5,6 @@ public class Tetrahedron
 {
 	private ArrayList<Triangle> faceList;
 	private ArrayList<Vec3> pointList;
-	/**
-	 * 	Create a Tetrahedron with all four required triangles
-	 */
-	Tetrahedron(Triangle a, Triangle b, Triangle c, Triangle d)
-	{
-		faceList = new ArrayList<Triangle>();
-
-		faceList.add(a);
-		faceList.add(b);
-		faceList.add(c);
-		faceList.add(d);
-
-		pointList = new ArrayList<Vec3>();
-	}
 
 	/**
 	 *  This one is the special constructor, given one triangle this constructor
@@ -49,8 +35,10 @@ public class Tetrahedron
 
 		System.out.println(point);
 
+		float height = ( (float)Math.abs(Math.pow((float)Vec3.dist(a.a, a.getCentroid()),2) -  Math.pow((float)Vec3.dist(a.a, a.b),2)));
 
-		point.z += 5;
+		//point.z += 0.7517f;
+		point.z += height;
 
 		// Create the other triangles
 		Triangle b = new Triangle(a.a, a.b, point);
@@ -103,6 +91,10 @@ public class Tetrahedron
 			// Make sure that we arnt covering up a face thats already being used
 			if (tri.isCovered())
 			{
+				if (i == 3)
+				{
+					System.out.println("Continue on last iteration. " + exception);
+				}
 				continue;
 			}
 
@@ -120,17 +112,23 @@ public class Tetrahedron
 				assert(false);
 			}
 
+			boolean breakCondition;
+
+			breakCondition = (doesPointCollideWithStructure(point, list));
+			breakCondition = (breakCondition || doesPointCollideWithStructure(Vec3.midpoint(point, tri.a), list));
+			breakCondition = (breakCondition || doesPointCollideWithStructure(Vec3.midpoint(point, tri.b), list));
+			breakCondition = (breakCondition || doesPointCollideWithStructure(Vec3.midpoint(point, tri.c), list));
+
+			if (!breakCondition)
+			{
+				break;
+			}
+
 			// If we get to this point then there isnt a way to build off of this tetrahedron
 			//  so we need to create an exception and then throw it
 			if (i == 3)
 			{
 				exception = new NoValidSpaces();
-			}
-
-
-			if (!doesPointCollideWithStructure(point, list))
-			{
-				break;
 			}
 		}
 
@@ -140,11 +138,11 @@ public class Tetrahedron
 			throw exception;
 		}
 
-		System.out.println(tetrahedron);
-		System.out.println(tri);
-		System.out.println(tri.isCovered());
-		System.out.println(tri.getCentroid());
-		System.out.println(tetrahedron.getFourthPoint(tri));
+		//System.out.println(tetrahedron);
+		//System.out.println(tri);
+		//System.out.println(tri.isCovered());
+		//System.out.println(tri.getCentroid());
+		//System.out.println(tetrahedron.getFourthPoint(tri));
 
 		// If a is null at this point then there is a big problem
 		assert(tri != null);
@@ -170,21 +168,6 @@ public class Tetrahedron
 	}
 
 	/**
-	 *  Default Constructor, All four triangles use the default constructor
-	 */
-	Tetrahedron()
-	{
-		faceList = new ArrayList<Triangle>();
-		pointList = new ArrayList<Vec3>();
-
-		// Could be a loop but I dont think thats important
-		faceList.add(new Triangle());
-		faceList.add(new Triangle());
-		faceList.add(new Triangle());
-		faceList.add(new Triangle());
-	}
-
-	/**
 	 * Method that determines wheather a given point is within the bounds
 	 *  of any of the tetrahedrons in the ArrayList list
 	 *  
@@ -195,7 +178,7 @@ public class Tetrahedron
 	public static boolean doesPointCollideWithStructure(Vec3 point, ArrayList<Tetrahedron> list)
 	{
 		// TODO: Finish this, check the bookmark on determantants
-		boolean retVal = true;
+		boolean retVal = false;
 
 		for (Tetrahedron t : list)
 		{
@@ -269,13 +252,33 @@ public class Tetrahedron
 		determantants.add(d3);
 		determantants.add(d4);
 
+		double total = d1 + d2 + d3 + d4;
+
+		// Make sure that the sum is close to the value of d0
+		//  0.001 is a tollerance to check because of loss of
+		//  precision. 
+		if (Math.abs(d0 - total) > 0.001)
+		{
+			System.out.println("There's something very wrong: sum is not equal to D0.");
+			assert(false);
+		}
+
 		for (int i = 1; i < determantants.size(); i++)
 		{
-			// If one of them has a differing sign then the point isnt fully in the triangle
-			if (!areSignsSame(determantants.get(0), determantants.get(i)) && determantants.get(i) != 0)
+			if (determantants.get(i) != 0)
 			{
-				retVal = false;
+				// If one of them has a differing sign then the point isnt fully in the triangle
+				if (!areSignsSame(determantants.get(0), determantants.get(i)))
+				{
+					retVal = false;
+					break;
+				}
 			}
+			else
+			{
+				// Coplanar
+				break;
+			}			
 		}
 
 		return retVal;

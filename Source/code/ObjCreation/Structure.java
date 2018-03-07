@@ -16,7 +16,7 @@ public class Structure
 	Structure()
 	{
 		// Deafult Values
-		tetraCount = 2;
+		tetraCount = 100;
 		mutationRate = 0.01f;
 		tetraList = new ArrayList<Tetrahedron>();
 
@@ -73,7 +73,9 @@ public class Structure
 
 	private Tetrahedron makeFirstTetra()
 	{
-		return new Tetrahedron(new Triangle(new Vec3(0.00f, 0.00f, 0.00f), new Vec3(3.00f, 5.196f, 0.00f), new Vec3(6.00f, 0.00f, 0.00f)));
+		Triangle tri = new Triangle(new Vec3(0.00f, 0.00f, 0.00f), new Vec3(1.00f, 0.00f, 0.00f), new Vec3(0.50f, 0.86f, 0.00f));
+
+		return new Tetrahedron(tri);
 	}
 
 	/**

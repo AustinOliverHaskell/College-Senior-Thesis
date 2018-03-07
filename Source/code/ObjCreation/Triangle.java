@@ -37,21 +37,36 @@ public class Triangle
 		addEdges();
 	}
 
+	/**
+	 * Get the normal of this triangle
+	 * @return the normal of the triangle
+	 */
 	public Vec3 getNormal()
 	{
 		return this.normal;
 	}
 
+	/**
+	 * returns wheather or not this triangle is visible
+	 * @return true if the triangle isnt visible
+	 */
 	public boolean isCovered()
 	{
 		return this.covered;
 	}
 
+	/**
+	 * Sets the covered condition of this triangle to the value provided
+	 * @param b true or false, is this triangle covered
+	 */
 	public void setCovered(boolean b)
 	{
 		this.covered = b;
 	}
 
+	/**
+	 * Calculates the normal and sets the private feild of the triangle
+	 */
 	private void CalcNormal()
 	{
 		Vec3 edgeOne = b.sub(a);
@@ -110,6 +125,10 @@ public class Triangle
 		return retVal;
 	}
 
+	/**
+	 * Calcuates the Centroid (The center point) of the triangle
+	 * @return A Vec3 containing the 3D coordanates of the center
+	 */
 	public Vec3 getCentroid()
 	{
 		Vec3 retVal = new Vec3();
@@ -121,6 +140,12 @@ public class Triangle
 		return retVal;
 	}
 
+	/**
+	 * 
+	 * @param  a [description]
+	 * @param  b [description]
+	 * @return   [description]
+	 */
 	public double pathagorian(float a, float b)
 	{
 		return Math.sqrt((a * a)+(b * b));

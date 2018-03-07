@@ -11,6 +11,10 @@ public class Vec3
 		this.z = z;
 	}
 
+	/**
+	 * Default constructor
+	 * @return Vector with all values set to 0.0f
+	 */
 	public Vec3()
 	{
 		this.x = 0.0f;
@@ -18,11 +22,22 @@ public class Vec3
 		this.z = 0.0f;
 	}
 
+	/**
+	 * Subtracts this vector from other, ie this - other (In that order)
+	 * @param  other vector to stubtract from the current one
+	 * @return       result of the calculation
+	 */
 	public Vec3 sub(Vec3 other)
 	{
 		return new Vec3(this.x - other.x, this.y - other.y, this.z - other.z);
 	}
 
+	/**
+	 * Adds this vector to the one supplied, this is associative so order really
+	 *  doesnt matter
+	 * @param  other vector to add to the current one
+	 * @return       result of the calculation
+	 */
 	public Vec3 add(Vec3 other)
 	{
 		return new Vec3(this.x + other.x, this.y + other.y, this.z + other.z);
@@ -105,7 +120,8 @@ public class Vec3
 	 * @param  startPoint the begining of the line
 	 * @param  endPoint   end of the line
 	 * @param  distance   the distance away from endpoint to calculate the line
-	 * @return            the point that is distance away from endPoint
+	 * @return            the point that is distance away from endPoint, this is known
+	 *                     as a t vector in mathmatics. 
 	 */
 	public static Vec3 pointAlongLine(Vec3 startPoint, Vec3 endPoint, double distance)
 	{
@@ -121,17 +137,6 @@ public class Vec3
 		retVal = retVal.add(startPoint);
 
 		return retVal;
-	}
-
-	/**
-	 * Calculates the time vector for figuring out where the point on a 3d line is
-	 * @param  startPoint [description]
-	 * @param  endPoint   [description]
-	 * @return            [description]
-	 */
-	public static Vec3 calcTVector(Vec3 startPoint, Vec3 endPoint)
-	{
-		return null;
 	}
 
 	/**
@@ -156,6 +161,7 @@ public class Vec3
 		// If its NaN or the norm is 0 then do nothing
 	}
 
+	// Calculates the norm for use in the normalize function
 	private float calcNorm()
 	{
 		// Gotta make sure that its not negative

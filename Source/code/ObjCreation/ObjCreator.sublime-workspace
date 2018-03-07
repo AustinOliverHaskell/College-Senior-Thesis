@@ -4,20 +4,72 @@
 		"selected_items":
 		[
 			[
-				"conta",
-				"contains\t(ObjFileBuilder.java)"
+				"Cl",
+				"ClientDatagram"
 			],
 			[
-				"get",
-				"getFace"
+				"break",
+				"breakCondition"
+			],
+			[
+				"does",
+				"doesPointCollideWithStructure"
 			],
 			[
 				"poi",
-				"points"
+				"pointContained"
+			],
+			[
+				"pont",
+				"pointList"
+			],
+			[
+				"is",
+				"isPointContained"
+			],
+			[
+				"get",
+				"getCentroid"
+			],
+			[
+				"rand",
+				"randomFaceOrder"
+			],
+			[
+				"ran",
+				"randomFaceOrder"
+			],
+			[
+				"Tet",
+				"TetrahedronCollisionException"
+			],
+			[
+				"Sys",
+				"System.out.println(\"Break"
+			],
+			[
+				"Obje",
+				"Object.obj"
+			],
+			[
+				"tet",
+				"tetraCount"
 			],
 			[
 				"pr",
-				"println"
+				"private"
+			],
+			[
+				"point",
+				"pointList"
+			],
+			[
+				"poin",
+				"pointList"
+			],
+			[
+				"conta",
+				"contains\t(ObjFileBuilder.java)"
 			],
 			[
 				"Strin",
@@ -28,24 +80,8 @@
 				"breakCondition"
 			],
 			[
-				"poin",
-				"pointOnLine"
-			],
-			[
 				"check",
 				"checkCollisionOfLine"
-			],
-			[
-				"point",
-				"pointAlongLine"
-			],
-			[
-				"is",
-				"isCovered\t(Triangle.java)"
-			],
-			[
-				"tet",
-				"tetraList"
 			],
 			[
 				"tetra",
@@ -478,81 +514,11 @@
 			[
 				"E",
 				"EXPEDTED"
-			],
-			[
-				"number",
-				"numberOfCharacters"
-			],
-			[
-				"char",
-				"characteristicDigitCount"
-			],
-			[
-				"print",
-				"printMessage"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "Driver.java",
-			"settings":
-			{
-				"buffer_size": 201,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Tetrahedron.java",
-			"settings":
-			{
-				"buffer_size": 9731,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "public class Tetrahedron"
-			}
-		},
-		{
-			"file": "Structure.java",
-			"settings":
-			{
-				"buffer_size": 1539,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "public class Structure"
-			}
-		},
-		{
-			"contents": "import java.util.*;\nimport java.io.*;\n\npublic class ObjFileBuilder\n{\n\tArrayList<String> normals;\n\tArrayList<String> verticies;\n\tArrayList<String> faces;\n\n\tpublic ObjFileBuilder()\n\t{\n\t\tthis.normals = new ArrayList<String>();\n\t\tthis.verticies = new ArrayList<String>();\n\t\tthis.faces = new ArrayList<String>();\n\t}\n\n\tpublic void add(Tetrahedron t)\n\t{\n\t\t// For each triangle in the tetrahedron\n\t\tfor (int i = 0; i < 4; i++)\n\t\t{\n\t\t\tTriangle face = t.getFace(i);\n\n\t\t\t// Gets the position of the vertex if it exists, if not then\n\t\t\t//  add it and return the index of the newly added vertex\n\t\t\tint one   = addVertex(face.a.toString());\n\t\t\tint two   = addVertex(face.b.toString());\n\t\t\tint three = addVertex(face.c.toString());\n\n\t\t\tnormals.add(\"vn \" + face.getNormal().toString() + \"\\n\");\n\n\t\t\tStringBuilder str = new StringBuilder();\n\n\t\t\tstr.append(\"f \");\n\t\t\tstr.append(one   + \"//\" + normals.size() + \" \");\n\t\t\tstr.append(two   + \"//\" + normals.size() + \" \");\n\t\t\tstr.append(three + \"//\" + normals.size() + \"\\n\");\n\n\t\t\tfaces.add(str.toString());\n\t\t}\n\t}\n\n\tpublic void save(String path)\n\t{\n\t\tif (path == null)\n\t\t{\n\t\t\t// Defualt file path\n\t\t\tpath = \"./Object.obj\";\n\t\t}\n\n\t\ttry \n\t\t{\n\t\t\tFileWriter fileWriter = new FileWriter(path);\n\n\t\t\tBufferedWriter bufferedWriter = new BufferedWriter(fileWriter);\n\n\t\t\tfor (String s : verticies)\n\t\t\t{\n\t\t\t\tbufferedWriter.write(s);\n\t\t\t}\n\n\t\t\tfor (String s : normals)\n\t\t\t{\n\t\t\t\tbufferedWriter.write(s);\n\t\t\t}\n\n\t\t\tfor (String s : faces)\n\t\t\t{\n\t\t\t\tbufferedWriter.write(s);\n\t\t\t}\n\n\t\t\tbufferedWriter.close();\n\t\t}\n\t\tcatch (Exception error)\n\t\t{\n\t\t\terror.printStackTrace();\n\t\t}\n\t}\n\n\tprivate int addVertex(String vertex)\n\t{\n\t\tint retVal = 0;\n\n\t\tvertex = \"v \" + vertex + \"\\n\";\n\n\t\tif (verticies.contains(vertex))\n\t\t{\n\t\t\tretVal = verticies.indexOf(vertex) + 1;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tverticies.add(vertex);\n\t\t\tretVal = verticies.size();\n\t\t}\n\n\t\treturn retVal;\n\t}\n\t\n}",
-			"file": "ObjFileBuilder.java",
-			"file_size": 1858,
-			"file_write_time": 131640670034687417,
-			"settings":
-			{
-				"buffer_size": 1858,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Triangle.java",
-			"settings":
-			{
-				"buffer_size": 2852,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Vec3.java",
-			"settings":
-			{
-				"buffer_size": 4887,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -561,10 +527,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 161.0,
-		"last_filter": "Package Control: in",
+		"height": 342.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"About"
+			],
 			[
 				"Package Control: in",
 				"Package Control: Install Package"
@@ -586,7 +556,7 @@
 				"Package Control: List Packages"
 			]
 		],
-		"width": 441.0
+		"width": 433.0
 	},
 	"console":
 	{
@@ -612,14 +582,29 @@
 	],
 	"file_history":
 	[
-		"/home/austin/Documents/ObjCreation/run.sh",
+		"/home/austin/Documents/ObjCreation/Tetrahedron.java",
+		"/home/austin/Documents/ObjCreation/Structure.java",
+		"/home/austin/Documents/ObjCreation/Driver.java",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
+		"/home/austin/Desktop/tmp/structure.hpp",
+		"/home/austin/Desktop/tmp/defaults.hpp",
+		"/home/austin/Desktop/tmp/client.cpp",
+		"/home/austin/Desktop/tmp/server.cpp",
+		"/home/austin/Documents/ObjCreation/Vec3.java",
+		"/home/austin/Documents/ObjCreation/Object.obj",
 		"/home/austin/Documents/ObjCreation/Triangle.java",
+		"/home/austin/Documents/ObjCreation/ObjFileBuilder.java",
+		"/home/austin/Downloads/chemberry-master/SerialConnection.java",
+		"/home/austin/Desktop/dump.txt",
+		"/home/austin/Documents/ObjCreation/run.sh",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/comp.sh",
 		"/home/austin/Documents/ObjCreation/NoValidSpaces.java",
+		"/home/austin/Documents/ObjCreation/TetrahedronCollisionException.java",
+		"/home/austin/Documents/ObjCreation/Trashbin.txt",
 		"/home/austin/Documents/ObjCreation/MANIFEST.MF",
 		"/home/austin/Documents/ObjCreation/tetra.obj",
 		"/home/austin/Documents/Linux_Tutorial",
 		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra.obj",
-		"/home/austin/Documents/ObjCreation/ObjFileBuilder.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
 		"/home/austin/Documents/ObjCreation/Driver.class",
 		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra_test.obj",
@@ -724,26 +709,11 @@
 		"/home/austin/Desktop/test.obj",
 		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Driver.java",
 		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Card.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Table.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/DeckException.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Deck.java",
-		"/home/austin/Desktop/DailyChallanges/MessingWithGolang/uint.go",
-		"/home/austin/Desktop/DailyChallanges/MessingWithGolang/DataStructs/LinkedList.go",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Evaluator.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Layer.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/ObjFileBuilder.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Vec.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Structure.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Dna.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Driver.java",
-		"/home/austin/Desktop/SoftwareDev/Driver.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/DNA.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Dna.class",
-		"/home/austin/Documents/Float-Math-With-Ints/charMantissaDriver.cpp"
+		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Table.java"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -757,6 +727,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Device",
+			"covered",
 			"getFourth",
 			"temp",
 			"glm::",
@@ -797,7 +769,7 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
 		],
@@ -810,203 +782,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Driver.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 201,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19,
-								19
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Tetrahedron.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8309,
-								8309
-							]
-						],
-						"settings":
-						{
-							"auto_name": "public class Tetrahedron",
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3960.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Structure.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1048,
-								1048
-							]
-						],
-						"settings":
-						{
-							"auto_name": "public class Structure",
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 342.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "ObjFileBuilder.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1858,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1543,
-								1543
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 675.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Triangle.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2852,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2159,
-								2159
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 366.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Vec3.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4887,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								932,
-								932
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 41.0
 	},
 	"input":
 	{
@@ -1043,7 +826,7 @@
 	"project": "ObjCreator.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 78.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1053,12 +836,20 @@
 		"selected_items":
 		[
 			[
-				"tr",
-				"Triangle.java"
+				"",
+				"Tetrahedron.java"
 			],
 			[
-				"",
-				"ObjFileBuilder.java"
+				"tet",
+				"Tetrahedron.java"
+			],
+			[
+				"v",
+				"Vec3.java"
+			],
+			[
+				"tr",
+				"Triangle.java"
 			]
 		],
 		"width": 0.0
