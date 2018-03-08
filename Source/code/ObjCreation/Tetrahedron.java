@@ -93,7 +93,8 @@ public class Tetrahedron
 			{
 				if (i == 3)
 				{
-					System.out.println("Continue on last iteration. " + exception);
+					//System.out.println("Continue on last iteration. " + exception);
+					exception = new NoValidSpaces();
 				}
 				continue;
 			}

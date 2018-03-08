@@ -163,6 +163,24 @@ public class Triangle
 		return retVal;
 	}
 
+	public double getArea()
+	{
+		double retVal = -1;
+
+		double alen = Vec3.dist(a, b);
+		double blen = Vec3.dist(b, c);
+		double clen = Vec3.dist(c, a);
+
+		retVal  = (alen + blen + clen)/2;
+		retVal *= ((alen + blen + clen)/2) - alen;
+		retVal *= ((alen + blen + clen)/2) - blen;
+		retVal *= ((alen + blen + clen)/2) - clen;
+
+		retVal = Math.sqrt(retVal);
+
+		return retVal;
+	}
+
 	@Override
 	public String toString()
 	{

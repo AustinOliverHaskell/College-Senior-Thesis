@@ -16,7 +16,7 @@ public class Structure
 	Structure()
 	{
 		// Deafult Values
-		tetraCount = 100;
+		tetraCount = 200;
 		mutationRate = 0.01f;
 		tetraList = new ArrayList<Tetrahedron>();
 
