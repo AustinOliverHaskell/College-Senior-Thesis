@@ -1,8 +1,4 @@
 #include "./h/glHeader.h"
-#include "./h/Graphics.h"
-#include "./h/shapeData.h"
-#include "./h/Cube.h"
-#include "./h/Plane.h"
 #include "./h/Controls.h"
 #include "./h/defs.h"
 #include "./h/FileLoader.h"
@@ -47,7 +43,8 @@ void Graphics::openWindow()
 	window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, windowName.c_str(), NULL, NULL);
 
 	// Check to make sure that the window handle was created succesfully
-	if( window == NULL ){
+	if( window == NULL )
+	{
 		fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
 		glfwTerminate();
 		return;
@@ -75,7 +72,6 @@ void Graphics::setupGL()
 	// White background
 	glClearColor(0.4f, 0.4f, 0.6f, 0.0f);
 
-
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -83,6 +79,7 @@ void Graphics::setupGL()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
+	//glDisable(GL_CULL_FACE);
 
 	// Compile shaders
 	GLuint shaders = loadShaders("./shaders/lightShader.vertexshader", "./shaders/lightShader.fragmentshader");
@@ -105,29 +102,39 @@ void Graphics::setupGL()
 	//m1 = translate(m1, vec3(-5.0f, -5.0f, -5.0f));
 	//m1 = scale(mat4(), vec3(0.25f, 0.25f, 0.25f)); 
 
-	glm::mat4 m2 = translate(glm::mat4(), vec3(-2.0f, -1.01f, -2.0f));
-	glm::mat4 m3 = translate(glm::mat4(), vec3(8.0f, 0.0f, 8.0f));
+	mat4 m2 = translate(mat4(), vec3(-2.0f, -1.01f, -2.0f));
+	mat4 m3 = translate(mat4(), vec3(8.0f, 0.0f, 8.0f));
 	//Model3 = translate(Model3, vec3(0.0f, -1.0f, 0.0f));
 	// Our ModelViewProjection : multiplication of our 3 matrices
 
 	// Could wrap this in some kind of "Object Manager", but thats not needed for this assignment
-	Model * model = new Model(shaders, "./obj/cube.obj");
+	Model * model = new Model(shaders, "./obj/Object.obj");
 	GraphicDebugger * debugger = new GraphicDebugger();
-	Model * sphere = new Model(shaders, "./obj/sphere.obj");
-	Model * custom = new Model(solidShader, "./obj/random_multi_layer_test.obj", true);
+	Model * sphere = new Model(solidShader, "./obj/sphere.obj");
+	//Model * noNormalCube = new Model(shaders, "./obj/no_normals_cube.obj", true);
+	Model * lightSource = new Model(solidShader, "./obj/sphere.obj");
+	//Model * custom = new Model(solidShader, "./obj/random_multi_layer_test.obj", true);
 
-	model ->initBuffers();
-	sphere->initBuffers();
-	custom->initBuffers();
 
-	glUseProgram(shaders);
+	model ->initBuffers(MatrixID, ViewMatrixID, ModelMatrixID);
+	sphere->initBuffers(MatrixID, ViewMatrixID, ModelMatrixID);
+
+	// This object is for testing the normal calculations
+	//noNormalCube->initBuffers(MatrixID, ViewMatrixID, ModelMatrixID);
+
+	lightSource->initBuffers(colorID, colorViewMatrixID, colorModelMatrixID);
+	//custom->initBuffers(MatrixID, ViewMatrixID, ModelMatrixID);
+
 	GLuint LightID = glGetUniformLocation(shaders, "LightPosition_worldspace");
 
-	// Not changing, no need to put it in the loop like the 
-	//  tutorial does.
-	glm::vec3 lightPos = glm::vec3(3, 3, 3);
+	vec3 lightPos = vec3(3, 3, 3);
+	mat4 lightMat = translate(mat4(), lightPos);
+	lightMat = scale(lightMat, vec3(0.5f, 0.5f, 0.5f));
+
+	sphere->setColor(0.5f, 0.5f, 1.0f);
 
 	do {
+
 
 		// Clear the screen
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -139,43 +146,17 @@ void Graphics::setupGL()
 
 		glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
 
-
 		if (glfwGetKey( window, GLFW_KEY_Q) == GLFW_PRESS)
 		{
 			debugger->showFPS();
 		}
 
-		// Get matricies
-		mat4 viewMatrix = controls->getViewMatrix();
-		mat4 modelMatrix = m1;
-		mat4 projectionMatrix = controls->getProjectionMatrix();
-		mat4 MVP = projectionMatrix * viewMatrix * m1;
+		model->draw(controls, m1);
+		//sphere->draw(controls, m2);
 
-
-		// Could this be an inline function?
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
-		glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
-
-
-		model->draw();
-
-		modelMatrix = m2;
-		MVP = projectionMatrix * viewMatrix * m2;
-
-		glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-		glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
-		
-		sphere->draw();
-
-		modelMatrix = m3;
-		MVP = projectionMatrix * viewMatrix * m3;
-
-		glUniformMatrix4fv(colorID, 1, GL_FALSE, &MVP[0][0]);
-		glUniformMatrix4fv(colorModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
-		glUniformMatrix4fv(colorViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
-
-		//custom->draw();
+		//noNormalCube->draw(controls, m3);
+		//lightSource->draw(controls, lightMat);
+		//custom->draw(controls, m3);
 
 		// Swap buffers
 		glfwSwapBuffers(window);
@@ -185,6 +166,8 @@ void Graphics::setupGL()
 
 
 	// Cleanup, each of these objects knows how to clear its own buffers
+	//delete noNormalCube;
+	delete sphere;
 	delete model;
 	delete debugger;
 
