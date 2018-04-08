@@ -54,10 +54,10 @@ public class Driver extends Thread
 
 		if (Debug.isEnabled())
 		{
-			Debug.logs("Running Test Suite...");
-			TestingSuite.runAllTests();
-			Debug.logs("Testing suite complete!");
-			Debug.logs("");
+		/*Debug.logs("Running Test Suite...");
+		TestingSuite.runAllTests();
+		Debug.logs("Testing suite complete!");
+		Debug.logs("");*/
 		}
 
 		System.out.println("Simulation starting...");
@@ -147,10 +147,10 @@ public class Driver extends Thread
 		while (!workQueue.isEmpty())
 		{
 			Structure s = workQueue.poll();
-			Evaluator eval = new Evaluator(s);
+			//Evaluator eval = new Evaluator(s);
 
 			System.out.println("Working on: " + s.getId());
-			//s.save("../compiled/obj/");
+			s.save("../compiled/obj/");
 			count++;
 
 			// TODO: Uncomment this when the openGL stuffs works

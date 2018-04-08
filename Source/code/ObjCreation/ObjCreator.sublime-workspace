@@ -4,48 +4,252 @@
 		"selected_items":
 		[
 			[
-				"physics",
-				"PhysicsEngine"
+				"System",
+				"System.out.println"
 			],
 			[
-				"buil",
-				"builderThread"
+				"Cl",
+				"ClientDatagram"
 			],
 			[
-				"bui",
-				"builderThread"
+				"break",
+				"breakCondition"
 			],
 			[
-				"new",
-				"newStructure"
+				"does",
+				"doesPointCollideWithStructure"
+			],
+			[
+				"poi",
+				"pointContained"
+			],
+			[
+				"pont",
+				"pointList"
+			],
+			[
+				"is",
+				"isPointContained"
 			],
 			[
 				"get",
-				"getId"
+				"getCentroid"
 			],
 			[
-				"threa",
-				"threadsAlive"
+				"rand",
+				"randomFaceOrder"
 			],
 			[
-				"th",
-				"threadList"
+				"ran",
+				"randomFaceOrder"
 			],
 			[
-				"thread",
-				"threadList"
+				"Tet",
+				"TetrahedronCollisionException"
 			],
 			[
-				"work",
-				"workQueue"
+				"Sys",
+				"System.out.println(\"Break"
 			],
 			[
-				"Eval",
-				"Evaluator"
+				"Obje",
+				"Object.obj"
 			],
 			[
-				"JP",
-				"JProgressBar"
+				"tet",
+				"tetraCount"
+			],
+			[
+				"pr",
+				"private"
+			],
+			[
+				"point",
+				"pointList"
+			],
+			[
+				"poin",
+				"pointList"
+			],
+			[
+				"conta",
+				"contains\t(ObjFileBuilder.java)"
+			],
+			[
+				"Strin",
+				"StringBuilder\t(ObjFileBuilder.java)"
+			],
+			[
+				"brea",
+				"breakCondition"
+			],
+			[
+				"check",
+				"checkCollisionOfLine"
+			],
+			[
+				"tetra",
+				"tetraList"
+			],
+			[
+				"next",
+				"nextInt\t(Tetrahedron.java)"
+			],
+			[
+				"No",
+				"NoValidSpaces"
+			],
+			[
+				"make",
+				"makeFirstTetra"
+			],
+			[
+				"Ob",
+				"ObjFileBuilder"
+			],
+			[
+				"Obj",
+				"ObjFileBuilder\t(Driver.java)"
+			],
+			[
+				"det",
+				"determantants"
+			],
+			[
+				"are",
+				"areSignsSame"
+			],
+			[
+				"b",
+				"b"
+			],
+			[
+				"getF",
+				"getFourthPoint"
+			],
+			[
+				"end",
+				"endPoint"
+			],
+			[
+				"add",
+				"addVertex"
+			],
+			[
+				"index",
+				"indexOf\t(Triangle.java)"
+			],
+			[
+				"dis",
+				"distanceTest"
+			],
+			[
+				"to",
+				"toRadians"
+			],
+			[
+				"face",
+				"facelist"
+			],
+			[
+				"set",
+				"setCovered\t(Triangle.java)"
+			],
+			[
+				"int",
+				"intermediate"
+			],
+			[
+				"norm",
+				"normals"
+			],
+			[
+				"tri",
+				"triVerticies"
+			],
+			[
+				"ed",
+				"edgeList"
+			],
+			[
+				"thi",
+				"third"
+			],
+			[
+				"edge",
+				"edgeList"
+			],
+			[
+				"Tr",
+				"Triangle"
+			],
+			[
+				"calc",
+				"CalcNormal"
+			],
+			[
+				"nomr",
+				"normalize\t(Vec3.java)"
+			],
+			[
+				"vert",
+				"verticies"
+			],
+			[
+				"vertex",
+				"vertexData"
+			],
+			[
+				"Mod",
+				"ModelMatrixID"
+			],
+			[
+				"model",
+				"modelMatrix"
+			],
+			[
+				"MV",
+				"MVP2"
+			],
+			[
+				"View",
+				"ViewMatrixID"
+			],
+			[
+				"light",
+				"lightMat"
+			],
+			[
+				"ligh",
+				"lightPos"
+			],
+			[
+				"pro",
+				"projectionMatrix"
+			],
+			[
+				"color",
+				"colorViewMatrixID"
+			],
+			[
+				"edg",
+				"edgeOne"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"nor",
+				"normalize"
+			],
+			[
+				"init",
+				"initBuffers"
+			],
+			[
+				"shar",
+				"shaders"
 			],
 			[
 				"wind",
@@ -76,10 +280,6 @@
 				"dnaLayers"
 			],
 			[
-				"Obj",
-				"ObjFileBuilder"
-			],
-			[
 				"Str",
 				"Structure"
 			],
@@ -100,20 +300,12 @@
 				"bodyFont"
 			],
 			[
-				"to",
-				"toString"
-			],
-			[
 				"test",
 				"testEvaluator"
 			],
 			[
 				"s",
 				"structure"
-			],
-			[
-				"are",
-				"area"
 			],
 			[
 				"rad",
@@ -152,16 +344,16 @@
 				"lBulletSoftBody"
 			],
 			[
-				"set",
-				"setZIndex"
-			],
-			[
 				"ab",
 				"abstract"
 			],
 			[
 				"layer",
 				"layer3"
+			],
+			[
+				"new",
+				"newIndex"
 			],
 			[
 				"z",
@@ -268,10 +460,6 @@
 				"StringBuilder"
 			],
 			[
-				"is",
-				"isPixelOnLine"
-			],
-			[
 				"st",
 				"startPoint"
 			],
@@ -294,10 +482,6 @@
 			[
 				"has",
 				"hasBlue"
-			],
-			[
-				"end",
-				"endX"
 			],
 			[
 				"start",
@@ -330,59 +514,42 @@
 			[
 				"ret",
 				"retVal"
-			],
-			[
-				"E",
-				"EXPEDTED"
-			],
-			[
-				"number",
-				"numberOfCharacters"
-			],
-			[
-				"char",
-				"characteristicDigitCount"
-			],
-			[
-				"print",
-				"printMessage"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "code/Vec.java",
+			"file": "Tetrahedron.java",
 			"settings":
 			{
-				"buffer_size": 1617,
+				"buffer_size": 11256,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "code/comp.sh",
+			"file": "Triangle.java",
 			"settings":
 			{
-				"buffer_size": 1528,
+				"buffer_size": 4124,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "code/Layer.java",
+			"file": "Vec3.java",
 			"settings":
 			{
-				"buffer_size": 8128,
-				"encoding": "UTF-8",
+				"buffer_size": 5261,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "code/Driver.java",
+			"file": "Structure.java",
 			"settings":
 			{
-				"buffer_size": 4275,
+				"buffer_size": 1741,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -395,25 +562,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 265.0,
-		"last_filter": "insta",
+		"height": 342.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"insta",
-				"Package Control: Install Package"
+				"",
+				"About"
 			],
 			[
-				"inst",
+				"Package Control: in",
 				"Package Control: Install Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control",
-				"Install Package Control"
 			],
 			[
 				"Package Control: ",
@@ -432,7 +591,7 @@
 				"Package Control: List Packages"
 			]
 		],
-		"width": 409.0
+		"width": 433.0
 	},
 	"console":
 	{
@@ -454,30 +613,63 @@
 	},
 	"expanded_folders":
 	[
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/o",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/o/shaders",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/docs"
+		"/home/austin/Documents/ObjCreation"
 	],
 	"file_history":
 	[
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/A5NJTQGJD_I5H34Y2U8JO_QSP.obj",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/common/Controls.cpp",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/comp.sh",
+		"/home/austin/Documents/ObjCreation/Tetrahedron.java",
+		"/home/austin/Documents/ObjCreation/Structure.java",
+		"/home/austin/Documents/ObjCreation/Driver.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Driver.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/GUI.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/glHeaders.h",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/TestingSuite.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Structure.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Evaluator.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/AltObjFileBuilder.java",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/shader.h",
-		"/home/austin/Documents/LearningOpenGL/LearningOpenGL/src/obj/random_multi_layer_test.obj",
-		"/home/austin/Documents/LearningOpenGL/LearningOpenGL/src/obj/cube.obj",
+		"/home/austin/Desktop/tmp/structure.hpp",
+		"/home/austin/Desktop/tmp/defaults.hpp",
+		"/home/austin/Desktop/tmp/client.cpp",
+		"/home/austin/Desktop/tmp/server.cpp",
+		"/home/austin/Documents/ObjCreation/Vec3.java",
+		"/home/austin/Documents/ObjCreation/Object.obj",
+		"/home/austin/Documents/ObjCreation/Triangle.java",
+		"/home/austin/Documents/ObjCreation/ObjFileBuilder.java",
+		"/home/austin/Downloads/chemberry-master/SerialConnection.java",
+		"/home/austin/Desktop/dump.txt",
+		"/home/austin/Documents/ObjCreation/run.sh",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/comp.sh",
+		"/home/austin/Documents/ObjCreation/NoValidSpaces.java",
+		"/home/austin/Documents/ObjCreation/TetrahedronCollisionException.java",
+		"/home/austin/Documents/ObjCreation/Trashbin.txt",
+		"/home/austin/Documents/ObjCreation/MANIFEST.MF",
+		"/home/austin/Documents/ObjCreation/tetra.obj",
+		"/home/austin/Documents/Linux_Tutorial",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra.obj",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
+		"/home/austin/Documents/ObjCreation/Driver.class",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra_test.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/cube.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/FileLoader.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/makefile.make",
+		"/home/austin/Documents/repos/LearningOpenGL/src/h/Model.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Model.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/objLoaders/objload.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/h/FileLoader.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/shaders/lightShader.fragmentshader",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Graphics.cpp",
+		"/home/austin/Documents/AnimeList",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Cube.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Controls.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/main.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/no_normals_cube.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/sphere.obj",
+		"/home/austin/Documents/gl/LearningOpenGL/src/controls.h",
+		"/home/austin/Documents/gl/LearningOpenGL/src/Cube.h",
+		"/home/austin/Documents/gl/LearningOpenGL/src/Graphics.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
+		"/home/austin/Documents/gl/LearningOpenGL/src/makefile.make",
+		"/home/austin/Desktop/learningOpenGL/cube.cpp",
+		"/home/austin/Desktop/learningOpenGL/cube.h",
+		"/home/austin/Desktop/learningOpenGL/glHeader.h",
+		"/home/austin/Desktop/learningOpenGL/Driver",
+		"/home/austin/Desktop/learningOpenGL/shapeData.h",
+		"/home/austin/Desktop/learningOpenGL/makefile.make",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/Simulation.cpp",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Debug.java",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Dna.java",
 		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/Compare.html",
@@ -485,12 +677,9 @@
 		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/sassyScript.sh",
 		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/front.scss",
 		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/main.scss",
-		"/home/austin/Desktop/learningOpenGL/glHeader.h",
 		"/home/austin/Desktop/learningOpenGL/Graphics.cpp",
 		"/home/austin/Desktop/learningOpenGL/main.cpp",
 		"/home/austin/Desktop/learningOpenGL/Graphics.h",
-		"/home/austin/Desktop/learningOpenGL/makefile.make",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/Simulation.cpp",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shader.cpp",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shaders/SimpleVertexShader.vertexshader",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shaders/SimpleTransform.vertexshader",
@@ -501,7 +690,6 @@
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/glHeaders.h",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/Simulation.h",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/comp.sh",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/6PAMN9B2_FJE9__F2Y6IRRT4P.obj",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/random_multi_layer_test.obj",
@@ -556,45 +744,11 @@
 		"/home/austin/Desktop/test.obj",
 		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Driver.java",
 		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Card.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Table.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/DeckException.java",
-		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Deck.java",
-		"/home/austin/Desktop/DailyChallanges/MessingWithGolang/uint.go",
-		"/home/austin/Desktop/DailyChallanges/MessingWithGolang/DataStructs/LinkedList.go",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Evaluator.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Layer.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/ObjFileBuilder.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Vec.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Structure.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Dna.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Driver.java",
-		"/home/austin/Desktop/SoftwareDev/Driver.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/DNA.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/Dna.class",
-		"/home/austin/Documents/Float-Math-With-Ints/charMantissaDriver.cpp",
-		"/home/austin/Documents/Float-Math-With-Ints/Divide.h",
-		"/home/austin/Desktop/DailyChallanges/AddingCalculator/DailyChallange331_test.go",
-		"/home/austin/Desktop/Thesis/Java/Driver.java",
-		"/home/austin/Downloads/p4/server.rb",
-		"/home/austin/Downloads/p4/public/script.js",
-		"/home/austin/Downloads/p4/public/main.css",
-		"/home/austin/Downloads/p4/public/index.html",
-		"/home/austin/Downloads/p4/defs.rb",
-		"/home/austin/Desktop/DailyChallanges/MessingWithGolang/IOTest.go",
-		"/home/austin/Documents/Float-Math-With-Ints/subtract.h",
-		"/home/austin/Documents/Float-Math-With-Ints/multiply.h",
-		"/home/austin/Documents/Float-Math-With-Ints/mantissa.h",
-		"/home/austin/Documents/Float-Math-With-Ints/header.h",
-		"/home/austin/Documents/Float-Math-With-Ints/characteristic.h",
-		"/home/austin/Documents/Float-Math-With-Ints/add.h",
-		"/home/austin/Documents/Float-Math-With-Ints/multiply.c",
-		"/home/austin/Desktop/DailyChallanges/DailyChallange331_test.go",
-		"/home/austin/Desktop/DailyChallanges/DailyChallange331.go",
-		"/home/austin/Desktop/DailyChallanges/DailyChallange333.go"
+		"/home/austin/Desktop/SoftwareDev/Deck Project/DeckProgramPair/Table.java"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -608,7 +762,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"int$",
+			"doesPointCollideWithStructure",
+			"Device",
+			"covered",
+			"getFourth",
+			"temp",
+			"glm::",
 			"h",
 			"\t\n",
 			"fork",
@@ -659,115 +818,123 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "code/Vec.java",
+					"file": "Tetrahedron.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1617,
+						"buffer_size": 11256,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1539,
-								1539
+								2765,
+								2765
 							]
 						],
 						"settings":
 						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
 							"syntax": "Packages/Java/Java.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 972.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "code/comp.sh",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1528,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								991,
-								991
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "code/Layer.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								888,
-								888
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1104.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "code/Driver.java",
+					"buffer": 1,
+					"file": "Triangle.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4275,
+						"buffer_size": 4124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1709,
-								1709
+								3120,
+								3120
 							]
 						],
 						"settings":
 						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1920.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Vec3.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 384.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Structure.java",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1741,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								312,
+								312
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
 							"syntax": "Packages/Java/Java.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -775,7 +942,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -783,7 +950,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 41.0
 	},
 	"input":
 	{
@@ -817,10 +984,10 @@
 		"height": 0.0
 	},
 	"pinned_build_system": "",
-	"project": "thesis.sublime-project",
+	"project": "ObjCreator.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 78.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -829,6 +996,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"Tetrahedron.java"
+			],
+			[
+				"tet",
+				"Tetrahedron.java"
+			],
+			[
+				"v",
+				"Vec3.java"
+			],
+			[
+				"tr",
+				"Triangle.java"
+			]
 		],
 		"width": 0.0
 	},
@@ -858,7 +1041,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 168.0,
+	"side_bar_width": 154.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

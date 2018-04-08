@@ -52,7 +52,7 @@ if [ $answer = "y" ]
 		echo "-> Starting Program..."
 		echo " vvvvvvvvvvvvvvvvvvvv "
 		echo ""
-		java -ea -cp ../compiled/ austin.structures.Driver 100 1
+		java -ea -cp ../compiled/ austin.structures.Driver 10 1
 		echo ""
 		echo " ^^^^^^^^^^^^^^^^^^^^ "
 		echo "---> Program run complete..."

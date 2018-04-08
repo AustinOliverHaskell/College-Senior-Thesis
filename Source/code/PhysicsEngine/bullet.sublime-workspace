@@ -1,0 +1,1067 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"step",
+				"stepSimulation"
+			],
+			[
+				"COnst",
+				"Constants.h\t(main.cpp)"
+			],
+			[
+				"Const",
+				"Constants.h\t(main.cpp)"
+			],
+			[
+				"tra",
+				"trans"
+			],
+			[
+				"btDefualt",
+				"btDefaultMotionState\t(Model.cpp)"
+			],
+			[
+				"setColl",
+				"setCollisionShape\t(Model.cpp)"
+			],
+			[
+				"getUser",
+				"getUserPointer"
+			],
+			[
+				"setUser",
+				"setUserPointer\t(Model.cpp)"
+			],
+			[
+				"numChi",
+				"getNumChildShapes"
+			],
+			[
+				"old",
+				"oldCompound"
+			],
+			[
+				"getNu",
+				"getNumChildShapes"
+			],
+			[
+				"getChi",
+				"getChildShape"
+			],
+			[
+				"btFra",
+				"btFractureDynamicsWorld"
+			],
+			[
+				"getTra",
+				"getWorldTransform"
+			],
+			[
+				"temp",
+				"tempRender\t(btFractureDynamicsWorld.h)"
+			],
+			[
+				"null",
+				"nullptr\t(World.cpp)"
+			],
+			[
+				"m_fra",
+				"m_fractureBodies"
+			],
+			[
+				"frac",
+				"fracObj"
+			],
+			[
+				"new",
+				"newBody"
+			],
+			[
+				"it",
+				"it"
+			],
+			[
+				"getChil",
+				"getChildTransform\t(btFractureBody.cpp)"
+			],
+			[
+				"btColl",
+				"btCollisionShape\t(Model.cpp)"
+			],
+			[
+				"getchi",
+				"getNumChildShapes\t(btFractureBody.cpp)"
+			],
+			[
+				"draw",
+				"drawWithDebugging"
+			],
+			[
+				"newState",
+				"newStateG"
+			],
+			[
+				"oldSt",
+				"oldStateG"
+			],
+			[
+				"apply",
+				"applyImpulse\t(btFractureDynamicsWorld.cpp)"
+			],
+			[
+				"break",
+				"breakStructure\t(Structure.cpp)"
+			],
+			[
+				"recom",
+				"recomputeConnectivity\t(btFractureDynamicsWorld.cpp)"
+			],
+			[
+				"lRay",
+				"lRayStart_world"
+			],
+			[
+				"WI",
+				"WINDOW_HEIGHT"
+			],
+			[
+				"WIN",
+				"WINDOW_WIDTH"
+			],
+			[
+				"WIND",
+				"WINDOW_WIDTH"
+			],
+			[
+				"mouse",
+				"mouseY"
+			],
+			[
+				"getR",
+				"getRigidBody\t(World.cpp)"
+			],
+			[
+				"glue",
+				"glueCallback"
+			],
+			[
+				"getFr",
+				"getFractureMode"
+			],
+			[
+				"setFr",
+				"setFractureMode"
+			],
+			[
+				"get",
+				"getFractureMode\t(FractureDemo.cpp)"
+			],
+			[
+				"dya",
+				"dynamicsWorld"
+			],
+			[
+				"getP",
+				"getPhysicsWorld\t(World.h)"
+			],
+			[
+				"shap",
+				"shape"
+			],
+			[
+				"tran",
+				"transformDraw"
+			],
+			[
+				"btFrac",
+				"btFractureDynamicsWorld\t(World.h)"
+			],
+			[
+				"bt",
+				"btQuaternion\t(Model.cpp)"
+			],
+			[
+				"trans",
+				"transformDraw\t(Model.cpp)"
+			],
+			[
+				"contr",
+				"controls"
+			],
+			[
+				"color",
+				"colorList"
+			],
+			[
+				"debug",
+				"debugdrawer"
+			],
+			[
+				"load",
+				"loadShaders\t(World.cpp)"
+			],
+			[
+				"deb",
+				"debugDrawWorld\t(c_DebugDraw.h)"
+			],
+			[
+				"in",
+				"inertia"
+			],
+			[
+				"calc",
+				"calculateLocalInertia\t(btFractureBody.cpp)"
+			],
+			[
+				"struc",
+				"structures"
+			],
+			[
+				"stru",
+				"structures"
+			],
+			[
+				"getD",
+				"getDynamicsWorld\t(World.cpp)"
+			],
+			[
+				"rigi",
+				"rigidBody"
+			],
+			[
+				"btRigi",
+				"btRigidBodyConstructionInfo\t(btFractureBody.h)"
+			],
+			[
+				"btDef",
+				"btDefaultMotionState\t(btFractureBody.cpp)"
+			],
+			[
+				"glLine",
+				"glLineWidth(2.5f"
+			],
+			[
+				"Frac",
+				"FractureDemo.h\t(FractureDemo.cpp)"
+			],
+			[
+				"conf",
+				"configureRigidBody\t(Model.h)"
+			],
+			[
+				"use",
+				"glUseProgram"
+			],
+			[
+				"mode",
+				"modelMatrix"
+			],
+			[
+				"defa",
+				"defaultShader"
+			],
+			[
+				"defu",
+				"defaultShader\t(World.h)"
+			],
+			[
+				"dyna",
+				"dynamicsWorld"
+			],
+			[
+				"face",
+				"faceCount"
+			],
+			[
+				"setRo",
+				"setRollingFriction\t(main.cpp)"
+			],
+			[
+				"getVer",
+				"getVertexCount"
+			],
+			[
+				"getCo",
+				"getColorCount"
+			],
+			[
+				"getVe",
+				"getVertexCount"
+			],
+			[
+				"verte",
+				"vertexCount"
+			],
+			[
+				"add",
+				"addToWorld\t(Structure.h)"
+			],
+			[
+				"getO",
+				"getObjectData\t(Model.cpp)"
+			],
+			[
+				"gl",
+				"glHeader.h\t(Model.h)"
+			],
+			[
+				"setCol",
+				"setColorData\t(Model.h)"
+			],
+			[
+				"open",
+				"openFile\t(Model.cpp)"
+			],
+			[
+				"model",
+				"models"
+			],
+			[
+				"Fil",
+				"FileLoader"
+			],
+			[
+				"File",
+				"FileLoader\t(Model.cpp)"
+			],
+			[
+				"mesh",
+				"meshCollision"
+			],
+			[
+				"is",
+				"isCopy"
+			],
+			[
+				"other",
+				"otherColorData"
+			],
+			[
+				"getNor",
+				"getNormalData"
+			],
+			[
+				"Ve",
+				"vector"
+			],
+			[
+				"norm",
+				"normalData"
+			],
+			[
+				"getS",
+				"getShapeData"
+			],
+			[
+				"GL",
+				"GLfloat"
+			],
+			[
+				"vec",
+				"vector\tstd::vector"
+			],
+			[
+				"getRo",
+				"getRollingFriction"
+			],
+			[
+				"getNo",
+				"getNormalData"
+			],
+			[
+				"nor",
+				"normalData"
+			],
+			[
+				"GLF",
+				"GLFW_PRESS"
+			],
+			[
+				"arg",
+				"argv\t(main.cpp)"
+			],
+			[
+				"mes",
+				"meshCollision"
+			],
+			[
+				"shape",
+				"shapeData"
+			],
+			[
+				"setCo",
+				"setCollisionShape"
+			],
+			[
+				"cube",
+				"cube.obj"
+			],
+			[
+				"fall",
+				"fallRigidBodyCI"
+			],
+			[
+				"ran",
+				"randomizeColor"
+			],
+			[
+				"po",
+				"position\t(Model.h)"
+			],
+			[
+				"mo",
+				"motionState"
+			],
+			[
+				"ri",
+				"rigidBody\t(Model.h)"
+			],
+			[
+				"colli",
+				"collisionShape"
+			],
+			[
+				"rand",
+				"randomizeColor\t(Model.h)"
+			],
+			[
+				"sph",
+				"sphere.obj\t(Graphics.cpp)"
+			],
+			[
+				"light",
+				"lightPos"
+			],
+			[
+				"setLigh",
+				"setLightPos\t(main.cpp)"
+			],
+			[
+				"set",
+				"setTransform"
+			],
+			[
+				"init",
+				"initBuffers"
+			],
+			[
+				"sha",
+				"shader"
+			],
+			[
+				"Model",
+				"ModelMatrixID"
+			],
+			[
+				"camer",
+				"cameraLocked"
+			],
+			[
+				"poin",
+				"pointOnLine"
+			],
+			[
+				"check",
+				"checkCollisionOfLine"
+			],
+			[
+				"point",
+				"pointAlongLine"
+			],
+			[
+				"tet",
+				"tetraList"
+			],
+			[
+				"tetra",
+				"tetraList"
+			],
+			[
+				"next",
+				"nextInt\t(Tetrahedron.java)"
+			],
+			[
+				"No",
+				"NoValidSpaces"
+			],
+			[
+				"make",
+				"makeFirstTetra"
+			],
+			[
+				"Ob",
+				"ObjFileBuilder"
+			],
+			[
+				"Obj",
+				"ObjFileBuilder\t(Driver.java)"
+			],
+			[
+				"det",
+				"determantants"
+			],
+			[
+				"are",
+				"areSignsSame"
+			],
+			[
+				"b",
+				"b"
+			],
+			[
+				"getF",
+				"getFourthPoint"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.cpp",
+			"settings":
+			{
+				"buffer_size": 4660,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "GL/src/h/World.h",
+			"settings":
+			{
+				"buffer_size": 1641,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "GL/src/World.cpp",
+			"settings":
+			{
+				"buffer_size": 6776,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "GL/src/btFractureDynamicsWorld.cpp",
+			"settings":
+			{
+				"buffer_size": 22422,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 342.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"About"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"todo",
+				"TodoReview: Open Files"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package control ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 433.0
+	},
+	"console":
+	{
+		"height": 410.0,
+		"history":
+		[
+			"exit",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/objLoaders",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/shaders",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/h/BulletLib"
+	],
+	"file_history":
+	[
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/Model.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/btFractureDynamicsWorld.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/Model.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/World.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/Structure.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/World.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/Constants.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/btFractureBody.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/h/constants.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/btFractureDynamicsWorld.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/btFractureBody.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/Structure.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/Controls.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/btFractureDynamicsWorld.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/main.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/Controls.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/FractureDemo.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/btFractureBody.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/makefile",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/FileLoader.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/Notes.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/c_DebugDraw.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/btFractureBody.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/main.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/makefile",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/btFractureDynamicsWorld.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/FractureMain.hpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/PointCloud.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/PointCloud.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/h/c_DebugDraw.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/log.txt",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/Graphics.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/makefile",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/obj/Object.obj",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/.gitignore",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/FileLoader.h",
+		"/home/austin/Documents/Bit_Bashing_Example.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/GraphicDebugger.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/defs.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/Examples/helloWorldExample.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/obj/cube.obj",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/obj/sphere.obj",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/ShaderLoader.cpp",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/glHeader.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/h/shapeData.h",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/makefile.make",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/obj/plane.obj",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/makefile.make",
+		"/home/austin/Documents/repos/LearningBullet/LearningBulletPhysics/GL/src/main.cpp",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
+		"/home/austin/Documents/ObjCreation/Vec3.java",
+		"/home/austin/Documents/ObjCreation/ObjFileBuilder.java",
+		"/home/austin/Documents/ObjCreation/Structure.java",
+		"/home/austin/Documents/ObjCreation/NoValidSpaces.java",
+		"/home/austin/Documents/ObjCreation/run.sh",
+		"/home/austin/Documents/ObjCreation/Tetrahedron.java",
+		"/home/austin/Documents/ObjCreation/Triangle.java",
+		"/home/austin/Documents/ObjCreation/Driver.java",
+		"/home/austin/Documents/ObjCreation/MANIFEST.MF",
+		"/home/austin/Documents/ObjCreation/tetra.obj",
+		"/home/austin/Documents/Linux_Tutorial",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra.obj",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
+		"/home/austin/Documents/ObjCreation/Driver.class",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/tetra_test.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/cube.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/FileLoader.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/makefile.make",
+		"/home/austin/Documents/repos/LearningOpenGL/src/h/Model.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Model.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/objLoaders/objload.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/h/FileLoader.h",
+		"/home/austin/Documents/repos/LearningOpenGL/src/shaders/lightShader.fragmentshader",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Graphics.cpp",
+		"/home/austin/Documents/AnimeList",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Cube.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/Controls.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/main.cpp",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/no_normals_cube.obj",
+		"/home/austin/Documents/repos/LearningOpenGL/src/obj/sphere.obj",
+		"/home/austin/Documents/gl/LearningOpenGL/src/controls.h",
+		"/home/austin/Documents/gl/LearningOpenGL/src/Cube.h",
+		"/home/austin/Documents/gl/LearningOpenGL/src/Graphics.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/makefile.make",
+		"/home/austin/Documents/gl/LearningOpenGL/src/makefile.make",
+		"/home/austin/Desktop/learningOpenGL/cube.cpp",
+		"/home/austin/Desktop/learningOpenGL/cube.h",
+		"/home/austin/Desktop/learningOpenGL/glHeader.h",
+		"/home/austin/Desktop/learningOpenGL/Driver",
+		"/home/austin/Desktop/learningOpenGL/shapeData.h",
+		"/home/austin/Desktop/learningOpenGL/makefile.make",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/Simulation.cpp",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Debug.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Dna.java",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/Compare.html",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/index.html",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/sassyScript.sh",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/front.scss",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/main.scss",
+		"/home/austin/Desktop/learningOpenGL/Graphics.cpp",
+		"/home/austin/Desktop/learningOpenGL/main.cpp",
+		"/home/austin/Desktop/learningOpenGL/Graphics.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shader.cpp",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shaders/SimpleVertexShader.vertexshader",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shaders/SimpleTransform.vertexshader",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/shaders/SimpleFragmentShader.fragmentshader",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/article.html",
+		"/home/austin/Desktop/SoftwareDev/Group/ComparativeNewsAggregator/home.html",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/main.cpp",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/glHeaders.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/Simulation.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/comp.sh",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/6PAMN9B2_FJE9__F2Y6IRRT4P.obj",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/random_multi_layer_test.obj",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Evaluator.java",
+		"/home/austin/Documents/ClientProxy.java",
+		"/home/austin/Documents/InstructorProxy.java",
+		"/home/austin/Documents/InstructorSubject.java",
+		"/home/austin/Documents/ProxyGUI.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/_8I_CY3HM78BS__C_YNJ5J0JH.obj",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/TestingSuite.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Driver.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/shader.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/headers.h",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/BasicExample.cpp",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Structure.java",
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/StructureFile.java"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			"<open folders>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"addRig",
+			"addChildShape",
+			"remove",
+			"btCollisionObject",
+			"m_fractureBodies",
+			"addNewBody",
+			"Model",
+			"compound",
+			"btCompoundShape",
+			"addNewBody",
+			"fracObj",
+			"addNewBody",
+			"applyImpulse",
+			");\n",
+			"maxImpact",
+			"m_strength",
+			"solveConstraints",
+			"fractureCallback",
+			"breakDisconnectedParts",
+			"\tdynamicsWorld->glueCallback();\nbreakDisconnectedParts",
+			"shiftTransformDistributeMass",
+			"glueCallback",
+			"serIndex",
+			"setUserIndex",
+			"breakDisconnectedParts",
+			"MyDebugDraw",
+			"-",
+			"Y_L",
+			"temp",
+			"glm::",
+			"h",
+			"\t\n",
+			"fork",
+			"getPoints",
+			"findSlope",
+			"System",
+			"HORIZONTAL",
+			"black",
+			"\\0",
+			"was Incorrect.",
+			") ",
+			"was Incorrect.",
+			"malloc",
+			"medium_array_length",
+			"mediumarray",
+			"short_array_length",
+			"shortarray",
+			"int_max",
+			"shouldconvert",
+			"int_min",
+			"int_max",
+			"@",
+			"int_min",
+			"int_max",
+			"largearray",
+			"mediumarray",
+			"shortarray",
+			"large_array_length",
+			"medium_array_length",
+			"short_array_length",
+			"shouldConvert",
+			"int_min",
+			"int_max"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								764,
+								764
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1311.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "GL/src/h/World.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1641,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								889,
+								889
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 657.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "GL/src/World.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6776,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3869,
+								3869
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1920.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "GL/src/btFractureDynamicsWorld.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1138,
+								1138
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 288.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "bullet.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
