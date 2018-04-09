@@ -10,13 +10,13 @@ if [ $answer = "y" ]
 	then
 
 	echo "Compiling Java..."
-	javac -g -d ../compiled/ -Xlint -deprecation *.java
+	javac -g -d ../compiled/ -Xlint -deprecation -classpath "./Jama-1.0.3.jar" *.java
 	echo "javac -g -d ../compiled/ -Xlint -deprecation *.java"
 	echo ""
 	echo "Compiling C++..."
 	cd PhysicsEngine
 	#echo "C++ COMPILATION IS COMMENTED OUT"
-	make -f makefile.make
+	make
 	mv Driver ./o
 	cd ..
 	echo ""

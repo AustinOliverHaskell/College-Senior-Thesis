@@ -2,118 +2,101 @@ package austin.structures;
 
 import java.util.*;
 
-public class Structure implements Member
+public class Structure
 {
+	private int tetraCount;
+	private float mutationRate;
 
-	private Dna dna;
-	private int fitness;
-	private final float mutationRate = (float)0.02;
-	private final int   dnaSize = 10;
-	private String idHash;
+	private ArrayList<Tetrahedron> tetraList;
 
-	// Should be big enough to avoid collisions
-	private final int HASH_LENGTH = 25;
-
+	/**
+	 *  Deafult constructor sets values at <br />
+	 *
+	 * 	Tetrahedron count -> 10
+	 * 	Mutation Rate -> 1%
+	 */
 	Structure()
 	{
-		dna = new Dna(mutationRate, dnaSize);
-		this.idHash = createHashId();
+		// Deafult Values
+		tetraCount = 200;
+		mutationRate = 0.01f;
+		tetraList = new ArrayList<Tetrahedron>();
+
+		System.out.println("Tetrahedron Count: " + tetraCount);
+
+		tetraList.add(makeFirstTetra());
+		System.out.println(tetraList.get(0));
+		System.out.println("Compleated tetrahedron seed!");
+
+		for (int i = 0; i < tetraCount - 1; i++)
+		{
+
+			Random rand = new Random();
+			int tetraToBuildOffOf = rand.nextInt(tetraList.size());
+
+			Tetrahedron t;
+			try
+			{
+				t = new Tetrahedron(tetraList.get(tetraToBuildOffOf), tetraList);
+
+				tetraList.add(t);
+
+				System.out.println(t);
+
+			}
+			catch(NoValidSpaces err)
+			{
+				i--;
+				continue;
+			}
+		}
 	}
 
 	/**
-	*	This constructor creates a structure object from a file rather than
-	*    from thin air. Used to get results from last generation. 
-	*
-	*	@param the name of the file to create this structure from
-	*/
-	Structure(String filename)
+	 *This constructor will create this struct object from a file,
+	 * this just calls the underying load functon. 
+	 * 
+	 * 	@param path path to the file to be 
+	 */
+	Structure(String path)
 	{
-		// TODO: Finish structure loading from file
+		load(path);
 	}
 
-	// ---------- Getters and Setters ----------
-	public int getFitness()
+	public void load(String path)
 	{
-		return fitness;
+		// TODO: Finish loading from a file
 	}
 
-	public void setFitness(int fitness)
-	{
-		this.fitness = fitness;
-	}
-
-	public String getId()
-	{
-		return this.idHash;
-	}
-
-	public void setId(String idHash)
-	{
-		this.idHash = idHash;
-	}
-
-	public Dna getDna()
-	{
-		return this.dna;
-	}
-
-	public void setDna(Dna dna)
-	{
-		this.dna = dna;
-	}
-
-	private String createHashId()
-	{
-		StringBuilder str = new StringBuilder();
-
-		for (int i = 0; i < HASH_LENGTH; i++)
-		{
-			str.append(getRandomChar());
-		}
-
-		return str.toString().replaceAll("[:;<=>?@]", "_");
-	}
-
-	private char getRandomChar()
-	{
-		Random rand = new Random();
-
-		int charNum = rand.nextInt(42);
-
-		char retVal = (char)(charNum + 48);
-
-		return retVal;		
-	}
-	// -----------------------------------------
-
-
-	// ---------- Evolution Functions ----------
 	public void mutate()
 	{
-		dna.mutate();
-	}
-	// -----------------------------------------
 
-	// ---------- Obj functions ----------
+	}
+
+	private Tetrahedron makeFirstTetra()
+	{
+		Triangle tri = new Triangle(new Vec3(0.00f, 0.00f, 0.00f), new Vec3(1.00f, 0.00f, 0.00f), new Vec3(0.50f, 0.86f, 0.00f));
+
+		return new Tetrahedron(tri);
+	}
+
+	/**
+	 * Saves the structure as a .obj file
+	 * 
+	 * @param path path AND filename to save. IE: "./obj/test.obj"
+	 */
 	public void save(String path)
 	{
-		ObjFileBuilder obj = new ObjFileBuilder(this);
+		ObjFileBuilder obj = new ObjFileBuilder();
 
-		ArrayList <Layer> dnaLayers = this.dna.getLayers();
-
-		for (Layer layer : dnaLayers)
+		for (Tetrahedron t : tetraList)
 		{
-			obj.add(layer);
+			obj.add(t);
 		}
 
-		obj.save(path, this.idHash);
+		obj.save(path);
 	}
-	// -----------------------------------
 
-	@Override
-	public String toString()
-	{
-		return null;
-	}
+
 
 }
