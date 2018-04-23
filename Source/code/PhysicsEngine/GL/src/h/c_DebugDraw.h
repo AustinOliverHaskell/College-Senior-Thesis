@@ -23,7 +23,7 @@ class BulletDebugDrawer_OpenGL : public btIDebugDraw {
 public:
     void init(Controls * control, GLuint shade)
     {
-        shader = loadShaders("./GL/src/shaders/SimpleVertexShader.vertexshader", "./GL/src/shaders/SimpleFragmentShader.fragmentshader");
+        shader = shade;//loadShaders("./GL/src/shaders/SimpleVertexShader.vertexshader", "./GL/src/shaders/SimpleFragmentShader.fragmentshader");
         controls = control;
 
         glGenBuffers(1, &verticies);

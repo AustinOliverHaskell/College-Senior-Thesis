@@ -22,6 +22,7 @@ m_fracturingMode(true)
 
 void btFractureDynamicsWorld::printCompounds(Controls * controls)
 {
+	brokenCount = 0;
 	for (int i = 0; i < m_fractureBodies.size(); i++)
 	{
 		if (m_fractureBodies[i]->getCollisionShape()->isCompound())
@@ -35,6 +36,7 @@ void btFractureDynamicsWorld::printCompounds(Controls * controls)
 				if (shape->getNumChildShapes() <= 1)
 				{
 					model->setColor(1.0f, 0.0f, 0.0f);
+					brokenCount++;
 				}
 
 				// TODO: NOTE: IMPORTANT ONE

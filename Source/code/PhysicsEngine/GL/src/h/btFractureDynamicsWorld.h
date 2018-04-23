@@ -48,6 +48,8 @@ public:
 	///normally those callbacks are called internally by the 'solveConstraints'
 	void fractureCallback();
 
+	int getBrokenCount() {return brokenCount;};
+	int brokenCount;
 };
 
 #endif //_BT_FRACTURE_DYNAMICS_WORLD_H

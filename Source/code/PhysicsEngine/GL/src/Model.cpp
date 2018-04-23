@@ -19,6 +19,7 @@ using namespace glm;
 Model::Model(Model * m, World * w)
 {
 	world = w;
+	setupComplete = false;
 
 	vertexCount = m->getVertexCount();
 	faceCount = m->getFaceCount();
@@ -75,6 +76,7 @@ Model::Model(Model * m, World * w)
  */
 Model::Model(PointCloud p, GLuint shade, World * w)
 {
+	setupComplete = false;
 	world = w;
 
 	shapeData  = p.getVertexData();
@@ -121,12 +123,12 @@ Model::Model(PointCloud p, GLuint shade, World * w)
 Model::Model(std::string path, GLuint shade, World * w, bool tessalate)
 {
 	world = w;
-
+	setupComplete = false;
 	FileLoader * file = new FileLoader();
 
 	if (!file->openFile(path, tessalate))
 	{
-		std::cout << "Filed to load file: " << path << std::endl;
+		std::cout << "\e[31mFailed to load file: " << path << "\e[0m" << std::endl;
 	}
 
 	faceCount   = file->getFaceCount();
@@ -203,23 +205,25 @@ Model::~Model()
 		rigidBody = nullptr;
 	}
 
-
-	if (shapeData != nullptr)
+	if (world->getMode() == "VERBOSE")
 	{
-		delete shapeData;
-		shapeData = nullptr;
-	}
+		if (shapeData != nullptr)
+		{
+			delete shapeData;
+			shapeData = nullptr;
+		}
 
-	if (colorData != nullptr)
-	{
-		delete colorData;
-		colorData = nullptr;
-	}
+		if (colorData != nullptr)
+		{
+			delete colorData;
+			colorData = nullptr;
+		}
 
-	if (normalData != nullptr)
-	{
-		delete normalData;
-		normalData = nullptr;
+		if (normalData != nullptr)
+		{
+			delete normalData;
+			normalData = nullptr;
+		}
 	}
 }
 
@@ -419,24 +423,27 @@ void Model::setCollisionShape(btCollisionShape * shape)
 
 void Model::setColor(float r, float g, float b)
 {
-	GLfloat * color = new GLfloat[faceCount * sizeof(vec3) * 3];
-
-	// Define color data for the object
-	for (uint i = 0; i < faceCount * sizeof(vec3); i+=3)
+	if (world->getMode() == "VERBOSE")
 	{
-		color[i  ] = r;
-		color[i+1] = g;
-		color[i+2] = b;
+		GLfloat * color = new GLfloat[faceCount * sizeof(vec3) * 3];
+
+		// Define color data for the object
+		for (uint i = 0; i < faceCount * sizeof(vec3); i+=3)
+		{
+			color[i  ] = r;
+			color[i+1] = g;
+			color[i+2] = b;
+		}
+
+		// Remove old memory
+		delete colorData;
+
+		colorData = color;
+
+		glGenBuffers(1, &colors);
+		glBindBuffer(GL_ARRAY_BUFFER, colors);
+		glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
 	}
-
-	// Remove old memory
-	delete colorData;
-
-	colorData = color;
-
-	glGenBuffers(1, &colors);
-	glBindBuffer(GL_ARRAY_BUFFER, colors);
-	glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
 }
 
 // --------------------------------------------------
@@ -450,28 +457,31 @@ void Model::setColor(float r, float g, float b)
  */
 void Model::randomizeColor()
 {
-	GLfloat * color = new GLfloat[faceCount * sizeof(vec3) * 3];
-
-	// Define color data for the object
-	for (uint i = 0; i < faceCount * sizeof(vec3); i+=3)
+	if (world->getMode() == "VERBOSE")
 	{
-		float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-		float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-		float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		GLfloat * color = new GLfloat[faceCount * sizeof(vec3) * 3];
 
-		color[i  ] = r;
-		color[i+1] = g;
-		color[i+2] = b;
+		// Define color data for the object
+		for (uint i = 0; i < faceCount * sizeof(vec3); i+=3)
+		{
+			float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+			float g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+			float b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+			color[i  ] = r;
+			color[i+1] = g;
+			color[i+2] = b;
+		}
+
+		// Remove old memory
+		delete colorData;
+
+		colorData = color;
+
+		glGenBuffers(1, &colors);
+		glBindBuffer(GL_ARRAY_BUFFER, colors);
+		glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
 	}
-
-	// Remove old memory
-	delete colorData;
-
-	colorData = color;
-
-	glGenBuffers(1, &colors);
-	glBindBuffer(GL_ARRAY_BUFFER, colors);
-	glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
 }
 
 /**
@@ -479,30 +489,33 @@ void Model::randomizeColor()
  */
 void Model::initBuffers()
 {
-	// Set up the uniforms
-	MatrixID      = glGetUniformLocation(shader, "MVP");
-    ViewMatrixID  = glGetUniformLocation(shader,   "V");
-    ModelMatrixID = glGetUniformLocation(shader,   "M");
+	if (world->getMode() == "VERBOSE")
+	{
+		// Set up the uniforms
+		MatrixID      = glGetUniformLocation(shader, "MVP");
+	    ViewMatrixID  = glGetUniformLocation(shader,   "V");
+	    ModelMatrixID = glGetUniformLocation(shader,   "M");
 
-	glGenBuffers(1, &verticies);
-	glBindBuffer(GL_ARRAY_BUFFER, verticies);
-	glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, shapeData, GL_STATIC_DRAW);
+		glGenBuffers(1, &verticies);
+		glBindBuffer(GL_ARRAY_BUFFER, verticies);
+		glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, shapeData, GL_STATIC_DRAW);
 
-	glGenBuffers(1, &colors);
-	glBindBuffer(GL_ARRAY_BUFFER, colors);
-	glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
+		glGenBuffers(1, &colors);
+		glBindBuffer(GL_ARRAY_BUFFER, colors);
+		glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, colorData, GL_DYNAMIC_DRAW);
 
-	glGenBuffers(1, &normals);
-	glBindBuffer(GL_ARRAY_BUFFER, normals);
-	glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, normalData, GL_STATIC_DRAW);
+		glGenBuffers(1, &normals);
+		glBindBuffer(GL_ARRAY_BUFFER, normals);
+		glBufferData(GL_ARRAY_BUFFER, faceCount * sizeof(vec3) * 3, normalData, GL_STATIC_DRAW);
 
-	// Done with setup, this boolean lets the destructor know what it should free up
-	setupComplete = true;
+		// Done with setup, this boolean lets the destructor know what it should free up
+		setupComplete = true;
+	}
 }
 
 void Model::draw(Controls * controls)
 {
-	if (setupComplete)
+	if (setupComplete && world->getMode() == "VERBOSE")
 	{
 		mat4 viewMatrix = controls->getViewMatrix();
 
@@ -563,7 +576,7 @@ void Model::draw(Controls * controls)
  */
 void Model::transformDraw(Controls * controls, btTransform trans)
 {
-	if (setupComplete)
+	if (setupComplete && world->getMode() == "VERBOSE")
 	{
 
 		// Scale identity matrix

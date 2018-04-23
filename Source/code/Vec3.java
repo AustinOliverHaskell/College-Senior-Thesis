@@ -25,6 +25,18 @@ public class Vec3
 	}
 
 	/**
+	 * Copy Constructor
+	 * @param  other Vec3 to copy
+	 * @return       deep copy of other
+	 */
+	public Vec3(Vec3 other)
+	{
+		this.x = other.x;
+		this.y = other.y;
+		this.z = other.z;
+	}
+
+	/**
 	 * Subtracts this vector from other, ie this - other (In that order)
 	 * @param  other vector to stubtract from the current one
 	 * @return       result of the calculation

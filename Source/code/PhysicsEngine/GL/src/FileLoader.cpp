@@ -93,7 +93,7 @@ bool FileLoader::openFile(string path, bool tesselate)
 {
 	bool retVal = true;
 
-	cout << "Loading Object " << path << " ... ";
+	//cout << "Loading Object " << path << " ... ";
 
 	ifstream in;
 
@@ -189,7 +189,7 @@ bool FileLoader::openFile(string path, bool tesselate)
 		}
 	}
 
-	cout << "Done! " << endl;
+	//cout << "Done! " << endl;
 
 	return retVal;
 }

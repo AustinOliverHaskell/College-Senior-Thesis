@@ -1,18 +1,21 @@
 // Constants/Parameters for simulation
 #pragma once
 
+// Simulation Timing
+#define SIM_TIME 20
+
 // Rain area
 #define HEIGHT 80
 #define RANGE  70
 
 // Rain Params
-#define WEIGHT 0.01f
+#define WEIGHT 0.10f
 
-#define WIND_SPEED_X 1.0f
-#define WIND_SPEED_Y 0.0f
-#define WIND_SPEED_Z 0.0f
+#define WIND_SPEED_X  5.0f
+#define WIND_SPEED_Y  0.0f
+#define WIND_SPEED_Z  0.0f
 
-#define PARTICLE_COUNT 50
+#define PARTICLE_COUNT 10
 #define PARTICLE_SCALING 0.1f
 
 #define PARTICLE_R 0.0f
@@ -21,7 +24,7 @@
 
 // Fracture Params
 #define GLUE_STRENGTH 0.1f
-#define RESTING_THRESHOLD 40.0f
+#define RESTING_THRESHOLD 10.0f
 
 // Fracture Body / Structure Params
 #define SEGMENT_MASS 1.0f

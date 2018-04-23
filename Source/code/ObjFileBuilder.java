@@ -18,6 +18,8 @@ public class ObjFileBuilder
 
 	public void add(Tetrahedron t)
 	{
+		t.reCalcNormals();
+
 		// For each triangle in the tetrahedron
 		for (int i = 0; i < 4; i++)
 		{

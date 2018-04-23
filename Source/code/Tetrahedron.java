@@ -20,7 +20,7 @@ public class Tetrahedron
 
 		// First figure out how long a single side of the triangle is
 		double distance = Vec3.dist(a.a, a.b);
-		System.out.println("Distance:" + distance);
+		//System.out.println("Distance:" + distance);
 
 		// The missing point to complete the tetrahedron
 		Vec3 point = new Vec3();
@@ -35,7 +35,7 @@ public class Tetrahedron
 		// Currently the vertex point needs to be translated x units away perpendicular to 
 		//  the plane of the triangle. Im not sure how this is done. 
 
-		System.out.println(point);
+		//System.out.println(point);
 
 		float height = ( (float)Math.abs(Math.pow((float)Vec3.dist(a.a, a.getCentroid()),2) -  Math.pow((float)Vec3.dist(a.a, a.b),2)));
 
@@ -59,6 +59,15 @@ public class Tetrahedron
 		pointList.add(point);
 		//assert(false);
 		// Done!
+	}
+
+	/**
+	 *  Copy Constructor. Preforms a full deep copy of the underlying data structures.
+	 */
+	Tetrahedron(Tetrahedron t)
+	{
+		faceList  = t.getFaceList();
+		pointList = t.getPointList();
 	}
 
 	Tetrahedron(Tetrahedron tetrahedron, ArrayList<Tetrahedron> list) throws NoValidSpaces
@@ -189,6 +198,26 @@ public class Tetrahedron
 			{
 				retVal = true;
 			}
+		}
+
+		return retVal;
+	}
+
+	/**
+	 * Checks if the Tetrahedron provided is intersecting any Tetrahedron from the list
+	 * @param  t    Tetrahedron to check
+	 * @param  list List to check against
+	 * @return      True if collides, false if not
+	 */
+	public static boolean doesTetraCollideWithList(Tetrahedron t, ArrayList<Tetrahedron> list)
+	{
+		boolean retVal = false;
+
+		ArrayList<Vec3> pointCloud = t.getPointList();
+
+		for (Vec3 point : pointCloud)
+		{
+			retVal |= (doesPointCollideWithStructure(point, list));
 		}
 
 		return retVal;
@@ -354,6 +383,31 @@ public class Tetrahedron
 		return retVal;
 	}
 
+	public void reCalcNormals()
+	{
+		Vec3 center = getCenterPoint();
+
+		for (Triangle t : faceList)
+		{
+			t.CalcNormal(center);
+		}
+	}
+
+	public Vec3 getCenterPoint()
+	{
+		Vec3 retVal = null;
+		
+		Vec3 a = Vec3.midpoint(pointList.get(0), pointList.get(1));
+		Vec3 b = Vec3.midpoint(pointList.get(0), pointList.get(2));
+		Vec3 c = Vec3.midpoint(pointList.get(0), pointList.get(3));
+
+		Triangle tri = new Triangle(a, b, c);
+
+		retVal = tri.getCentroid();
+
+		return retVal;	
+	}
+
 	private static boolean areSignsSame(double a, double b)
 	{
 		boolean retVal = false;
@@ -407,6 +461,38 @@ public class Tetrahedron
 		return true;
 	}
 
+	/**
+	 * Returns a full (deep copy) of the list of triangles that compose this tetrahedron
+	 * @return Copy of Face List
+	 */
+	public ArrayList<Triangle> getFaceList()
+	{
+		ArrayList <Triangle> retVal = new ArrayList<Triangle>();
+
+		for (Triangle t : faceList)
+		{
+			retVal.add(new Triangle(t));
+		}
+
+		return retVal;
+	}
+
+	/**
+	 * Returns a full (deep copy) of the list of verticies that compose this tetrahedron
+	 * @return Copy of Point List
+	 */
+	public ArrayList<Vec3> getPointList()
+	{
+		ArrayList<Vec3> retVal = new ArrayList<Vec3>();
+
+		for (Vec3 v : pointList)
+		{
+			retVal.add(new Vec3(v));
+		}
+
+		return retVal;
+	}
+
 	@Override
 	public String toString()
 	{
@@ -418,5 +504,4 @@ public class Tetrahedron
 
 		return s.toString();
 	}
-
 }

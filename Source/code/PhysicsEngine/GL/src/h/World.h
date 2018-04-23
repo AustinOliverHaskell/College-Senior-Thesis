@@ -20,7 +20,7 @@ class btFractureDynamicsWorld;
 class World
 {
 	public:
-		World();
+		World(std::string m, std::string windowName);
 		~World();
 
 		void step();
@@ -41,6 +41,9 @@ class World
 
 		btDynamicsWorld * getDynamicsWorld();
 
+		int getBrokenCount() {return dynamicsWorld->getBrokenCount();};
+
+		std::string getMode() {return mode;};
 
 	private:
 
@@ -59,6 +62,8 @@ class World
 		GLuint LightID;
 
 		GLuint defaultShader;
+
+		std::string mode;
 		// ------------------
 
 		// ----- Physics -----

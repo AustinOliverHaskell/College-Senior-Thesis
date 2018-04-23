@@ -24,6 +24,8 @@ class Structure
 
 		void breakStructure();
 
+		void setColor(float r, float g, float b);
+
 	private:
 		vector <Model *> * models;
 		vector <PointCloud> * clouds;

@@ -1,6 +1,7 @@
 package austin.structures;
 
 import java.util.*;
+import Jama.*;
 
 public class Triangle
 {
@@ -11,6 +12,9 @@ public class Triangle
 
 	private ArrayList<ArrayList<Vec3>> edgeList;
 
+	/**
+	 * Constructor that takes three pre-defined points
+	 */
 	Triangle(Vec3 a, Vec3 b, Vec3 c)
 	{
 		this.a = a;
@@ -25,6 +29,9 @@ public class Triangle
 		addEdges();
 	}
 
+	/**
+	 *  Default Constructor. Triangle with all points set to 0, 0, 0
+	 */
 	Triangle()
 	{
 		this.a = new Vec3();
@@ -32,6 +39,24 @@ public class Triangle
 		this.c = new Vec3();
 
 		this.covered = false;
+
+		edgeList = new ArrayList<ArrayList<Vec3>>();
+
+		CalcNormal();
+		addEdges();
+	}
+
+	/**
+	 * 	Copy Constructor - Deep Copy
+	 *  @param t Triangle to copy.
+	 */
+	Triangle(Triangle t)
+	{
+		this.a = new Vec3(t.a);
+		this.b = new Vec3(t.b);
+		this.c = new Vec3(t.c);
+
+		this.covered = t.isCovered();
 
 		edgeList = new ArrayList<ArrayList<Vec3>>();
 
@@ -74,11 +99,36 @@ public class Triangle
 		Vec3 edgeOne = b.sub(a);
 		Vec3 edgeTwo = c.sub(a);
 
-		Vec3 retVal = Vec3.cross(edgeOne, edgeTwo);
+		Vec3 retVal = Vec3.cross(edgeTwo, edgeOne);
 
 		retVal.normalize();
 
 		this.normal = retVal;
+	} 
+
+	/**
+	 * This function will calculate the normal to face away from the point given
+	 * @param directionPoint point to face away from (Meaning face away from center of object)
+	 */
+	public void CalcNormal(Vec3 directionPoint)
+	{
+		Matrix mat = new Matrix(4, 4);
+
+		mat.set(0, 0, a.x); mat.set(1, 0, a.y); mat.set(2, 0, a.z); mat.set(3, 0, 1.0);
+		mat.set(0, 1, b.x); mat.set(1, 1, b.y); mat.set(2, 1, b.z); mat.set(3, 1, 1.0); 
+		mat.set(0, 2, c.x); mat.set(1, 2, c.y); mat.set(2, 2, c.z); mat.set(3, 2, 1.0); 
+		mat.set(0, 3, directionPoint.x); mat.set(1, 3, directionPoint.y); mat.set(2, 3, directionPoint.z); mat.set(3, 3, 1.0); 
+
+		double det = mat.det();
+
+		if (det < 0)
+		{
+			Vec3 temp = a;
+			a = b;
+			b = temp;
+		}
+
+		CalcNormal();
 	}
 
 	private void addEdges()

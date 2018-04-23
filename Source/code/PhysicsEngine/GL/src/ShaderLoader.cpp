@@ -24,7 +24,7 @@ GLuint loadShaders(const char * vertex_file_path,const char * fragment_file_path
 			VertexShaderCode += "\n" + Line;
 		VertexShaderStream.close();
 	}else{
-		cout << "Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !" << endl;
+		cout << "Impossible to open " + string(vertex_file_path) + ". Are you in the right directory ? Don't forget to read the FAQ !" << endl;
 		getchar();
 		return 0;
 	}

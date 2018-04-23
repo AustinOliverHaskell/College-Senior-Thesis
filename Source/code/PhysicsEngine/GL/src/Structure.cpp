@@ -34,7 +34,7 @@ Structure::Structure(string path, GLuint shader, World * world)
 	
 	uint size = f->getVertexCount();
 
-	cout << "MAX:" << size/9 << endl;
+	//cout << "MAX:" << size/9 << endl;
 
 	GLfloat * shapeData  = f->getObjectData();
 	GLfloat * normalData = f->getNormals();
@@ -62,6 +62,7 @@ Structure::Structure(string path, GLuint shader, World * world)
 
 		Model * section = new Model(temp, shader, world);
 
+		section->initBuffers();
 		section->randomizeColor();
 		section->setMass(SEGMENT_MASS);
 		section->setFriction(10.0f);
@@ -76,7 +77,7 @@ Structure::Structure(string path, GLuint shader, World * world)
 		section->setType("Fragment");
 
 		section->configureRigidBody();
-		section->getRigidBody()->setUserPointer((void*)i);
+		section->getRigidBody()->setUserPointer((void*)&i);
 		section->getRigidBody()->setUserIndex(i/9);
 
 		section->getCollisionShape()->setUserIndex(i/9);
@@ -110,16 +111,24 @@ Structure::Structure(string path, GLuint shader, World * world)
 
 Structure::~Structure()
 {
-	for (auto it = models->begin(); it != models->end(); it++)
+	/*for (auto it = models->begin(); it != models->end(); it++)
 	{
 		delete *it;
 	}
 
-	delete models;
-	delete clouds;
+	delete models;*/
+	/*delete clouds;
 	delete shape;
 	delete motionState;
-	delete rigidBody;
+	delete rigidBody;*/
+}
+
+void Structure::setColor(float r, float g, float b)
+{
+	for (auto i = models->begin(); i != models->end(); i++)
+	{
+		(*i)->setColor(r, g, b);
+	}
 }
 
 void Structure::render(Controls * controls)
