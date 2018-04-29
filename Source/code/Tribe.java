@@ -4,8 +4,12 @@ import java.util.*;
 import java.io.*;
 import java.awt.Color;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Tribe
 {
+	public static int THREAD_COUNT = 4;
 	private static String clearPrintCode = "\u001B[0m";
 	ArrayList <Structure> tribe;
 
@@ -90,19 +94,62 @@ public class Tribe
 		return fitness;
 	}
 
+	public static int staticEvaluate(String path)
+	{
+		int fitness = 0;
+
+		try 
+		{
+			ProcessBuilder builder = new ProcessBuilder("./PhysicsEngine/Driver", 
+				 "-f" ,path, "-c");
+
+			//builder.inheritIO();
+
+			Process proc = builder.start();
+
+			proc.waitFor();
+
+			fitness = proc.exitValue();
+		}
+		catch (IOException error)
+		{
+		}
+		catch (InterruptedException error)
+		{
+		}
+		catch (Exception error)
+		{
+			error.printStackTrace();
+		}
+
+		return fitness;
+	}
+
 	public void evalTribe()
 	{
+		ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);  
+
 		for (Structure s : tribe) 
 		{
 			// Getting rid of evaluating ones that already have a fitness value
 			if (s.getFitness() == Integer.MAX_VALUE)
 			{
-				int fitness = evaluate(s.getName() + ".obj", "-c", s.getName());
-
-				s.setFitness(fitness);
+				pool.execute(s);
 			}
+		}
 
-			System.out.println(printCode + s.getName() + " ... Completed Evaluation with a score of: " + Integer.toString(s.getFitness()) + clearPrintCode);
+		pool.shutdown();
+
+		while(!pool.isTerminated())
+		{
+			try
+			{
+				Thread.sleep(1000);
+			}
+			catch(Exception error)
+			{
+				error.printStackTrace();
+			}
 		}
 
 		sort();
@@ -124,11 +171,11 @@ public class Tribe
 		{
 			String memberName = name + "_" + UUID.randomUUID().toString();
 
-			Structure temp = new Structure(tribe.get(i), tribe.get(i), "NO_COLLIDE_QUARTERS");
+			Structure temp = new Structure(tribe.get(i), tribe.get(i), "ASEXUAL");
 
 			temp.setName(memberName);
 
-			System.out.println(" Object: " + memberName + " welcome to the tribe." + clearPrintCode);
+			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode);
 
 			temp.save("../compiled/obj/" + memberName + ".obj");
 
@@ -146,11 +193,21 @@ public class Tribe
 		int fitness = evaluate(s.getName() + ".obj", "-v", s.getName());
 	}
 
-	public void saveBest()
+	public void print()
 	{
 		sort();
 
-		tribe.get(0).save("../compiled/obj/000_CHAMPION_" + tribe.get(0).getName() + ".obj");
+		for (Structure s : tribe)
+		{
+			System.out.println(printCode + s.getName() + " score of " + Integer.toString(s.getFitness()) + clearPrintCode);
+		}
+	}
+
+	public void saveBest(int generation)
+	{
+		sort();
+
+		tribe.get(0).save("../compiled/obj/000_CHAMPION_"+ Integer.toString(generation) + "_" + tribe.get(0).getName() + ".obj");
 	}
 
 	public ArrayList<Structure> createTribe()
@@ -165,7 +222,7 @@ public class Tribe
 
 			s.setName(memberName);
 
-			System.out.println(printCode + "Object: " + memberName + " welcome to the tribe." + clearPrintCode);
+			System.out.println(printCode + "Object: " + memberName + " added to population." + clearPrintCode);
 
 			s.save("../compiled/obj/" + memberName + ".obj");
 

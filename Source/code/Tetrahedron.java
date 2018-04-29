@@ -299,7 +299,7 @@ public class Tetrahedron
 		{
 			if (determantants.get(i) != 0)
 			{
-				// If one of them has a differing sign then the point isnt fully in the triangle
+				// If one of them has a differing sign than the point isnt fully in the triangle
 				if (!areSignsSame(determantants.get(0), determantants.get(i)))
 				{
 					retVal = false;

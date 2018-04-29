@@ -2,7 +2,7 @@ package austin.structures;
 
 import java.util.*;
 
-public class Structure implements Comparable<Structure>
+public class Structure implements Comparable<Structure>, Runnable
 {
 	private int tetraCount;
 	private float mutationRate;
@@ -323,6 +323,24 @@ public class Structure implements Comparable<Structure>
 
 			i++;
 		}
+	}
+
+	public void run()
+	{
+		String printCode = "\u001B[38;5;9m";
+
+		this.fitness = Tribe.staticEvaluate(this.name + ".obj");
+
+		if (this.fitness < 15)
+		{
+			printCode = "\u001B[38;5;76m";
+		}
+		else if (this.fitness < 40)
+		{
+			printCode = "\u001B[38;5;226m";
+		}
+
+		System.out.println(printCode + this.name + " compleated evaluation: " + Integer.toString(this.fitness));
 	}
 
 }
