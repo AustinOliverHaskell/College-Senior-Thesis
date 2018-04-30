@@ -8,24 +8,27 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
+		Structure a = new Structure();
+
+		Structure b = new Structure();
+
+		Structure c = new Structure(a, b, "NO_COLLIDE_QUARTERS");
+
+		c.save("../compiled/obj/Test.obj");
+
+
 		System.out.println("Creating initial population ... ");
 
-		int tribeSizes = 200;
+		int tribeSizes = 10;
 		int generationCount = 30;
 		
 		Tribe orange = new Tribe("OrangeBois", tribeSizes);
 		orange.setColor(Color.ORANGE);
 
-		/*Tribe blue = new Tribe("BlueBois", tribeSizes);
-		blue.setColor(Color.BLUE);
+		orange.showBest();
 
-		Tribe green = new Tribe("GreenBois", tribeSizes);
-		green.setColor(Color.GREEN);*/
-
+		/*
 		orange.setPrintCode("\u001B[38;5;166m");
-		/*blue.setPrintCode("\u001B[38;5;27m");
-		green.setPrintCode("\u001B[38;5;29m");*/
-
 
 		for (int i = 0; i < generationCount; i++)
 		{
@@ -35,34 +38,6 @@ public class Driver
 
 			orange.print();
 
-			/*Thread b = new Thread(new Runnable() {
-
-			      public void run() {
-			         blue.evalTribe();
-			      }
-			});
-
-			Thread g = new Thread(new Runnable() {
-
-			      public void run() {
-			         green.evalTribe();
-			      }
-			});
-*/
-			//o.start();
-			/*b.start();
-			g.start();*/
-
-			/*try
-			{
-				o.join();
-				/*b.join();
-				g.join();
-			}
-			catch(Exception error)
-			{
-				error.printStackTrace();
-			}*/
 
 			Structure best = orange.getBestMemeber();
 			System.out.println("Best Member: " + best.getName() + " --> " + Integer.toString(best.getFitness()));
@@ -79,7 +54,7 @@ public class Driver
 
 			display.start();
 
-			/*best = blue.getBestMemeber();
+			best = blue.getBestMemeber();
 			System.out.println("Best Member: " + best.getName() + " --> " + Integer.toString(best.getFitness()));
 			blue.showBest();
 
@@ -92,13 +67,15 @@ public class Driver
 			System.out.println("Creating next generation ... ");
 
 			green.combineAndMutate();
-			blue.combineAndMutate();*/
+			blue.combineAndMutate();
 			orange.combineAndMutate();
 		}
 
 		System.out.println("Best member after " + Integer.toString(generationCount) + " generations ... ");
 		orange.showBest();
+	*/
 	}
+
 
 	
 }
