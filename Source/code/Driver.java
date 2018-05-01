@@ -19,13 +19,22 @@ public class Driver
 
 		System.out.println("Creating initial population ... ");
 
-		int tribeSizes = 10;
-		int generationCount = 30;
+		int tribeSizes = 500;
+		int generationCount = 40;
 		
-		Tribe orange = new Tribe("OrangeBois", tribeSizes);
+		Tribe orange = new Tribe("ASEXUAL", tribeSizes);
 		orange.setColor(Color.ORANGE);
 
-		orange.showBest();
+		for (int i = 0; i < generationCount; i++)
+		{
+			orange.evalTribe();
+
+			orange.saveBest(i+1);
+
+			orange.print();
+
+			orange.combineAndMutate();
+		}
 
 		/*
 		orange.setPrintCode("\u001B[38;5;166m");

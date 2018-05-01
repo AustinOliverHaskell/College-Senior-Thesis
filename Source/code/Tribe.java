@@ -9,7 +9,8 @@ import java.util.concurrent.Executors;
 
 public class Tribe
 {
-	public static int THREAD_COUNT = 4;
+	public static int THREAD_COUNT = 8;
+	public static float deletePercentage = 0.90f;
 	private static String clearPrintCode = "\u001B[0m";
 	ArrayList <Structure> tribe;
 
@@ -159,23 +160,70 @@ public class Tribe
 	{
 		sort();
 
-		// Delete worst half
-		for (int i = tribe.size() / 2; i < tribe.size(); i++)
+		// Delete worst 90%
+		for (int i = (int)((float)tribe.size() * (1.0f - deletePercentage)); i < tribe.size(); i++)
 		{
 			tribe.remove(i);
 			i--;
 		}
 
-		int i = 1; 
+		int breedingRange = (int)((float)tribe.size() * (deletePercentage));
+
+		if (breedingRange >= tribe.size())
+		{
+			breedingRange = tribe.size()-1;
+		}
+
 		while (tribe.size() < size)
 		{
+			int i = 0; 
+
+			int d = 0;
+			int m = 0;
+
+			Random rand = new Random();
+			while (rand.nextBoolean())
+			{
+				i++;
+			}
+
+			if (i >= breedingRange)
+			{
+				i = breedingRange;
+			}
+
+			d = i;
+			// Reset
+			i = 0;
+
+			while (rand.nextBoolean())
+			{
+				i++;
+			}
+
+			if (i >= breedingRange)
+			{
+				i = breedingRange;
+			}
+
+			m = i;
+
+			Structure dad = tribe.get(d);
+			Structure mom = tribe.get(m);
+
 			String memberName = name + "_" + UUID.randomUUID().toString();
 
-			Structure temp = new Structure(tribe.get(i), tribe.get(i), "ASEXUAL");
+			Structure temp = new Structure(mom, dad, "ASEXUAL");
 
 			temp.setName(memberName);
 
-			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode);
+			if (d == m)
+			{
+				// It was basically asexual so this mutates it for sure
+				temp.mutate();
+			}
+
+			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode + ":" + Integer.toString(d) + "-" + Integer.toString(m));
 
 			temp.save("../compiled/obj/" + memberName + ".obj");
 
