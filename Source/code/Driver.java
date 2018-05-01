@@ -8,6 +8,15 @@ public class Driver
 {
 	public static void main(String[] args)
 	{
+		/*
+		Random rand = new Random();
+		ArrayList<Integer> dna = new ArrayList<Integer>();
+
+
+		Structure s = new Structure(dna);
+
+		s.save("../compiled/newTypeTest.obj");
+		
 		Structure a = new Structure();
 
 		Structure b = new Structure();
@@ -16,10 +25,10 @@ public class Driver
 
 		c.save("../compiled/obj/Test.obj");
 
-
+		*/
 		System.out.println("Creating initial population ... ");
 
-		int tribeSizes = 500;
+		int tribeSizes = 50;
 		int generationCount = 40;
 		
 		Tribe orange = new Tribe("ASEXUAL", tribeSizes);

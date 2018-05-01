@@ -70,6 +70,41 @@ public class Tetrahedron
 		pointList = t.getPointList();
 	}
 
+	Tetrahedron(Tetrahedron t, int face)
+	{
+		ArrayList<Triangle> otherList = t.getFaceList();
+
+		faceList  = new ArrayList<Triangle>();
+		pointList = new ArrayList<Vec3>();
+
+		// Plus one because the first item in the list is always the covered one
+		Triangle tri = otherList.get(face+1);
+
+		Vec3 oppositePoint = t.getFourthPoint(tri);
+		Vec3 centroid      = tri.getCentroid();
+
+		Vec3 point = Vec3.pointAlongLine(centroid, oppositePoint, 1);
+
+		// Create the other triangles
+		Triangle b = new Triangle(tri.a, tri.b, point);
+		Triangle c = new Triangle(tri.a, tri.c, point);
+		Triangle d = new Triangle(tri.b, tri.c, point);
+
+		// Mark the triangle as covered
+		tri.setCovered(true);
+
+		// Add the triangles to the facelist
+		faceList.add(tri);
+		faceList.add(b);
+		faceList.add(c);
+		faceList.add(d);
+
+		pointList.add(tri.a);
+		pointList.add(tri.b);
+		pointList.add(tri.c);
+		pointList.add(point);
+	}
+
 	Tetrahedron(Tetrahedron tetrahedron, ArrayList<Tetrahedron> list) throws NoValidSpaces
 	{
 		faceList = new ArrayList<Triangle>();
@@ -213,12 +248,11 @@ public class Tetrahedron
 	{
 		boolean retVal = false;
 
-		ArrayList<Vec3> pointCloud = t.getPointList();
+		ArrayList<Triangle> facelist = t.getFaceList();
+		
+		Vec3 point = t.getFourthPoint(facelist.get(0));
 
-		for (Vec3 point : pointCloud)
-		{
-			retVal |= (doesPointCollideWithStructure(point, list));
-		}
+		retVal = doesPointCollideWithStructure(point, list);
 
 		return retVal;
 	}

@@ -9,8 +9,10 @@ public class Structure implements Comparable<Structure>, Runnable
 	private int fitness;
 	private String name;
 	private String CREATION_MODE = "LINEAR";
+	private int collisionCount = 0;
 
 	private ArrayList<Tetrahedron> tetraList;
+	private ArrayList<Integer> dnaList;
 
 	/**
 	 *  Deafult constructor sets values at <br />
@@ -26,6 +28,7 @@ public class Structure implements Comparable<Structure>, Runnable
 		fitness = Integer.MAX_VALUE;
 		name = "";
 		tetraList = new ArrayList<Tetrahedron>();
+		collisionCount = 1;
 
 		Random rand = new Random();
 
@@ -107,79 +110,96 @@ public class Structure implements Comparable<Structure>, Runnable
 		// Just copies mom with a high chance of mutation
 		if (method.equals("ASEXUAL"))
 		{
-			tetraList = mom.getDNA();
-
-			// Needs to be a random chance
-			mutate();
+			
 		}
 		else if (method.equals("QUARTERS"))
 		{
-			ArrayList <Tetrahedron> momList = mom.getDNA();
-			ArrayList <Tetrahedron> dadList = dad.getDNA();
 
-			tetraList = new ArrayList<Tetrahedron>();
-
-			int i = 0;
-
-			for (; i < momList.size()/4; i++)
-			{
-				tetraList.add(momList.get(i));
-			}
-
-			for (; i < dadList.size() * (3/4); i++)
-			{
-				tetraList.add(dadList.get(i));
-			}
-
-			for (; i < momList.size(); i++)
-			{
-				tetraList.add(momList.get(i));
-			}
-
-			tetraCount = tetraList.size();
 		}
-		else if (method.equals("NO_COLLIDE_QUARTERS"))
+	}
+
+	public static Structure breed(Structure mom, Structure dad, String method)
+	{
+		Structure retVal = null;
+
+		ArrayList<Integer> m = mom.getDNA();
+		ArrayList<Integer> d = dad.getDNA();
+
+		ArrayList<Integer> offspring = new ArrayList<Integer>();
+
+		offspring.ensureCapacity(m.size());
+
+		// Just copies mom with a high chance of mutation
+		if (method.equals("ASEXUAL"))
 		{
-			tetraList = new ArrayList<Tetrahedron>();
-
-			ArrayList <Tetrahedron> momList = mom.getDNA();
-			ArrayList <Tetrahedron> dadList = dad.getDNA();
-
-			int i = 0;
-
-			for (; i < momList.size()/4; i++)
-			{
-				tetraList.add(momList.get(i));
-			}
-
-			for (; i < dadList.size() * (3/4); i++)
-			{
-				Tetrahedron t = dadList.get(i);
-
-				if (Tetrahedron.doesTetraCollideWithList(t, tetraList))
-				{
-					continue;
-				}
-
-				tetraList.add(t);
-			}
-
-			for (; i < momList.size(); i++)
-			{
-				Tetrahedron t = momList.get(i);
-
-				if (Tetrahedron.doesTetraCollideWithList(t, tetraList))
-				{
-					continue;
-				}
-
-				tetraList.add(t);
-			}
-
-			tetraCount = tetraList.size();
-
-			mutate();
+			
 		}
+		else if (method.equals("QUARTERS"))
+		{
+			int i = 0;
+			for (; i < m.size() / 4; i++)
+			{
+				offspring.add(m.get(i));
+			}
+
+			for (; i < (int)((float)d.size() * 3.0f/4.0f); i++)
+			{
+				offspring.add(d.get(i));
+			}
+
+			for (; i < m.size(); i++)
+			{
+				offspring.add(m.get(i));
+			}
+		}
+
+		retVal = new Structure(offspring);
+
+		return retVal;
+	}
+
+	/**
+	*	This constructor is to facilitate a new way of generating, 
+	*	 mutating, and mating structures. In this constructor a list
+	*	 of numbers from 0-2 is taken and that data is used to cover
+	*	 the corresponding faces of the previous. So for example from
+	* 	 the first tetrahedron, if the first number is 0 then the 0 
+	*	 face of the first tetrahedron is then used to create the next.
+	*	 Think of it like budding, one tetrahedron buds off of a 
+	*	 specific face of the last. (I hope that makes sense). This
+	*	 (potentially) will simplify the genetic material. 
+	*/
+	Structure(ArrayList<Integer> dnaList)
+	{
+		this.dnaList = dnaList;
+		tetraList = new ArrayList<Tetrahedron>();
+		// Create the first tetrahedron
+		tetraList.add(makeFirstTetra());
+
+		name = "";
+		fitness = Integer.MAX_VALUE;
+		this.collisionCount = 1;
+
+		// The first tetrahedron wont have any faces covered. 
+		//  So the first item in the dna list can be between
+		//  0-3
+		for (int i = 0; i < dnaList.size(); i++)
+		{
+			Tetrahedron t = new Tetrahedron(tetraList.get(tetraList.size()-1), dnaList.get(i));
+
+			if (Tetrahedron.doesTetraCollideWithList(t, tetraList))
+			{
+				this.collisionCount++;
+			}
+
+			tetraList.add(t);
+		}
+
+	}
+
+	public int getCollisionCount()
+	{
+		return this.collisionCount;
 	}
 
 	public void load(String path)
@@ -211,6 +231,8 @@ public class Structure implements Comparable<Structure>, Runnable
 	{
 		Triangle tri = new Triangle(new Vec3(0.00f, 0.00f, 0.00f), new Vec3(1.00f, 0.00f, 0.00f), new Vec3(0.50f, 0.86f, 0.00f));
 
+		tri.setCovered(true);
+
 		return new Tetrahedron(tri);
 	}
 
@@ -241,13 +263,13 @@ public class Structure implements Comparable<Structure>, Runnable
 		//return compareQuantity - this.quantity;
 	}
 
-	private ArrayList<Tetrahedron> getDNA()
+	private ArrayList<Integer> getDNA()
 	{
-		ArrayList <Tetrahedron> retVal = new ArrayList<Tetrahedron>();
+		ArrayList <Integer> retVal = new ArrayList<Integer>();
 
-		for (Tetrahedron t : tetraList)
+		for (Integer t : dnaList)
 		{
-			retVal.add(new Tetrahedron(t));
+			retVal.add(t);
 		}
 
 		return retVal;
@@ -261,36 +283,24 @@ public class Structure implements Comparable<Structure>, Runnable
 		// Add Tetrahedron
 		if (flip)
 		{
-			boolean succes = false;
+			int pos = rand.nextInt(dnaList.size());
 
-			while (succes == false)
+			int newVal = dnaList.get(pos);
+			newVal++;
+
+			if (newVal >= 3)
 			{
-				int tetraToBuildOffOf = rand.nextInt(tetraList.size());
-				Tetrahedron t;
-
-				try
-				{
-					t = new Tetrahedron(tetraList.get(tetraToBuildOffOf), tetraList);
-
-					tetraList.add(t);
-
-					succes = true;
-				}
-				catch (NoValidSpaces error)
-				{
-					// Do nothing
-				}
+				newVal = 0;
 			}
 
+			dnaList.set(pos, newVal);
 		}
 
 		// Tails
 		// Remove Tetrahedron
 		else
 		{
-			int tetToRemove = rand.nextInt(tetraList.size());
-
-			tetraList.remove(tetToRemove);
+			
 		}
 
 	}
@@ -330,6 +340,8 @@ public class Structure implements Comparable<Structure>, Runnable
 		String printCode = "\u001B[38;5;9m";
 
 		this.fitness = Tribe.staticEvaluate(this.name + ".obj");
+
+		this.fitness *= collisionCount;
 
 		if (this.fitness < 15)
 		{

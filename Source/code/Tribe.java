@@ -213,7 +213,7 @@ public class Tribe
 
 			String memberName = name + "_" + UUID.randomUUID().toString();
 
-			Structure temp = new Structure(mom, dad, "ASEXUAL");
+			Structure temp = Structure.breed(mom, dad, "QUARTERS");
 
 			temp.setName(memberName);
 
@@ -223,7 +223,9 @@ public class Tribe
 				temp.mutate();
 			}
 
-			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode + ":" + Integer.toString(d) + "-" + Integer.toString(m));
+			//  + ":" + Integer.toString(d) + "-" + Integer.toString(m)
+
+			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode);
 
 			temp.save("../compiled/obj/" + memberName + ".obj");
 
@@ -264,13 +266,15 @@ public class Tribe
 
 		for (int i = 0; i < size; i++)
 		{
-			Structure s = new Structure();
+			Structure s = new Structure(createList(100));
 
 			String memberName = name + "_" + UUID.randomUUID().toString();
 
 			s.setName(memberName);
 
 			System.out.println(printCode + "Object: " + memberName + " added to population." + clearPrintCode);
+
+			//System.out.println("Collision Count: " + Integer.toString(s.getCollisionCount()));
 
 			s.save("../compiled/obj/" + memberName + ".obj");
 
@@ -280,6 +284,18 @@ public class Tribe
 		return retVal;
 	}
 
+	public ArrayList<Integer> createList(int s)
+	{
+		ArrayList<Integer> retVal = new ArrayList<Integer>();
 
+		Random rand = new Random();
+		
+		for (int i = 0; i < s; i++)
+		{
+			retVal.add(rand.nextInt(3));
+		}
+
+		return retVal;
+	}
 
 }
