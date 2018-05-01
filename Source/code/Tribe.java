@@ -231,6 +231,8 @@ public class Tribe
 
 			i++;
 
+			temp.mutate();
+
 			tribe.add(temp);
 		}
 
