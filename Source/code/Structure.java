@@ -10,6 +10,7 @@ public class Structure implements Comparable<Structure>, Runnable
 	private String name;
 	private String CREATION_MODE = "LINEAR";
 	private int collisionCount = 0;
+	private int breakCount = 0;
 
 	private ArrayList<Tetrahedron> tetraList;
 	private ArrayList<Integer> dnaList;
@@ -227,6 +228,53 @@ public class Structure implements Comparable<Structure>, Runnable
 		return this.name;
 	}
 
+	public double getBoundingVolume()
+	{
+		double retVal = 0;
+
+		float minX = Float.MAX_VALUE;
+		float maxX = Float.MIN_VALUE;
+
+		float minY = Float.MAX_VALUE;
+		float maxY = Float.MIN_VALUE;
+
+		float minZ = Float.MAX_VALUE;
+		float maxZ = Float.MIN_VALUE;
+
+		for (Tetrahedron t : tetraList)
+		{
+			ArrayList<Vec3> points = t.getPointList();
+		
+			for (Vec3 v : points)
+			{
+				minX = minCheck(minX, v.x);
+				maxX = maxCheck(minX, v.x);
+
+				minY = minCheck(minY, v.y);
+				maxY = maxCheck(minY, v.y);
+
+				minZ = minCheck(minZ, v.z);
+				maxZ = maxCheck(minZ, v.z);
+			}
+		}
+
+		float x = maxX - minX;
+		float y = maxY - minY;
+		float z = maxZ - minZ;
+
+		retVal = (double)x * (double)y * (double)z;
+
+		//System.out.println("MinX:" + Float.toString(minX));
+		//System.out.println("MaxX:" + Float.toString(maxX));
+		//System.out.println("MinY:" + Float.toString(minY));
+		//System.out.println("MaxY:" + Float.toString(maxY));
+		//System.out.println("MinZ:" + Float.toString(minZ));
+		//System.out.println("MaxZ:" + Float.toString(maxZ));
+
+
+		return retVal;
+	}
+
 	private Tetrahedron makeFirstTetra()
 	{
 		Triangle tri = new Triangle(new Vec3(0.00f, 0.00f, 0.00f), new Vec3(1.00f, 0.00f, 0.00f), new Vec3(0.50f, 0.86f, 0.00f));
@@ -339,9 +387,9 @@ public class Structure implements Comparable<Structure>, Runnable
 	{
 		String printCode = "\u001B[38;5;9m";
 
-		this.fitness = Tribe.staticEvaluate(this.name + ".obj");
+		this.breakCount = Tribe.staticEvaluate(this.name + ".obj");
 
-		this.fitness *= collisionCount;
+		calcFitness();
 
 		if (this.fitness < 15)
 		{
@@ -353,6 +401,37 @@ public class Structure implements Comparable<Structure>, Runnable
 		}
 
 		System.out.println(printCode + this.name + " compleated evaluation: " + Integer.toString(this.fitness));
+	}
+
+	private void calcFitness()
+	{
+		double volume = getBoundingVolume();
+
+		
+	}
+
+	private float minCheck(float old, float check)
+	{
+		if (old < check)
+		{
+			return old;
+		}
+		else
+		{
+			return check;
+		}
+	}
+
+	private float maxCheck(float old, float check)
+	{
+		if (old > check)
+		{
+			return old;
+		}
+		else
+		{
+			return check;
+		}
 	}
 
 }

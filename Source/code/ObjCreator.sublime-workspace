@@ -4,16 +4,56 @@
 		"selected_items":
 		[
 			[
+				"calc",
+				"calcFitness"
+			],
+			[
+				"break",
+				"breakCount"
+			],
+			[
+				"get",
+				"getBoundingVolume\t(Structure.java)"
+			],
+			[
+				"tet",
+				"tetraList"
+			],
+			[
+				"set",
+				"setName"
+			],
+			[
+				"Sys",
+				"System.out.println\t(Tribe.java)"
+			],
+			[
+				"eval",
+				"evalTribe\t(Tribe.java)"
+			],
+			[
+				"NO",
+				"NO_COLLIDE_QUARTERS\t(Structure.java)"
+			],
+			[
+				"print",
+				"printCode"
+			],
+			[
+				"eva",
+				"evalTribe\t(Tribe.java)"
+			],
+			[
+				"stat",
+				"staticEvaluate\t(Tribe.java)"
+			],
+			[
 				"prin",
 				"printStackTrace\t(Tribe.java)"
 			],
 			[
 				"combin",
 				"combineAndMutate"
-			],
-			[
-				"tet",
-				"tetraCount"
 			],
 			[
 				"does",
@@ -44,16 +84,8 @@
 				"setPrintCode"
 			],
 			[
-				"print",
-				"printCode"
-			],
-			[
 				"tribe",
 				"tribeSizes"
-			],
-			[
-				"eval",
-				"evalTribe"
 			],
 			[
 				"create",
@@ -94,10 +126,6 @@
 			[
 				"mutate",
 				"mutateTest"
-			],
-			[
-				"NO",
-				"NoValidSpaces"
 			],
 			[
 				"Syst",
@@ -152,16 +180,8 @@
 				"ClientDatagram"
 			],
 			[
-				"break",
-				"breakCondition"
-			],
-			[
 				"pont",
 				"pointList"
-			],
-			[
-				"get",
-				"getCentroid"
 			],
 			[
 				"rand",
@@ -174,10 +194,6 @@
 			[
 				"Tet",
 				"TetrahedronCollisionException"
-			],
-			[
-				"Sys",
-				"System.out.println(\"Break"
 			],
 			[
 				"Obje",
@@ -268,10 +284,6 @@
 				"facelist"
 			],
 			[
-				"set",
-				"setCovered\t(Triangle.java)"
-			],
-			[
 				"int",
 				"intermediate"
 			],
@@ -298,10 +310,6 @@
 			[
 				"Tr",
 				"Triangle"
-			],
-			[
-				"calc",
-				"CalcNormal"
 			],
 			[
 				"nomr",
@@ -506,24 +514,25 @@
 			[
 				"find",
 				"findUsableArea"
-			],
-			[
-				"dea",
-				"dealACard"
-			],
-			[
-				"num",
-				"numCards"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "Structure.java",
+			"settings":
+			{
+				"buffer_size": 8067,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "Driver.java",
 			"settings":
 			{
-				"buffer_size": 2098,
+				"buffer_size": 670,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -532,16 +541,7 @@
 			"file": "Tribe.java",
 			"settings":
 			{
-				"buffer_size": 3240,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "PhysicsEngine/GL/src/h/Constants.h",
-			"settings":
-			{
-				"buffer_size": 700,
+				"buffer_size": 5464,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -551,25 +551,6 @@
 			"settings":
 			{
 				"buffer_size": 6886,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Structure.java",
-			"settings":
-			{
-				"buffer_size": 5672,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Tetrahedron.java",
-			"settings":
-			{
-				"buffer_size": 13093,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -641,11 +622,19 @@
 	],
 	"file_history":
 	[
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/test.obj",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Tetrahedron.java",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Structure.java",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/h/Constants.h",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Tribe.java",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Driver.java",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/main.cpp",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/BlueBois_0be73f42-5dfc-4434-86b8-02332437ab24.obj",
+		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/BlueBois_0a920c15-3898-4d6a-9e63-e08a52ea6c24.obj",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/FileLoader.cpp",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/World.cpp",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Triangle.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/comp.sh",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Tetrahedron.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/Mutated_1.obj",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Vec3.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/h/World.h",
@@ -658,10 +647,7 @@
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/CreationStep_3.obj",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/Structure.cpp",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/compiled/obj/0.obj",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/h/Constants.h",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/Model.cpp",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/main.cpp",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Structure.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/NoValidSpaces.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjCreator.sublime-project",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/ObjFileBuilder.java",
@@ -670,7 +656,6 @@
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/btFractureDynamicsWorld.cpp",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/h/btFractureDynamicsWorld.h",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/ShaderLoader.cpp",
-		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/Driver.java",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/h/c_DebugDraw.h",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/shaders/SimpleVertexShader.vertexshader",
 		"/home/austin/Documents/repos/EvolvingStormResistantStructures/Source/code/PhysicsEngine/GL/src/shaders/SimpleTransform.vertexshader",
@@ -764,19 +749,15 @@
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/h/headers.h",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/BasicExample.cpp",
 		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Structure.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/StructureFile.java",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/9_YFWPQBBJR4T1VA1A_7.obj",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/Object.obj",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/compiled/obj/test.obj",
-		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/PhysicsEngine/Debug.cpp"
+		"/home/austin/Desktop/Thesis/EvolvingStormResistantStructures/Source/code/StructureFile.java"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 33.0
 	},
 	"find_in_files":
 	{
-		"height": 131.0,
+		"height": 199.0,
 		"where_history":
 		[
 			"<open folders>"
@@ -853,19 +834,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Driver.java",
+					"file": "Structure.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2098,
+						"buffer_size": 8067,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								799,
-								799
+								7389,
+								7389
 							]
 						],
 						"settings":
@@ -876,7 +857,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
+						"translation.y": 4758.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -884,59 +865,61 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Tribe.java",
+					"file": "Driver.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3240,
+						"buffer_size": 670,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2271,
-								2271
+								586,
+								586
 							]
 						],
 						"settings":
 						{
 							"glslvalidator_configured": true,
 							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax"
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "PhysicsEngine/GL/src/h/Constants.h",
+					"file": "Tribe.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 700,
+						"buffer_size": 5464,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								93,
-								93
+								1439,
+								1439
 							]
 						],
 						"settings":
 						{
 							"glslvalidator_configured": true,
 							"glslvalidator_enabled": 1,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2730.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -955,8 +938,8 @@
 						"selection":
 						[
 							[
-								3803,
-								3803
+								853,
+								853
 							]
 						],
 						"settings":
@@ -968,72 +951,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1638.0,
+						"translation.y": 1131.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Structure.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2058,
-								2058
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2058.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Tetrahedron.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13093,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6237,
-								6237
-							]
-						],
-						"settings":
-						{
-							"glslvalidator_configured": true,
-							"glslvalidator_enabled": 1,
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2668.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1041,7 +962,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -1078,7 +999,7 @@
 	"project": "ObjCreator.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

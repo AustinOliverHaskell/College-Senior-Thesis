@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 public class Tribe
 {
-	public static int THREAD_COUNT = 8;
+	public static int THREAD_COUNT = 4;
 	public static float deletePercentage = 0.90f;
 	private static String clearPrintCode = "\u001B[0m";
 	ArrayList <Structure> tribe;
@@ -160,6 +160,15 @@ public class Tribe
 	{
 		sort();
 
+		for (int i = 0; i < tribe.size(); i++)
+		{
+			Structure s = tribe.get(i);
+
+			s.setName(name + Integer.toString(i));
+
+			s.save("../compiled/obj/" + s.getName() + ".obj");
+		}
+
 		// Delete worst 90%
 		for (int i = (int)((float)tribe.size() * (1.0f - deletePercentage)); i < tribe.size(); i++)
 		{
@@ -211,7 +220,8 @@ public class Tribe
 			Structure dad = tribe.get(d);
 			Structure mom = tribe.get(m);
 
-			String memberName = name + "_" + UUID.randomUUID().toString();
+			// + "_" + UUID.randomUUID().toString();
+			String memberName = name + Integer.toString(tribe.size());
 
 			Structure temp = Structure.breed(mom, dad, "QUARTERS");
 
@@ -225,7 +235,7 @@ public class Tribe
 
 			//  + ":" + Integer.toString(d) + "-" + Integer.toString(m)
 
-			System.out.println(" Object: " + memberName + " added to population." + clearPrintCode);
+			//System.out.println(" Object: " + memberName + " added to population." + clearPrintCode);
 
 			temp.save("../compiled/obj/" + memberName + ".obj");
 
@@ -270,15 +280,16 @@ public class Tribe
 		{
 			Structure s = new Structure(createList(100));
 
-			String memberName = name + "_" + UUID.randomUUID().toString();
+			// "_" + UUID.randomUUID().toString();
+			String memberName = name + Integer.toString(i);
 
 			s.setName(memberName);
 
-			System.out.println(printCode + "Object: " + memberName + " added to population." + clearPrintCode);
+			//System.out.println(printCode + "Object: " + memberName + " added to population." + clearPrintCode);
 
 			//System.out.println("Collision Count: " + Integer.toString(s.getCollisionCount()));
 
-			s.save("../compiled/obj/" + memberName + ".obj");
+			s.save("../compiled/obj/"+ memberName + ".obj");
 
 			retVal.add(s);
 		}
