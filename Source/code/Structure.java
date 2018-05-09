@@ -9,6 +9,7 @@ public class Structure implements Comparable<Structure>, Runnable
 	private int fitness;
 	private String name;
 	private String CREATION_MODE = "LINEAR";
+	private int COLLISION_PENALTY = 10;
 	private int collisionCount = 0;
 	private int breakCount = 0;
 
@@ -248,13 +249,13 @@ public class Structure implements Comparable<Structure>, Runnable
 			for (Vec3 v : points)
 			{
 				minX = minCheck(minX, v.x);
-				maxX = maxCheck(minX, v.x);
+				maxX = maxCheck(maxX, v.x);
 
 				minY = minCheck(minY, v.y);
-				maxY = maxCheck(minY, v.y);
+				maxY = maxCheck(maxY, v.y);
 
 				minZ = minCheck(minZ, v.z);
-				maxZ = maxCheck(minZ, v.z);
+				maxZ = maxCheck(maxZ, v.z);
 			}
 		}
 
@@ -264,12 +265,20 @@ public class Structure implements Comparable<Structure>, Runnable
 
 		retVal = (double)x * (double)y * (double)z;
 
-		//System.out.println("MinX:" + Float.toString(minX));
-		//System.out.println("MaxX:" + Float.toString(maxX));
-		//System.out.println("MinY:" + Float.toString(minY));
-		//System.out.println("MaxY:" + Float.toString(maxY));
-		//System.out.println("MinZ:" + Float.toString(minZ));
-		//System.out.println("MaxZ:" + Float.toString(maxZ));
+		retVal = Math.abs(retVal);
+
+		if (retVal == 0)
+		{
+			System.out.println("MinX:" + Float.toString(minX));
+			System.out.println("MaxX:" + Float.toString(maxX));
+			System.out.println("MinY:" + Float.toString(minY));
+			System.out.println("MaxY:" + Float.toString(maxY));
+			System.out.println("MinZ:" + Float.toString(minZ));
+			System.out.println("MaxZ:" + Float.toString(maxZ));
+			assert(false);
+		}
+
+		
 
 
 		return retVal;
@@ -407,7 +416,22 @@ public class Structure implements Comparable<Structure>, Runnable
 	{
 		double volume = getBoundingVolume();
 
-		
+		StringBuilder printout = new StringBuilder();
+
+		this.fitness = ((int)Math.ceil(volume)) + (collisionCount * COLLISION_PENALTY) + breakCount;
+
+		if (this.fitness == 0)
+		{
+			printout.append("Volume:");
+			printout.append(Double.toString(volume));
+			printout.append(" BreakCount:");
+			printout.append(Integer.toString(breakCount));
+			printout.append(" CollisionCount:");
+			printout.append(Integer.toString(collisionCount));
+
+			// Could be weighted
+			System.out.println(printout.toString());
+		}
 	}
 
 	private float minCheck(float old, float check)

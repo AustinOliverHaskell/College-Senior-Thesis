@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 public class Tribe
 {
-	public static int THREAD_COUNT = 4;
+	public static int THREAD_COUNT = 6;
 	public static float deletePercentage = 0.90f;
 	private static String clearPrintCode = "\u001B[0m";
 	ArrayList <Structure> tribe;
@@ -35,6 +35,11 @@ public class Tribe
 	public void setColor(Color color)
 	{
 		this.color = color;
+	}
+
+	public String getName()
+	{
+		return this.name;
 	}
 
 	public Color getColor()

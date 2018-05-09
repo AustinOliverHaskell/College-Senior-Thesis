@@ -12,25 +12,52 @@ public class Driver
 
 		int tribeSizes = 128;
 		//int tribeSizes = 12;
-		int generationCount = 40;
+		int generationCount = 80;
 		
-		Tribe orange = new Tribe("HaskiesChildren", tribeSizes);
+		Tribe orange = new Tribe("OrangeBois", tribeSizes);
 		orange.setPrintCode("\u001B[38;5;166m");
 		orange.setColor(Color.ORANGE);
 
-		for (int i = 0; i < generationCount; i++)
+		Tribe green = new Tribe("GreenBois", tribeSizes);
+		green.setPrintCode("\u001B[38;5;46m");
+		green.setColor(Color.GREEN);
+
+		Tribe pink = new Tribe("PurpleBois", tribeSizes);
+		pink.setPrintCode("\u001B[38;5;146m");
+		pink.setColor(Color.PINK);
+
+		Tribe red = new Tribe("RedBois", tribeSizes);
+		red.setPrintCode("\u001B[38;5;88m");
+		red.setColor(Color.RED);
+
+		Tribe blue = new Tribe("RedBois", tribeSizes);
+		blue.setPrintCode("\u001B[38;5;26m");
+		blue.setColor(Color.BLUE);
+
+		ArrayList<Tribe> tribes = new ArrayList<Tribe>();
+
+		tribes.add(orange);
+		tribes.add(pink);
+		tribes.add(green);
+		tribes.add(red);
+		tribes.add(blue);
+
+		for (Tribe t : tribes)
 		{
-			System.out.println("Generation " + Integer.toString(i));
+			for (int i = 0; i < generationCount; i++)
+			{
+				System.out.println(t.getName() + " --  Generation " + Integer.toString(i));
 
-			orange.evalTribe();
+				t.evalTribe();
 
-			orange.saveBest(i+1);
+				t.saveBest(i+1);
 
-			orange.print();
+				t.print();
 
-			orange.showBest();
+				t.showBest();
 
-			orange.combineAndMutate();
+				t.combineAndMutate();
+			}
 		}
 	}
 }
